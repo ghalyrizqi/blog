@@ -1,5 +1,6 @@
 import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
+// import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
 import Script from 'next/script'
 import '@/styles/globals.css'

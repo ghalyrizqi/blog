@@ -7,9 +7,9 @@ const Hero = () => {
     <div className='space-y-6 md:my-16'>
       <div className='flex flex-col-reverse gap-8 md:flex-row md:justify-between'>
         <div className='space-y-4 md:max-w-lg'>
-          <h1 className='text-4xl font-bold text-accent-fg'>Hong</h1>
+          <h1 className='text-4xl font-bold text-accent-fg'>Ghaly</h1>
           <h2 className='text-lg font-medium text-accent-5'>
-            17 yrs • Student • Full-stack Developer
+            26 yrs • Data Engineer
           </h2>
           <p className='text-lg'>
             I am a student, currently learning web development skills such as

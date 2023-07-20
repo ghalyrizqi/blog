@@ -2,8 +2,8 @@
 
 import {
   IconBrandGithub,
-  IconBrandYoutube,
-  IconClock,
+  // IconBrandYoutube,
+  // IconClock,
   IconPencil,
   IconUser,
 } from '@tabler/icons-react'
@@ -14,7 +14,8 @@ import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 
-import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
+// import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
+import { GithubData, Likes, Views } from '@/types'
 
 type Card = {
   icon: React.ReactNode
@@ -24,17 +25,16 @@ type Card = {
 }
 
 const Items = () => {
-  const { data: youtubeData } = useSWR<YouTubeData>('/api/youtube', fetcher)
+  // const { data: youtubeData } = useSWR<YouTubeData>('/api/youtube', fetcher)
   const { data: githubData } = useSWR<GithubData>('/api/github', fetcher)
   const { data: likesData } = useSWR<Likes>('/api/likes', fetcher)
   const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
-  const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
+  // const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
 
-  const getAge = () =>
-    (
-      dayjs().diff('2006-04-11', 'milliseconds') /
-      (365.25 * 24 * 60 * 60 * 1000)
-    ).toFixed(9)
+  const getAge = () => Math.floor(dayjs().diff('1997-07-08', 'day'))
+  // dayjs().diff('1997-07-08', 'milliseconds') /
+  // (365.25 * 24 * 60 * 60 * 1000)
+  // .toFixed(9)
 
   const [age, setAge] = React.useState(getAge())
   const [mounted, setMounted] = React.useState(false)
@@ -54,35 +54,35 @@ const Items = () => {
       value: age,
       icon: <IconUser />,
     },
-    {
-      title: 'Coding Hours',
-      link: 'https://wakatime.com/@tszhong0411',
-      value: wakatimeData?.seconds
-        ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
-        : undefined,
-      icon: <IconClock />,
-    },
-    {
-      title: 'YouTube Subscribers',
-      link: 'https://youtube.com/@tszhong0411',
-      value: youtubeData?.subscribers,
-      icon: <IconBrandYoutube />,
-    },
-    {
-      title: 'YouTube Views',
-      link: 'https://youtube.com/@tszhong0411',
-      value: youtubeData?.views,
-      icon: <IconBrandYoutube />,
-    },
+    // {
+    //   title: 'Coding Hours',
+    //   link: 'https://wakatime.com/@tszhong0411',
+    //   value: wakatimeData?.seconds
+    //     ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
+    //     : undefined,
+    //   icon: <IconClock />,
+    // },
+    // {
+    //   title: 'YouTube Subscribers',
+    //   link: 'https://youtube.com/@tszhong0411',
+    //   value: youtubeData?.subscribers,
+    //   icon: <IconBrandYoutube />,
+    // },
+    // {
+    //   title: 'YouTube Views',
+    //   link: 'https://youtube.com/@tszhong0411',
+    //   value: youtubeData?.views,
+    //   icon: <IconBrandYoutube />,
+    // },
     {
       title: 'GitHub Followers',
-      link: 'https://github.com/tszhong0411',
+      link: 'https://github.com/ghalyrizqi',
       value: githubData?.followers,
       icon: <IconBrandGithub />,
     },
     {
       title: 'GitHub Stars',
-      link: 'https://github.com/tszhong0411',
+      link: 'https://github.com/ghalyrizqi',
       value: githubData?.stars,
       icon: <IconBrandGithub />,
     },
