@@ -12,9 +12,11 @@ const Hero = () => {
             26 yrs • Data Engineer
           </h2>
           <p className='text-lg'>
-            I am a student, currently learning web development skills such as
-            Next.js, Node.js, Prisma, and database management. I can feel a
-            sense of accomplishment when my code is recognized and appreciated.
+            Greetings! Welcome to my personal website, where I embark on a
+            continuous journey of learning and exploring the fascinating world
+            of data engineering. Here, I share my experiences, challenges, and
+            triumphs as I delve into the depths of this ever-evolving field.
+            *Enjoy your time here!*"
           </p>
         </div>
         <div className='h-20 w-20 md:h-28 md:w-28'>

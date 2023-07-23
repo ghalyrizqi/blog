@@ -31,7 +31,7 @@ const Items = () => {
   const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
   // const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
 
-  const getAge = () => Math.floor(dayjs().diff('1997-07-08', 'day'))
+  const getAge = () => dayjs().diff('1997-07-08', 'year')
   // dayjs().diff('1997-07-08', 'milliseconds') /
   // (365.25 * 24 * 60 * 60 * 1000)
   // .toFixed(9)

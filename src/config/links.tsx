@@ -1,9 +1,9 @@
 import {
-  IconBrandFacebook,
+  // IconBrandFacebook,
   IconBrandGithub,
   IconBrandInstagram,
-  IconBrandTwitter,
-  IconBrandYoutube,
+  // IconBrandTwitter,
+  // IconBrandYoutube,
   IconChartBar,
   IconDeviceDesktop,
   IconFlame,
@@ -117,10 +117,10 @@ export const FOOTER_LINKS: FooterLinks = [
 ]
 
 export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
-  {
-    href: 'https://www.facebook.com/tszhong0411/',
-    title: 'Facebook',
-  },
+  // {
+  //   href: 'https://www.facebook.com/tszhong0411/',
+  //   title: 'Facebook',
+  // },
   {
     href: 'https://www.instagram.com/tszhong0411/',
     title: 'Instagram',
@@ -129,10 +129,6 @@ export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
     href: 'https://github.com/tszhong0411',
     title: 'GitHub',
   },
-  {
-    href: 'https://www.youtube.com/@tszhong0411',
-    title: 'YouTube',
-  },
 ]
 
 export const HERO_LINKS: HeroLinks = [
@@ -140,30 +136,12 @@ export const HERO_LINKS: HeroLinks = [
     id: 'github',
     label: 'GitHub',
     icon: <IconBrandGithub size={28} />,
-    href: 'https://github.com/tszhong0411',
+    href: 'https://github.com/ghalyrizqi',
   },
   {
     id: 'instagram',
     label: 'Instagram',
     icon: <IconBrandInstagram size={28} />,
-    href: 'https://www.instagram.com/tszhong0411/',
-  },
-  {
-    id: 'youtube',
-    label: 'YouTube',
-    icon: <IconBrandYoutube size={28} />,
-    href: 'https://www.youtube.com/@tszhong0411',
-  },
-  {
-    id: 'facebook',
-    label: 'Facebook',
-    icon: <IconBrandFacebook size={28} />,
-    href: 'https://www.facebook.com/tszhong0411/',
-  },
-  {
-    id: 'twitter',
-    label: 'Twitter',
-    icon: <IconBrandTwitter size={28} />,
-    href: 'https://twitter.com/tszhong0411',
+    href: 'https://www.instagram.com/ghalyrizqi/',
   },
 ]

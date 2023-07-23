@@ -18,12 +18,20 @@ export const site: Site = {
       ? 'https://honghong.me'
       : 'http://localhost:3000',
   logo: 'https://honghong.me/static/images/avatar.png',
-  title: 'Hong',
-  name: 'Hong',
-  keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
-  titleTemplate: '- Hong',
-  description: 'Hong • 17 yrs • Student • Full-stack Developer',
-  githubUsername: 'tszhong0411',
+  title: 'Ghaly',
+  name: 'Ghaly',
+  keywords: [
+    'ghaly',
+    'ghaly rizqi',
+    'ghalyrizq',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Node.js',
+  ],
+  titleTemplate: '- Ghaly',
+  description: 'Ghaly • Data Engineer',
+  githubUsername: 'ghalyrizqi',
   favicons: [
     {
       rel: 'icon',
