@@ -50,7 +50,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <PageTitle title='About' description='👋 Hi there! I am Hong.' />
+      <PageTitle title='About' description='👋 Hi there! I am Ghaly.' />
       <Mdx code={page.body.code} />
     </>
   )

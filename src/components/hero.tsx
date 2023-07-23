@@ -24,7 +24,7 @@ const Hero = () => {
             src='/static/images/avatar.png'
             width={112}
             height={112}
-            alt='Hong'
+            alt='Ghaly'
             rounded='rounded-full'
             loading='eager'
             priority
