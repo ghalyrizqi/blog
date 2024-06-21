@@ -1,5 +1,5 @@
 import { BlogPosts } from "app/components/posts";
-import { Inter, Poppins, Playfair_Display } from "next/font/google"; // Assuming PlayfairDisplay is imported similarly
+import { Inter, Poppins } from "next/font/google"; // Assuming PlayfairDisplay is imported similarly
 
 const inter = Inter({
   weight: ["700"],
@@ -14,10 +14,6 @@ const poppins2 = Poppins({
   weight: ["400"],
   subsets: ["latin"],
 });
-const playfairDisplay = Playfair_Display({
-  weight: ["500"],
-  subsets: ["latin"],
-});
 
 export default function Page() {
   return (
@@ -25,13 +21,13 @@ export default function Page() {
       <h1 className="mb-8 text-6xl font-bold tracking-tighter">
         <span className={`${inter.className} text-7xl`}>
           Hello World!
-          <br></br>
+          <br />
           I'm{" "}
         </span>{" "}
         <span
-          className={`${playfairDisplay.className} text-7xl underline decoration-4 underline-offset-8`}
+          className={`playwrite-us-trad text-7xl underline decoration-4 underline-offset-8`}
         >
-          Ghaly Rizqi
+          ghaly
         </span>
       </h1>
       <p className={`${poppins.className} mb-8`}>

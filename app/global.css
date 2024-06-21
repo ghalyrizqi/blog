@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap");
 
 ::selection {
   background-color: #47a3f3;
@@ -31,6 +32,13 @@
 
 html {
   min-width: 360px;
+}
+
+.playwrite-us-trad {
+  font-family: "Playwrite US Trad", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .prose .anchor {
