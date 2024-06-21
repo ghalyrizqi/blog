@@ -2,7 +2,7 @@
 
 ## How to Use
 
-### install dependencies
+### Install dependencies
 
 install yarn
 
@@ -10,13 +10,13 @@ install yarn
 npm install --global yarn
 ```
 
-### from yarn, install nextjs, reactjs, react-dom
+### From yarn, install nextjs, reactjs, react-dom
 
 ```bash
 yarn add next react react-dom
 ```
 
-### clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/ghalyrizqi/blog.git
@@ -34,7 +34,7 @@ yarn create next-app --example https://github.com/vercel/examples/tree/main/solu
 yarn dev
 ```
 
-### open in browser
+### Open in browser
 
 by default your web will compiled at
 
