@@ -37,7 +37,7 @@ html {
 .playwrite-us-trad {
   font-family: "Playwrite US Trad", cursive;
   font-weight: 400; /* Adjust if necessary */
-  font-style: normal;
+  font-style: oblique;
 }
 
 .prose .anchor {

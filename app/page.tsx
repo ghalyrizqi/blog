@@ -1,5 +1,5 @@
 import { BlogPosts } from "app/components/posts";
-import { Inter, Poppins } from "next/font/google"; // Assuming PlayfairDisplay is imported similarly
+import { Inter, Poppins } from "next/font/google";
 
 const inter = Inter({
   weight: ["700"],
@@ -17,7 +17,7 @@ const poppins2 = Poppins({
 
 export default function Page() {
   return (
-    <section className={inter.className}>
+    <section className={`${inter.className} container mx-auto px-4`}>
       <h1 className="mb-8 text-6xl font-bold tracking-tighter">
         <span className={`${inter.className} text-7xl`}>
           Hello World!
