@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100;200;300;400;500;600;700&display=swap");
 
 ::selection {
   background-color: #47a3f3;
@@ -36,8 +36,7 @@ html {
 
 .playwrite-us-trad {
   font-family: "Playwrite US Trad", cursive;
-  font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 400; /* Adjust if necessary */
   font-style: normal;
 }
 
