@@ -2,16 +2,18 @@ import React from "react";
 
 export default function Resume() {
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="mb-8 text-4xl font-bold text-center">
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="inter mb-8 text-4xl font-bold text-left">
         GHALY RIZQI MAULUDIN
       </h1>
-      <h2 className="mb-4 text-xl text-center">Data Engineer</h2>
-      <p className="mb-8 text-center">ghalyrizqimauludin@gmail.com</p>
+      <h2 className="poppins-gede mb-4 text-xl text-left">Data Engineer</h2>
+      <p className="poppins-gede mb-8 text-left">
+        ghalyrizqimauludin@gmail.com
+      </p>
 
       <section className="mb-8">
-        <h3 className="mb-4 text-2xl font-bold">PROFILE</h3>
-        <p className="mb-4">
+        <h3 className="inter mb-4 text-2xl font-bold">PROFILE</h3>
+        <p className="poppins-gede mb-4">
           Experienced Data Engineer with over 2 years of expertise in developing
           robust and scalable data solutions leveraging Python, Scala, SQL, and
           bash scripting. Proficient in utilizing Apache Spark, Apache Airflow,
@@ -23,16 +25,15 @@ export default function Resume() {
       </section>
 
       <section className="mb-8">
-        <h3 className="mb-4 text-2xl font-bold">EDUCATION</h3>
-        <p className="mb-4">
-          <strong>UNIVERSITY OF BRAWIJAYA</strong>
-          <br />
-          Bachelor of Informatics Engineer
-          <br />
-          <span className="text-gray-600">Malang, Indonesia</span>
-          <br />
-          <span className="text-gray-600">2016 - 2021</span>
-        </p>
+        <h3 className="inter mb-4 text-2xl font-bold">EDUCATION</h3>
+        <div className="mb-4">
+          <p className="poppins-gede mb-2 font-semibold">
+            UNIVERSITY OF BRAWIJAYA
+          </p>
+          <p className="italic mb-1">Bachelor of Informatics Engineer</p>
+          <p className="poppins-gede">Malang, Indonesia</p>
+          <p className="poppins-gede white">2016 - 2021</p>
+        </div>
       </section>
 
       <section className="mb-8">
