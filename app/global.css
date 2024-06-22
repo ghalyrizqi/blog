@@ -34,6 +34,11 @@ html {
   min-width: 360px;
 }
 
+.nav-link {
+  font-weight: 700; /* Adjust this value for desired boldness */
+  font-size: 1.25rem; /* Equivalent to text-xl in Tailwind */
+}
+
 .playwrite-us-trad {
   font-family: "Playwrite US Trad", cursive;
   font-weight: 600; /* Adjust if necessary */
