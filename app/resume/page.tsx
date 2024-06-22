@@ -2,14 +2,16 @@ import React from "react";
 
 export default function Resume() {
   return (
-    <div className="px-8 py-12 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold text-center">GHALY RIZQI MAULUDIN</h1>
-      <h2 className="text-xl text-center">Data Engineer</h2>
-      <p className="text-center">ghalyrizqimauludin@gmail.com</p>
+    <div className="container mx-auto px-4">
+      <h1 className="mb-8 text-4xl font-bold text-center">
+        GHALY RIZQI MAULUDIN
+      </h1>
+      <h2 className="mb-4 text-xl text-center">Data Engineer</h2>
+      <p className="mb-8 text-center">ghalyrizqimauludin@gmail.com</p>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-bold">PROFILE</h3>
-        <p>
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-bold">PROFILE</h3>
+        <p className="mb-4">
           Experienced Data Engineer with over 2 years of expertise in developing
           robust and scalable data solutions leveraging Python, Scala, SQL, and
           bash scripting. Proficient in utilizing Apache Spark, Apache Airflow,
@@ -20,27 +22,27 @@ export default function Resume() {
         </p>
       </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-bold">EDUCATION</h3>
-        <p>
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-bold">EDUCATION</h3>
+        <p className="mb-4">
           <strong>UNIVERSITY OF BRAWIJAYA</strong>
           <br />
           Bachelor of Informatics Engineer
           <br />
-          <span className="text-white-600">Malang, Indonesia</span>
+          <span className="text-gray-600">Malang, Indonesia</span>
           <br />
-          <span className="text-white-600">2016 - 2021</span>
+          <span className="text-gray-600">2016 - 2021</span>
         </p>
       </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-bold">WORK EXPERIENCES</h3>
-        <div className="mt-4">
-          <h4 className="text-xl font-semibold">SUPER APPS (YC W18)</h4>
-          <p className="italic">Data Engineer</p>
-          <p className="">Indonesia</p>
-          <p className="">August 2022 – Present</p>
-          <ul className="list-disc ml-5 mt-2">
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-bold">WORK EXPERIENCES</h3>
+        <div className="mb-4">
+          <h4 className="mb-2 text-xl font-semibold">SUPER APPS (YC W18)</h4>
+          <p className="italic mb-1">Data Engineer</p>
+          <p className="mb-1">Indonesia</p>
+          <p className="mb-1">August 2022 – Present</p>
+          <ul className="list-disc ml-5 mb-4">
             <li>
               Spearheaded Roobintorn to Apache Airflow migration, implementing
               transition plan, setting up cloud VMs, and designing CI/CD with
@@ -66,14 +68,14 @@ export default function Resume() {
             </li>
           </ul>
         </div>
-        <div className="mt-4">
-          <h4 className="text-xl font-semibold">
+        <div className="mb-4">
+          <h4 className="mb-2 text-xl font-semibold">
             ASTRAGRAPHIA INFORMATION TECHNOLOGY
           </h4>
-          <p className="italic">Data Engineer</p>
-          <p className="">Indonesia</p>
-          <p className="">May 2021 - May 2022</p>
-          <ul className="list-disc ml-5 mt-2">
+          <p className="italic mb-1">Data Engineer</p>
+          <p className="mb-1">Indonesia</p>
+          <p className="mb-1">May 2021 - May 2022</p>
+          <ul className="list-disc ml-5 mb-4">
             <li>
               Designed, implemented, and maintained automated ETL pipelines for
               seamless data integration into the data warehouse.
@@ -95,9 +97,9 @@ export default function Resume() {
         </div>
       </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-semibold">PROJECT</h3>
-        <ul className="list-disc ml-5 mt-2">
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-semibold">PROJECT</h3>
+        <ul className="list-disc ml-5 mb-4">
           <li>
             <strong>
               Forecasting New COVID-19 Cases in Indonesia Using Extreme Learning
@@ -112,9 +114,9 @@ export default function Resume() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-semibold">SKILLS</h3>
-        <ul className="list-disc ml-5 mt-2">
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-semibold">SKILLS</h3>
+        <ul className="list-disc ml-5 mb-4">
           <li>Programming Languages: Python, Scala, R, SQL, Bash</li>
           <li>Databases: Redshift, MySQL, GCP</li>
           <li>
@@ -124,9 +126,9 @@ export default function Resume() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-semibold">CERTIFICATIONS</h3>
-        <ul className="list-disc ml-5 mt-2">
+      <section className="mb-8">
+        <h3 className="mb-4 text-2xl font-semibold">CERTIFICATIONS</h3>
+        <ul className="list-disc ml-5 mb-4">
           <li>SQL - HackerRank</li>
           <li>Python - HackerRank</li>
           <li>Learn DevOps Basics - Dicoding</li>
