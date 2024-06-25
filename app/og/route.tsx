@@ -1,8 +1,12 @@
 import { ImageResponse } from "next/og"; // Updated import
+// route.tsx
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
+
+// Your existing GET function and any other code
+// export const runtime = {
+//   runtime: "edge",
+// };
 
 export function GET(request: Request) {
   const { searchParams } = new URL(request.url);
