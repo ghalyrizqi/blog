@@ -7,9 +7,6 @@ const navItems = {
   "/blog": {
     name: "blog",
   },
-  // "/resume": {
-  //   name: "resume",
-  // },
 };
 
 export function Navbar() {
@@ -17,7 +14,7 @@ export function Navbar() {
     <aside className="mb-16 px-4">
       <div className="lg:sticky lg:top-20">
         <nav
-          className="flex justify-between items-center relative fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex justify-between items-center relative fade"
           id="nav"
         >
           {/* Left content: Logo text */}
