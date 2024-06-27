@@ -55,7 +55,7 @@ export default function Footer() {
           </li>
         </ul>
         <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-          © {new Date().getFullYear()} build with love & passion
+          © {new Date().getFullYear()} build with <span style={{ color: '#d6607e' }}>love</span> & passion
         </p>
       </div>
     </footer>

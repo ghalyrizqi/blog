@@ -13,10 +13,7 @@ export function Navbar() {
   return (
     <aside className="mb-16 px-4">
       <div className="lg:sticky lg:top-20">
-        <nav
-          className="flex justify-between items-center relative fade"
-          id="nav"
-        >
+        <nav className="flex justify-between items-center relative fade" id="nav">
           {/* Left content: Logo text */}
           <div className="left-content flex items-center">
             <Link href="/" className="playwrite-us-trad text-3xl">
@@ -31,7 +28,7 @@ export function Navbar() {
                 href={path}
                 className="transition-all font-bold text-xl hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle py-1 px-2"
               >
-                {name}
+                <span className="inter">{name}</span>
               </Link>
             ))}
           </div>

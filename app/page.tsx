@@ -9,8 +9,10 @@ export default function Page() {
           <br />
           I'm{" "}
         </span>{" "}
-        <span
-          className={`playwrite-us-trad text-7xl underline decoration-4 underline-offset-8`}
+        <span 
+        className={`playwrite-us-trad text-7xl underline decoration-4 underline-offset-8`}                    
+        style={{color:'	#d6607e'}}
+          // style={{ color: '#eec0c8' }} // Add inline style for the color
         >
           ghaly
         </span>
