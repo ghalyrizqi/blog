@@ -1,0 +1,172 @@
+[33mcommit 2398e6547cd63112f156885bee2b30da8becea35[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Thu Jun 27 13:32:28 2024 +0700
+
+    Revert "add color to my name"
+    
+    This reverts commit 672f7b2d923ba5507f162bd1a5fdfa647a21712a.
+
+[33mcommit d6de613e60642ad17f724e9485cbcce1b27d82bf[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Thu Jun 27 13:27:58 2024 +0700
+
+    add something to my name
+
+[33mcommit 672f7b2d923ba5507f162bd1a5fdfa647a21712a[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Thu Jun 27 13:27:28 2024 +0700
+
+    add color to my name
+
+[33mcommit 4bbac4a6777267463f1d15800a16b9c270f419a2[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Thu Jun 27 12:58:11 2024 +0700
+
+    add element surprise when hover navbar
+
+[33mcommit b86cd925445c388c45f1c1ea0ace8e5e9271601d[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Thu Jun 27 11:10:16 2024 +0700
+
+    add color to my f name
+
+[33mcommit bbb580b69f9117e625ce3c7718304a987db2d5c3[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Wed Jun 26 22:41:42 2024 +0700
+
+    delete scrolable element
+
+[33mcommit 46c97826ee026ef644d756c40e3c7e33529ef03d[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 23:35:47 2024 +0700
+
+    fix
+
+[33mcommit 2c9412efd5c6f5f2abc086a29c23b04bb5f1fd45[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 23:32:26 2024 +0700
+
+    masih
+
+[33mcommit d2bfedbd57cbcb88e5bef59bc906d7886868c613[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 23:24:58 2024 +0700
+
+    masih memncoba
+
+[33mcommit 4f6c9bb7b6b47fd2997f850bf3422ccdf11f76dd[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 23:11:08 2024 +0700
+
+    solved padding and margin & delete npm config
+
+[33mcommit a08a29430125ac8cdc42f2c1d7cb539a3e8ab46e[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 22:55:07 2024 +0700
+
+    try
+
+[33mcommit 16e323152bd9cb23cf0a015b33648bc090342b61[m
+Merge: e1658f3 408e6b8
+Author: ghaly rizqi <35269659+ghalyrizqi@users.noreply.github.com>
+Date:   Tue Jun 25 22:39:45 2024 +0700
+
+    Merge pull request #1 from ghalyrizqi/testing-newbranch
+    
+    nutup tab resume
+
+[33mcommit 408e6b8fc9e329bb3c885d48a22cc6d64022a48f[m
+Author: ghaly <ghaly.rizqi@nusantara.technology>
+Date:   Tue Jun 25 22:38:37 2024 +0700
+
+    nutup tab resume
+
+[33mcommit e1658f39c684fd4422391d6b7ad6a9b0f58f411b[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 22:29:48 2024 +0700
+
+    change the way i import font
+
+[33mcommit 3bf3e28900e99c9a963e06402b58f531716a2abc[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 21:06:17 2024 +0700
+
+    adjust fitment resume
+
+[33mcommit 81caf5abceb402161363b52dc683317271ff0a75[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 20:50:46 2024 +0700
+
+    add page resume
+
+[33mcommit 61240ca0153dad6d89799a5678c1109aa4cfd02a[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 19:34:35 2024 +0700
+
+    nav bar improvements
+
+[33mcommit a1fa98601b0a75585a4db2f033f50eb8ae6a28af[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 19:18:15 2024 +0700
+
+    change font weight
+
+[33mcommit e3b60f53f7540fd11134e3a9ef2f00bfc45db490[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 19:16:45 2024 +0700
+
+    update padding
+
+[33mcommit ba4411d65d6cbdd5ef5d43c9994ffc928a7aa680[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Sat Jun 22 18:42:09 2024 +0700
+
+    try fix font different
+
+[33mcommit f97bc5b7dd7cb8d6fec5c299192648663665ff26[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 21:35:24 2024 +0700
+
+    add logo and change font hero
+
+[33mcommit 91c84d87dd015d56ed182e215e8eeb439a82afa2[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 16:36:09 2024 +0700
+
+    update llg
+
+[33mcommit 7b1d99301ead4622d0b32cebb3f158fde63bdc15[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 16:35:01 2024 +0700
+
+    update readme
+
+[33mcommit 69622fc49df17781cc8d3b3db981410eb89233be[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 15:42:43 2024 +0700
+
+    typo dkit
+
+[33mcommit 5c93d62f2be5864488f0ed4c5f6cb8fb51d21fb4[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 15:40:46 2024 +0700
+
+    miaw
+
+[33mcommit 51b9aef5456c2e54b0d8e080a0bb48e321d44509[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 14:08:11 2024 +0700
+
+    fix deprecated next/og to next/server
+
+[33mcommit 373e4f974a76f45cb5bc2678baccf90a92351ae0[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 14:01:57 2024 +0700
+
+    initiate commit blog
+
+[33mcommit 100abd0ce07143cf062afefee4253c62a16f98b4[m
+Author: Ghaly Rizqi Mauludin <ghaly.rizqi@nusantara.technology>
+Date:   Fri Jun 21 10:31:34 2024 +0700
+
+    Initial commit from Create Next App
