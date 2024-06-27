@@ -18,6 +18,7 @@ export function Navbar() {
           <div className="left-content flex items-center">
             <Link href="/" className="playwrite-us-trad text-3xl">
               G
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d6607e] transition-all group-hover:w-full"></span>
             </Link>
           </div>
           {/* Right content: Navigation items */}
@@ -26,9 +27,10 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all font-bold text-xl hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle py-1 px-2"
+                className="transition-all font-bold text-xl hover:text-[#d6607e] dark:hover:text-[#d6607e] flex align-middle py-1 px-2 relative group"
               >
                 <span className="inter">{name}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d6607e] transition-all group-hover:w-full"></span>
               </Link>
             ))}
           </div>
