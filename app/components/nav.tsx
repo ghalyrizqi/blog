@@ -13,12 +13,15 @@ export function Navbar() {
   return (
     <aside className="mb-16 px-4">
       <div className="lg:sticky lg:top-20">
-        <nav className="flex justify-between items-center relative fade" id="nav">
+        <nav
+          className="flex justify-between items-center relative fade"
+          id="nav"
+        >
           {/* Left content: Logo text */}
           <div className="left-content flex items-center">
             <Link href="/" className="playwrite-us-trad text-3xl">
               G
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d6607e] transition-all group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF5857] transition-all group-hover:w-full"></span>
             </Link>
           </div>
           {/* Right content: Navigation items */}
@@ -27,10 +30,10 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all font-bold text-xl hover:text-[#d6607e] dark:hover:text-[#d6607e] flex align-middle py-1 px-2 relative group"
+                className="transition-all font-bold text-xl hover:text-[#FF5857] dark:hover:text-[#FF5857] flex align-middle py-1 px-2 relative group"
               >
                 <span className="inter">{name}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d6607e] transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF5857] transition-all group-hover:w-full"></span>
               </Link>
             ))}
           </div>
