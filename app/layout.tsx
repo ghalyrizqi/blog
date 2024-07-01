@@ -10,10 +10,7 @@ import { baseUrl } from "./sitemap";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: {
-    default: "Hello, I'm Ghaly! Welcome to My Site",
-    template: "%s | Next.js Portfolio Starter",
-  },
+  title: "Hello, I'm Ghaly! Welcome to My Site",
   description: "This is my portfolio.",
   openGraph: {
     title: "My Portfolio",
@@ -21,7 +18,6 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: "My Portfolio",
     locale: "en_US",
-    type: "website",
   },
   robots: {
     index: true,
@@ -34,9 +30,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: baseUrl,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
