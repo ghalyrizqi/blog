@@ -1,29 +1,55 @@
 import { BlogPosts } from "app/components/posts";
+import Link from "next/link";
+import { TechBadge } from "app/components/TechBadge";
 
 export default function Page() {
   return (
-    <section className="inter container mx-auto px-4">
-      <h1 className="mb-8 text-5xl md:text-6xl font-bold tracking-tighter">
-        <span className="inter text-6xl md:text-7xl">
-          Hello World!
-          <br />
-          I'm{" "}
-        </span>{" "}
-        <span
-          className="playwrite-us-trad text-6xl md:text-7xl underline decoration-4 underline-offset-8"
-          style={{ color: "#FF5758" }}
-        >
-          ghaly
-        </span>
-      </h1>
-      <p className="poppins-kecil mb-4 text-base md:text-lg font-semibold leading-relaxed">
-        <strong>Welcome to my Data Engineering journey!</strong> Here, I
-        document my exploration of the vast world of data. I am a Data Engineer
-        with 2 years of experience, writing about building data pipelines,
-        solving data challenges, and exploring new technologies in the field.
-      </p>
-      <div className="poppins-kecil mb-8">
-        <BlogPosts />
+    <section className="font-sans">
+      <div className="mb-10 sm:mb-12 pb-6">
+        <div className="relative mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
+            <span className="font-montserrat">Hello, I'm </span>
+            <span className="font-playwrite text-primary">ghaly</span>
+          </h1>
+          <div className="h-1 w-16 sm:w-20 bg-primary mt-2 mb-4 sm:mb-6"></div>
+          <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 font-medium leading-relaxed">
+            A Data Engineer passionate about building efficient data pipelines
+          </h2>
+        </div>
+
+        <p className="font-poppins mb-6 text-base md:text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
+          Welcome to my digital space! I document my journey exploring the world of data engineering.
+          With 2 years of experience, I focus on building scalable data pipelines,
+          solving complex data challenges, and exploring new technologies.
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {['Python', 'SQL', 'Airflow', 'dbt', 'BigQuery', 'Redshift', 'Docker', 'Kubernetes', 'Apache Spark', 'MongoDB'].map((tech) => (
+            <TechBadge key={tech} tech={tech} />
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-3 mb-8">
+          <Link
+            href="/timeline"
+            className="px-4 sm:px-5 py-2 bg-primary text-white rounded-md font-medium hover:bg-opacity-90 transition-all text-sm sm:text-base"
+          >
+            View My Timeline
+          </Link>
+          <Link
+            href="/blog"
+            className="px-4 sm:px-5 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all text-sm sm:text-base"
+          >
+            Read My Blog
+          </Link>
+        </div>
+      </div>
+
+      <div className="mt-6 sm:mt-8">
+        <h3 className="text-xl sm:text-2xl font-bold mb-4 font-poppins">Recent Posts</h3>
+        <div className="font-poppins">
+          <BlogPosts />
+        </div>
       </div>
     </section>
   );

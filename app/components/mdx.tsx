@@ -44,8 +44,17 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+function RoundedImage({ src, alt, ...props }) {
+  return (
+    <Image
+      src={src}
+      alt={alt || ''}
+      width={800}
+      height={500}
+      className="rounded-lg w-full h-auto my-6"
+      {...props}
+    />
+  )
 }
 
 function Code({ children, ...props }) {
@@ -94,6 +103,7 @@ let components = {
   h5: createHeading(5),
   h6: createHeading(6),
   Image: RoundedImage,
+  img: RoundedImage,
   a: CustomLink,
   code: Code,
   Table,
