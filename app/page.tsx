@@ -24,7 +24,12 @@ export default function Page() {
         </p>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          {['Python', 'SQL', 'Airflow', 'dbt', 'BigQuery', 'Redshift', 'Docker', 'Kubernetes', 'Apache Spark', 'MongoDB'].map((tech) => (
+          {[
+            'Python', 'SQL', 'Airflow', 'dbt', 'BigQuery', 'Redshift', 'DuckDB', 'S3',
+            'Docker', 'Kubernetes', 'Jenkins', 'Linux',
+            'PostgreSQL', 'MySQL', 'MongoDB',
+            'Trino', 'Spark', 'Bitbucket', 'Git',
+          ].map((tech) => (
             <TechBadge key={tech} tech={tech} />
           ))}
         </div>
