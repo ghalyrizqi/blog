@@ -30,7 +30,7 @@ function MoonIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-4 h-4"
+      className="w-5 h-5"
     >
       <path
         strokeLinecap="round"
@@ -54,7 +54,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-full bg-neutral-200 dark:bg-neutral-800 w-8 h-8"
+        className="p-2 rounded-full bg-neutral-200 dark:bg-neutral-800 w-9 h-9 flex items-center justify-center"
         aria-hidden="true"
       />
     );
