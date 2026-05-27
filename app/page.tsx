@@ -13,14 +13,13 @@ export default function Page() {
           </h1>
           <div className="h-1 w-16 sm:w-20 bg-primary mt-2 mb-4 sm:mb-6"></div>
           <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 font-medium leading-relaxed">
-            A Data Engineer passionate about building efficient data pipelines
+            Data Engineer. Four years building pipelines, migrating warehouses, and keeping production data moving.
           </h2>
         </div>
 
         <p className="font-poppins mb-6 text-base md:text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
-          Welcome to my digital space! I document my journey exploring the world of data engineering.
-          With 2 years of experience, I focus on building scalable data pipelines,
-          solving complex data challenges, and exploring new technologies.
+          Cut warehouse costs 77% by replacing Redshift with DuckDB. Upgraded Airflow from v2 to v3 across 300+ DAGs.
+          Wired Jenkins CI/CD into Kubernetes clusters. This is where I write about how it actually went.
         </p>
 
         <div className="flex flex-wrap gap-2 mb-6">

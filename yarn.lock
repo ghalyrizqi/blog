@@ -387,6 +387,11 @@
     postcss-import "^16.0.0"
     tailwindcss "4.0.0-alpha.13"
 
+"@thesvg/icons@3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@thesvg/icons/-/icons-3.0.5.tgz#3f25c341e9e8163f5e2de69721ba08727e2ee8d2"
+  integrity sha512-vt7/X1NcYe5eRul3FgFsAmwgzdz3ZtQEjfSNaXh0O15szoWUbLkknmnT4gU5Y6m4SSoTuBx7NgZAFsnyT8+zcg==
+
 "@types/debug@^4.0.0":
   version "4.1.12"
   resolved "https://registry.npmjs.org/@types/debug/-/debug-4.1.12.tgz"
@@ -1863,11 +1868,6 @@ react-dom@^19.1.0:
   dependencies:
     scheduler "^0.26.0"
 
-react-icons@^5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.6.0.tgz#27bcc4acbc836e762548d76041cf9b9fef4e3837"
-  integrity sha512-RH93p5ki6LfOiIt0UtDyNg/cee+HLVR6cHHtW3wALfo+eOHTp8RnU2kRkI6E+H19zMIs03DyxUG/GfZMOGvmiA==
-
 react@^19.1.0:
   version "19.1.0"
   resolved "https://registry.yarnpkg.com/react/-/react-19.1.0.tgz#926864b6c48da7627f004795d6cce50e90793b75"
@@ -2221,6 +2221,13 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
+
+thesvg@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/thesvg/-/thesvg-3.0.5.tgz#505873ce1e122a2722e060b2ad5cf784c2453d07"
+  integrity sha512-S9f1KwCDbdrW+jJ4Mrd+HjxbZsTudBZE5C0ZLp0qlypm4MHE37XkvtzbfGexGPySRn74+6l4s63Y4CyJg1tEvQ==
+  dependencies:
+    "@thesvg/icons" "3.0.5"
 
 to-regex-range@^5.0.1:
   version "5.0.1"
