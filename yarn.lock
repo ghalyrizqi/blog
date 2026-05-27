@@ -931,10 +931,10 @@ function-bind@^1.1.2:
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
-geist@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.npmjs.org/geist/-/geist-1.2.2.tgz"
-  integrity sha512-uRDrxhvdnPwWJmh+K5+/5LXSKwvJzaYCl9tDXgiBi4hj7hB4K7+n/WLcvJMFs5btvyn0r9OSwCd1s6CmqAsxEw==
+geist@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/geist/-/geist-1.7.1.tgz#8a8d24e2c14751bde65efef3239730e055c1b96c"
+  integrity sha512-XF8DM30ODhDu0Ng5S2kOS8j4ZkG/6z2fKWAiFJA7wG0Hc92ZXgjYLrwbD9bVU4nGVzwboPtG+QtaPGsfgnXLaA==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

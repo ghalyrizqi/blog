@@ -1,8 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// Replace the old config export with this:
-export const runtime = "edge";
-
 export function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "Next.js Portfolio Starter";
