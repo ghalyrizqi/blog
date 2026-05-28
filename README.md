@@ -1,43 +1,5 @@
-# Portfolio Blog Starter
+# Vue 3 + Vite
 
-## How to Use
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-### Install dependencies
-
-install yarn
-
-```bash
-npm install --global yarn
-```
-
-### From yarn, install nextjs, reactjs, react-dom
-
-```bash
-yarn add next react react-dom
-```
-
-### Clone the repository
-
-```bash
-git clone https://github.com/ghalyrizqi/blog.git
-```
-
-or
-
-```bash
-yarn create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
-```
-
-### Then, run Next.js in development mode:
-
-```bash
-yarn dev
-```
-
-### Open in browser
-
-by default your web will compiled at
-
-```bash
-http://localhost:3000/
-```
+Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
