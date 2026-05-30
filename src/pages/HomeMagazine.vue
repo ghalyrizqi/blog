@@ -24,30 +24,6 @@
       </div>
     </header>
 
-    <section class="cover-section">
-      <div class="cover-grid">
-        <div class="cover-left">
-          <div class="cover-kicker">Latest piece</div>
-          <p class="cover-lead">300 production DAGs and a live metadata database, no maintenance window. Notes from the Airflow v3 migration.</p>
-          <router-link to="/blog" class="cover-cta">Read the notes →</router-link>
-        </div>
-        <div class="now-card">
-          <div class="now-top">
-            <span class="now-label">Now playing · {{ featured.org }}</span>
-            <span class="live-badge">
-              <span class="pulse live-dot" />
-              Live · {{ fmtMonth(featured.start) }}
-            </span>
-          </div>
-          <h2 class="now-role">{{ featured.role }}</h2>
-          <p class="now-summary">{{ featured.summary }}</p>
-          <div class="tags">
-            <span v-for="t in featured.tags" :key="t" class="tag">{{ t }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="toolkit-section">
       <div class="toolkit-top">
         <h2 class="toolkit-heading">The toolkit</h2>
@@ -88,10 +64,9 @@
 
 <script setup>
 import SignatureFooter from '../components/SignatureFooter.vue'
-import { TIMELINE, STACK, fmtMonth } from '../data/index.js'
+import { STACK, fmtMonth } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
 
-const featured = TIMELINE.find(e => e.current)
 const recent = POSTS.slice(0, 3)
 const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)
 
@@ -198,110 +173,6 @@ h1 {
   font-size: 15px;
   color: var(--fg-muted);
   font-style: italic;
-}
-
-/* ── Cover ── */
-.cover-section {
-  padding: 64px clamp(24px, 5vw, 80px);
-  border-bottom: 1px solid var(--line);
-}
-.cover-grid {
-  display: grid;
-  grid-template-columns: 0.4fr 1fr;
-  gap: 56px;
-  align-items: start;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.cover-kicker {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-.cover-lead {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-style: italic;
-  line-height: 1.3;
-  margin-bottom: 24px;
-  color: var(--fg);
-}
-.cover-cta {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  border-bottom: 1px solid var(--fg-muted);
-  padding-bottom: 2px;
-  transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
-}
-.cover-cta:hover,
-.cover-cta:focus-visible { color: var(--accent); border-color: var(--accent); }
-
-.now-card {
-  background: var(--paper);
-  padding: 36px;
-  border: 1px solid var(--line-soft);
-}
-.now-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.now-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-}
-.live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: inline-block;
-}
-.now-role {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.now-summary {
-  font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--fg-muted);
-  margin-bottom: 20px;
-  text-wrap: pretty;
-}
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  padding: 3px 9px;
-  border: 1px solid var(--line-soft);
-  color: var(--fg-muted);
-  border-radius: 99px;
 }
 
 /* ── Toolkit ── */
@@ -438,8 +309,7 @@ h1 {
   .name { font-size: 130px; }
   .hello { font-size: 40px; }
   .at-work { font-size: 52px; }
-  .cover-grid { grid-template-columns: 1fr; }
-  .toolkit-grid { grid-template-columns: repeat(2, 1fr); }
+.toolkit-grid { grid-template-columns: repeat(2, 1fr); }
   .dispatches-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {

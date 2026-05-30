@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showGlobalNav" class="global-nav-wrapper">
+  <div class="global-nav-wrapper">
     <Navbar :current="currentPage" />
   </div>
   <RouterView />
@@ -11,9 +11,6 @@ import { RouterView, useRoute } from 'vue-router'
 import Navbar from './components/Navbar.vue'
 
 const route = useRoute()
-
-// BlogPost has its own sticky nav — hide the global one there
-const showGlobalNav = computed(() => route.name !== 'post')
 
 const currentPage = computed(() => {
   const name = route.name

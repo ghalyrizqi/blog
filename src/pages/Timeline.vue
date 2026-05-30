@@ -319,8 +319,17 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
   .entry-card { width: 100% !important; margin-left: 0 !important; text-align: left !important; }
   .card-header.left { justify-content: flex-start; }
   .entry-tags.left { justify-content: flex-start; }
-  .toggle-btn.right, .toggle-btn.left { right: 24px; left: auto; }
   .bullets { text-align: left; }
+
+  /* Take toggle-btn out of absolute so it doesn't overlap card-header on mobile */
+  .toggle-btn {
+    position: static;
+    display: block;
+    margin-left: auto;
+    padding-bottom: 12px;
+  }
+  .toggle-btn.right,
+  .toggle-btn.left { right: auto; left: auto; }
 
   .origin { text-align: left; }
   .origin-square { display: none; }
@@ -334,6 +343,5 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
   .entry-role { font-size: 22px; }
   .entries { padding-left: 20px; }
   .entry-card { padding: 20px; }
-  .toggle-btn.right, .toggle-btn.left { top: 16px; right: 16px; }
 }
 </style>

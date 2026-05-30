@@ -2,20 +2,6 @@
   <div class="page">
     <ReadingProgress />
 
-    <div class="top-nav">
-      <router-link to="/" class="brand">G</router-link>
-      <div class="top-nav-right">
-        <router-link to="/blog" class="back-journal">← Journal</router-link>
-        <button class="theme-btn" :class="theme" @click="toggle" :aria-label="theme === 'dark' ? 'Light' : 'Dark'">
-          <span class="toggle-track">
-            <span class="toggle-thumb" />
-            <span class="toggle-icon moon">☽</span>
-            <span class="toggle-icon sun">☀</span>
-          </span>
-        </button>
-      </div>
-    </div>
-
     <template v-if="post">
       <div class="post-hero">
         <div class="post-kicker">
@@ -63,19 +49,17 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
 import ReadingProgress from '../components/ReadingProgress.vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
-import { useTheme } from '../composables/useTheme.js'
 import { getPost } from '../data/posts.js'
 import { fmtMonth, postCat } from '../data/index.js'
 
 const route = useRoute()
-const { theme, toggle } = useTheme()
 
 // Configure marked with syntax highlighting
 marked.use(markedHighlight({
@@ -97,6 +81,13 @@ marked.use({
         <img src="${token.href}" alt="${token.text}" loading="lazy" />
         ${token.title ? `<figcaption>${token.title}</figcaption>` : ''}
       </figure>`
+    },
+    link(token) {
+      const href = token.href
+      const text = this.parser.parseInline(token.tokens)
+      const external = href.startsWith('http://') || href.startsWith('https://')
+      const attrs = external ? ` target="_blank" rel="noopener noreferrer"` : ''
+      return `<a href="${href}"${attrs}>${text}</a>`
     }
   }
 })
@@ -112,89 +103,11 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
   font-family: var(--sans);
 }
 
-/* ── Top nav ── */
-.top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 48px;
-  border-bottom: 1px solid var(--line-soft);
-  position: sticky;
-  top: 0;
-  background: var(--bg);
-  z-index: 100;
-  transition: background 0.25s;
-}
-.brand {
-  font-family: var(--display);
-  font-size: 40px;
-  line-height: 0.85;
-  color: var(--fg);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.brand:hover { color: var(--accent); }
-.top-nav-right { display: flex; align-items: center; gap: 24px; }
-.back-journal {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  transition: color 0.15s;
-}
-.back-journal:hover { color: var(--accent); }
-
-/* Theme toggle (same as Navbar) */
-.theme-btn {
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.toggle-track {
-  position: relative;
-  width: 44px;
-  height: 24px;
-  border-radius: 99px;
-  border: 1.5px solid var(--line);
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  transition: background 0.25s, border-color 0.25s;
-}
-.theme-btn.dark .toggle-track { background: var(--paper); }
-.toggle-thumb {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--fg);
-  left: 4px;
-  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
-}
-.theme-btn.dark .toggle-thumb { transform: translateX(20px); }
-.toggle-icon {
-  position: absolute;
-  font-size: 10px;
-  line-height: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.toggle-icon.sun  { right: 5px; }
-.toggle-icon.moon { left: 5px; }
-.theme-btn.light .toggle-icon.sun  { opacity: 1; }
-.theme-btn.dark  .toggle-icon.moon { opacity: 1; }
-
 /* ── Hero ── */
 .post-hero {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 72px 24px 0;
+  padding: 40px 24px 0;
 }
 .post-kicker {
   display: flex;
@@ -252,14 +165,14 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 
 /* ── Article body ── */
 .post-article {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 56px 24px 80px;
 }
 
 /* ── End section ── */
 .post-end {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 0 24px 80px;
 }
@@ -293,17 +206,22 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
   color: var(--fg-muted);
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
-  transition: color 0.15s;
+  transition: color 0.15s var(--ease-out);
 }
 .more-link:hover { color: var(--accent); }
 
 .not-found {
-  max-width: 720px;
+  max-width: 760px;
   margin: 80px auto;
   padding: 0 24px;
   font-family: var(--serif);
   font-size: 20px;
   color: var(--fg-muted);
+}
+
+@media (max-width: 768px) {
+  .post-title { font-size: 42px; }
+  .post-excerpt { font-size: 20px; }
 }
 
 @media (max-width: 640px) {
@@ -319,7 +237,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 <style>
 /* ── Prose (global, inside .prose) ── */
 .prose {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--serif);
   font-size: 21px;
   line-height: 1.8;
   color: var(--fg);
@@ -328,7 +246,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 .prose p { margin: 0 0 1.5em; }
 
 .prose h2 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--serif);
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
@@ -338,7 +256,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 }
 
 .prose h3 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--serif);
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
@@ -347,7 +265,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 }
 
 .prose h4 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--mono);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -375,7 +293,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 .prose a:hover { opacity: 0.75; }
 
 .prose code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--mono);
   font-size: 0.82em;
   background: var(--line-soft);
   color: var(--fg);
@@ -409,7 +327,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
   border-bottom: 1px solid var(--line-soft);
   margin: 2em 0;
   padding: 24px 0 20px;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--serif);
   font-size: 26px;
   font-style: italic;
   line-height: 1.4;
@@ -429,7 +347,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
   display: block;
 }
 .prose .post-figure figcaption {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--mono);
   font-size: 12px;
   color: var(--fg-subtle);
   text-align: center;
@@ -452,21 +370,27 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 :root .hljs-keyword,
 :root .hljs-selector-tag { color: var(--accent); }
 :root .hljs-string,
-:root .hljs-attr { color: oklch(62% 0.13 150); }
+:root .hljs-attr { color: var(--color-syntax-string); }
 :root .hljs-comment { color: var(--fg-subtle); font-style: italic; }
 :root .hljs-number,
-:root .hljs-literal { color: oklch(62% 0.13 230); }
+:root .hljs-literal { color: var(--color-syntax-number); }
 :root .hljs-function,
-:root .hljs-title { color: oklch(62% 0.13 260); }
-:root .hljs-built_in { color: oklch(62% 0.13 200); }
+:root .hljs-title { color: var(--color-syntax-function); }
+:root .hljs-built_in { color: var(--color-syntax-builtin); }
 :root .hljs-variable { color: var(--fg); }
+
+@media (max-width: 768px) {
+  .prose { font-size: 19px; }
+  .prose h2 { font-size: 28px; }
+  .prose h3 { font-size: 22px; }
+  .prose .post-figure { margin: 2em 0; }
+}
 
 @media (max-width: 640px) {
   .prose { font-size: 18px; }
   .prose h2 { font-size: 26px; }
   .prose h3 { font-size: 20px; }
   .prose .pull-quote { font-size: 20px; }
-  .prose .post-figure { margin: 2em 0; }
   .prose pre { padding: 20px; font-size: 13px; }
 }
 </style>
