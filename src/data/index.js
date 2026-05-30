@@ -9,11 +9,11 @@ export const TIMELINE = [
     end: null,
     current: true,
     summary:
-      'Upgraded Apache Airflow from v2.10.4 to v3.1.6 on Kubernetes, migrated the metadata database, and refactored deprecated code across 300+ DAGs.',
+      'Migrated 300+ production DAGs from Airflow v2 to v3 on Kubernetes. The metadata database stayed live throughout.',
     bullets: [
-      'Upgraded Apache Airflow from v2.10.4 to v3.1.6 on Kubernetes.',
-      'Migrated the metadata database with zero downtime.',
-      'Refactored deprecated code across 300+ DAGs.',
+      'Upgraded Airflow from v2.10.4 to v3.1.6 on Kubernetes with a live cutover.',
+      'Migrated the metadata database without taking the scheduler down.',
+      'Dug through 300+ DAGs to remove deprecated APIs, one operator at a time.',
     ],
     tags: ['Apache Airflow', 'Kubernetes', 'Python', 'PostgreSQL'],
   },
@@ -26,11 +26,11 @@ export const TIMELINE = [
     start: '2025-10',
     end: '2025-12',
     summary:
-      'Set up Airflow and dbt in Docker, wired Jenkins CI/CD to GitHub webhooks for automated deploys, and built dbt models in BigQuery.',
+      'Set up Airflow and dbt in Docker from scratch, wired Jenkins CI/CD to GitHub webhooks, and shipped the first dbt models to BigQuery in six weeks.',
     bullets: [
-      'Set up Airflow and dbt in Docker.',
-      'Wired Jenkins CI/CD to GitHub webhooks for automated deploys.',
-      'Built dbt models in BigQuery.',
+      'Stood up Airflow and dbt in Docker on a fresh environment.',
+      'Wired Jenkins CI/CD to GitHub webhooks — deploys went from manual to automatic.',
+      'Built the first dbt models against BigQuery.',
     ],
     tags: ['Apache Airflow', 'dbt', 'Docker', 'Jenkins', 'BigQuery'],
   },
@@ -43,10 +43,10 @@ export const TIMELINE = [
     start: '2025-02',
     end: '2025-07',
     summary:
-      'Replaced individual MySQL, PostgreSQL, and SQL Server connectors in Airflow DAGs with a single Trino connection into BigQuery.',
+      'Replaced five source connectors in our Airflow DAGs with one Trino endpoint routing into BigQuery. The DAG logic stayed the same.',
     bullets: [
-      'Consolidated MySQL, PostgreSQL, and SQL Server connectors into a single Trino connection.',
-      'Routed unified queries into BigQuery from existing Airflow DAGs.',
+      'Replaced MySQL, PostgreSQL, and SQL Server DAG connectors with one Trino connection.',
+      'Routed all queries through Trino into BigQuery without touching the downstream logic.',
     ],
     tags: ['Apache Airflow', 'Trino', 'BigQuery', 'MySQL', 'PostgreSQL', 'SQL Server'],
   },
@@ -60,13 +60,13 @@ export const TIMELINE = [
     start: '2022-08',
     end: '2024-12',
     summary:
-      'Cut warehouse costs 77% by migrating Redshift → DuckDB, raised pipeline uptime to 99%, and led CI/CD adoption.',
+      'Replaced Redshift with a DuckDB instance on EC2, cutting the warehouse bill by 77%. Moved the pipeline scheduler off a Windows PC onto Airflow; uptime went to 99%. Pushed CI/CD adoption with a resistant SRE team.',
     bullets: [
-      "Moved sister company's data warehouse from Redshift to DuckDB on EC2, cutting annual costs by 77% ($1,700+).",
-      'Moved automation off an on-premise Windows PC onto Apache Airflow, bringing uptime to 99%.',
-      'Led Bitbucket and CI/CD adoption with SRE teams.',
-      'Built dbt Core on Redshift instead of paying $1,200/yr for dbt Cloud.',
-      'Built ETL pipelines pulling from CSV, Google Sheets, MongoDB, Redshift, and Oracle NetSuite API.',
+      "Migrated the sister company's warehouse from Redshift to DuckDB on EC2 — saved $1,700+/yr (77% cut).",
+      'Moved pipeline automation off an on-premise Windows PC onto Airflow; uptime went to 99%.',
+      'Pushed Bitbucket + CI/CD adoption across the SRE team.',
+      'Self-hosted dbt Core on Redshift instead of paying $1,200/yr for dbt Cloud.',
+      'Built ETL pipelines across CSV, Google Sheets, MongoDB, Redshift, and Oracle NetSuite.',
     ],
     tags: ['Python', 'SQL', 'Apache Airflow', 'dbt', 'Redshift', 'DuckDB', 'AWS Lambda', 'S3', 'MongoDB', 'Tableau', 'Bitbucket'],
   },
@@ -79,10 +79,10 @@ export const TIMELINE = [
     start: '2024-04',
     end: '2024-05',
     summary:
-      'Mentored 6 students in the Analytics Engineer stream. Covered pipeline design, ETL, SQL, Python, and GCP.',
+      'Mentored 6 students through an analytics engineering curriculum: pipeline design, dbt, SQL, and GCP hands-on.',
     bullets: [
-      'Mentored 6 students in the Analytics Engineer stream.',
-      'Covered pipeline design, ETL, SQL, Python, and GCP through code reviews and hands-on sessions.',
+      'Mentored 6 students through an Analytics Engineer curriculum.',
+      'Covered pipeline design, ETL, SQL, Python, and GCP hands-on — code reviews included.',
     ],
     tags: ['Python', 'SQL', 'GCP', 'ETL'],
   },
@@ -95,11 +95,11 @@ export const TIMELINE = [
     start: '2021-05',
     end: '2022-05',
     summary:
-      'Built data marts in SQL/Scala/Spark and tuned Impala queries to speed up business reporting.',
+      'Built data marts in Spark and Impala for business reporting. Replaced manual SQL runs with Cron and Spark schedules. First job at data scale.',
     bullets: [
-      'Built data marts in SQL, Scala, and Apache Spark to feed faster business reports.',
-      'Tuned SQL queries in Apache Impala to cut processing time.',
-      'Scheduled ETL pipelines with Cron and Apache Spark, replacing manual runs.',
+      'Built data marts in SQL, Scala, and Spark to power faster business reporting.',
+      'Tuned Impala queries that were quietly eating compute time.',
+      'Replaced manual ETL runs with Cron and Spark schedules.',
     ],
     tags: ['SQL', 'Scala', 'Apache Spark', 'Apache Impala', 'Cron'],
   },
@@ -112,10 +112,10 @@ export const TIMELINE = [
     start: '2016-08',
     end: '2021-04',
     summary:
-      'Studied data systems and algorithms. Final thesis applied ML to classify citrus varieties across 625 samples.',
+      'CS degree from Brawijaya. Final thesis: SOM-based classification of 625 citrus samples by variety. Spent more time on data cleaning than the model itself.',
     bullets: [
-      'Focus on data systems and algorithms.',
-      'Final thesis on machine learning applied to agricultural data.',
+      'Focused on data systems and algorithms.',
+      'Final thesis: ML-based classification of citrus varieties across 625 samples.',
     ],
     tags: ['Python', 'Java', 'SQL', 'Algorithms'],
   },
@@ -129,10 +129,10 @@ export const TIMELINE = [
     start: '2019-07',
     end: '2019-09',
     summary:
-      'Clustered citrus data and built a forecasting model to identify the best hybrid orange varieties.',
+      'Built a Self-Organizing Map model to cluster 625 citrus samples and score 25 orange varieties for hybrid potential. First time working with a real dataset.',
     bullets: [
-      'Built a Self-Organizing Map clustering model across 625 citrus datasets.',
-      'Built a forecasting model scoring 25 orange varieties to identify best hybrid candidates.',
+      'Built a Self-Organizing Map model to cluster 625 citrus datasets.',
+      'Scored 25 orange varieties to surface the best hybrid candidates.',
     ],
     tags: ['Python', 'R', 'Machine Learning'],
   },
@@ -143,7 +143,7 @@ export const BLOG_POSTS = [
     slug: 'airflow-v3-migration',
     title: 'Migrating Airflow v2 → v3 on Kubernetes',
     excerpt:
-      "What broke, what didn't, and the metadata-database migration playbook I wish I'd had going in. Notes from refactoring 300+ DAGs.",
+      "The metadata migration playbook I wish existed before I started. Notes from upgrading 300+ production DAGs.",
     date: '2026-03-12',
     minutes: 9,
     tags: ['Airflow', 'Kubernetes', 'Migration'],
@@ -153,7 +153,7 @@ export const BLOG_POSTS = [
     slug: 'redshift-to-duckdb',
     title: 'Why we replaced Redshift with DuckDB (and saved 77%)',
     excerpt:
-      'When "enterprise warehouse" is the wrong default: one EC2 box and a Parquet bucket replaced Redshift and cut annual costs by 77% ($1,700+).',
+      'One EC2 box and a Parquet bucket replaced Redshift. The annual bill dropped 77% and the setup took a week.',
     date: '2026-01-28',
     minutes: 12,
     tags: ['DuckDB', 'Redshift', 'Architecture'],
@@ -163,7 +163,7 @@ export const BLOG_POSTS = [
     slug: 'trino-single-connector',
     title: 'One Trino connection to rule them all',
     excerpt:
-      'Consolidating MySQL, Postgres, and SQL Server connectors in Airflow DAGs into a single Trino endpoint. The good, the ugly, the latency.',
+      'Consolidated MySQL, Postgres, and SQL Server DAG connectors into one Trino endpoint. The latency numbers were not what I expected.',
     date: '2025-11-04',
     minutes: 7,
     tags: ['Trino', 'Airflow', 'BigQuery'],
@@ -173,7 +173,7 @@ export const BLOG_POSTS = [
     slug: 'dbt-core-on-redshift',
     title: 'dbt Core on Redshift, skipping the $1,200 bill',
     excerpt:
-      'How we ran dbt against Redshift without paying for dbt Cloud — CI, docs, exposures, and the parts you actually miss.',
+      'Self-hosted dbt Core against Redshift instead of paying $1,200/yr for dbt Cloud. A comparison of what you give up and what you keep.',
     date: '2025-08-19',
     minutes: 8,
     tags: ['dbt', 'Redshift', 'CI/CD'],
@@ -183,7 +183,7 @@ export const BLOG_POSTS = [
     slug: 'som-citrus',
     title: 'Self-Organizing Maps on citrus data, five years on',
     excerpt:
-      'Looking back at my undergrad thesis — clustering 625 orange varieties. What I\'d do differently as a data engineer today.',
+      'My undergrad thesis was SOM clustering on 625 citrus samples. Five years later, most of the approach holds. Two things I would redo.',
     date: '2025-05-02',
     minutes: 6,
     tags: ['ML', 'Retrospective'],
@@ -193,7 +193,7 @@ export const BLOG_POSTS = [
     slug: 'vim',
     title: 'On saying miaw: notes on stress in production',
     excerpt:
-      'A short, silly note on a habit that\'s quietly carried me through three on-call rotations. Not technical. Mostly about a cat.',
+      'A note on a habit that carried me through three on-call rotations. About a cat, mostly.',
     date: '2024-06-21',
     minutes: 3,
     tags: ['Personal'],

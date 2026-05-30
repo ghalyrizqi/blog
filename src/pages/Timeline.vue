@@ -10,7 +10,7 @@
         <div class="editors-note">
           <div class="note-label">Editor's note</div>
           <p class="note-body">
-            Every job, internship, and detour I've taken since 2019 — laid out by year. Built pipelines, broke pipelines, fixed pipelines. This is the long version.
+            Every job and detour since 2019. I've built a lot of pipelines and broken more than I'd admit.
           </p>
         </div>
       </div>
@@ -299,16 +299,41 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .career { font-size: 130px; }
   .the, .archive { font-size: 64px; }
-  .entry-card { width: calc(100% - 48px) !important; margin-left: 48px !important; text-align: left !important; }
-  .connector.left { right: auto; left: calc(50% + 6px); }
-  .entry-card.left .card-header { justify-content: flex-start; }
-  .entry-card.left .entry-tags { justify-content: flex-start; }
-  .toggle-btn.left { left: auto; right: 24px; }
+
+  /* Drop the center-axis decorations — they don't work in single column */
+  .center-line, .center-node, .connector, .year-line { display: none; }
+
+  /* Left-rail: entries left border acts as the timeline spine */
+  .entries {
+    border-left: 1px solid var(--line-soft);
+    padding-left: 32px;
+    gap: 0;
+  }
+
+  .year-marker { height: auto; justify-content: flex-start; padding: 8px 0 20px; }
+  .year-label { padding: 0; }
+
+  .entry-row { padding-bottom: 40px; }
+
+  /* All cards full-width, left-aligned */
+  .entry-card { width: 100% !important; margin-left: 0 !important; text-align: left !important; }
+  .card-header.left { justify-content: flex-start; }
+  .entry-tags.left { justify-content: flex-start; }
+  .toggle-btn.right, .toggle-btn.left { right: 24px; left: auto; }
+  .bullets { text-align: left; }
+
+  .origin { text-align: left; }
+  .origin-square { display: none; }
+  .origin-label { margin-top: 0; }
 }
+
 @media (max-width: 640px) {
   .career { font-size: 80px; }
   .the, .archive { font-size: 40px; }
-  .year-label { font-size: 48px; }
+  .year-label { font-size: 40px; }
   .entry-role { font-size: 22px; }
+  .entries { padding-left: 20px; }
+  .entry-card { padding: 20px; }
+  .toggle-btn.right, .toggle-btn.left { top: 16px; right: 16px; }
 }
 </style>

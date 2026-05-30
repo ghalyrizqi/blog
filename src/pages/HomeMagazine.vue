@@ -8,10 +8,9 @@
           <span class="hello">Data Engineer</span>
         </h1>
         <div class="editors-note">
-          <div class="note-kicker">Editor's note</div>
+          <div class="note-kicker">The short version</div>
           <p class="note-body">
-            Data engineer based in Jakarta. Four years migrating warehouses, refactoring DAGs,
-            and fixing pipelines before the morning standup.
+            Data engineer in Jakarta. Four years building pipelines and migrating warehouses, mostly at bad hours.
           </p>
         </div>
       </div>
@@ -28,9 +27,9 @@
     <section class="cover-section">
       <div class="cover-grid">
         <div class="cover-left">
-          <div class="cover-kicker">Cover story</div>
-          <p class="cover-lead">On migrating Airflow v3 across 300 DAGs without a downtime window.</p>
-          <router-link to="/blog" class="cover-cta">Browse the journal →</router-link>
+          <div class="cover-kicker">Latest piece</div>
+          <p class="cover-lead">300 production DAGs and a live metadata database, no maintenance window. Notes from the Airflow v3 migration.</p>
+          <router-link to="/blog" class="cover-cta">Read the notes →</router-link>
         </div>
         <div class="now-card">
           <div class="now-top">
@@ -97,9 +96,9 @@ const recent = POSTS.slice(0, 3)
 const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)
 
 const stats = [
-  { num: '77%',  label: 'cost reduction',  sub: 'Redshift → DuckDB' },
-  { num: '300+', label: 'DAGs upgraded',   sub: 'Airflow v2 → v3' },
-  { num: '99%',  label: 'uptime',          sub: 'off-prem → Airflow' },
+  { num: '77%',  label: 'warehouse cost cut',  sub: 'one DuckDB box replaced Redshift' },
+  { num: '300+', label: 'DAGs migrated',        sub: 'Airflow v2 → v3, zero downtime' },
+  { num: '99%',  label: 'pipeline uptime',      sub: 'moved off Windows cron, onto Airflow' },
 ]
 </script>
 
