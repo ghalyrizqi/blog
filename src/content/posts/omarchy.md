@@ -3,7 +3,7 @@ slug: omarchy
 title: "Omarchy OS Review: Two Months In and story "
 excerpt: "A story of how I ended up using Omarchy OS and a short review of using it as a daily driver for two months from a common user (not so technical) perspective."
 date: 2026-05-30
-minutes: 5
+minutes: 6
 tags: [Linux, Omarchy]
 ---
 
