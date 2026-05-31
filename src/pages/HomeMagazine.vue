@@ -66,6 +66,22 @@
 import SignatureFooter from '../components/SignatureFooter.vue'
 import { STACK, fmtMonth } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
+import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+
+useSeoMeta({
+  title: null,
+  description: 'Data engineer in Jakarta. Four years building pipelines and migrating warehouses.',
+  url: SITE_URL,
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Ghaly Rizqi Mauludin',
+    jobTitle: 'Data Engineer',
+    url: SITE_URL,
+    email: 'ghalyrizqimauludin@gmail.com',
+    sameAs: ['https://linkedin.com/in/ghalyrizqi'],
+  },
+})
 
 const recent = POSTS.slice(0, 3)
 const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)

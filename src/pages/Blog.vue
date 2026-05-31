@@ -79,6 +79,13 @@ import { ref, computed } from 'vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
 import { fmtMonth, postCat } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
+import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+
+useSeoMeta({
+  title: 'The Journal',
+  description: 'Notes on data engineering, infrastructure, and tools. Written by Ghaly Rizqi Mauludin.',
+  url: `${SITE_URL}/blog`,
+})
 
 const BLOG_POSTS = POSTS
 const FILTERS = ['All', 'Engineering', 'Personal']

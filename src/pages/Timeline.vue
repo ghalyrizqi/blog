@@ -80,6 +80,13 @@
 import { ref } from 'vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
 import { TIMELINE, fmtRange, fmtDuration } from '../data/index.js'
+import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+
+useSeoMeta({
+  title: 'Career Archive',
+  description: 'Every job and detour since 2019. Data engineering across Jakarta and Surabaya.',
+  url: `${SITE_URL}/timeline`,
+})
 
 const HYB_TYPE = {
   work:      { label: 'Work',      dot: 'var(--accent)',   tone: 'var(--accent)'   },

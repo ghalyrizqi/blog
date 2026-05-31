@@ -58,6 +58,7 @@ import ReadingProgress from '../components/ReadingProgress.vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
 import { getPost } from '../data/posts.js'
 import { fmtMonth, postCat } from '../data/index.js'
+import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
 const route = useRoute()
 
@@ -94,6 +95,22 @@ marked.use({
 
 const post = computed(() => getPost(route.params.slug))
 const renderedContent = computed(() => post.value ? marked(post.value.content) : '')
+
+useSeoMeta(() => ({
+  title: post.value?.title,
+  description: post.value?.excerpt,
+  url: `${SITE_URL}/blog/${post.value?.slug}`,
+  type: 'article',
+  jsonLd: post.value ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.value.title,
+    description: post.value.excerpt,
+    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin' },
+    datePublished: post.value.date,
+    url: `${SITE_URL}/blog/${post.value.slug}`,
+  } : undefined,
+}))
 </script>
 
 <style scoped>
