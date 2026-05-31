@@ -9,11 +9,11 @@ export const TIMELINE = [
     end: null,
     current: true,
     summary:
-      'Migrated 300+ production DAGs from Airflow v2 to v3 on Kubernetes. The metadata database stayed live throughout.',
+      'Running a live Airflow v3 migration across 300+ production DAGs on Kubernetes. No maintenance window, so everything had to stay up while we worked.',
     bullets: [
-      'Upgraded Airflow from v2.10.4 to v3.1.6 on Kubernetes with a live cutover.',
-      'Migrated the metadata database without taking the scheduler down.',
-      'Dug through 300+ DAGs to remove deprecated APIs, one operator at a time.',
+      'Upgrading Airflow from v2.10.4 to v3.1.6 on a live Kubernetes cluster.',
+      'Migrating the metadata database without taking the scheduler offline.',
+      'Going through 300+ DAGs and removing deprecated operators one by one.',
     ],
     tags: ['Apache Airflow', 'Kubernetes', 'Python', 'PostgreSQL'],
   },
@@ -26,11 +26,11 @@ export const TIMELINE = [
     start: '2025-10',
     end: '2025-12',
     summary:
-      'Set up Airflow and dbt in Docker from scratch, wired Jenkins CI/CD to GitHub webhooks, and shipped the first dbt models to BigQuery in six weeks.',
+      'Three-month probation at a company just starting their data team. Did a bit of everything: Airflow, dbt, Jenkins CI/CD, first BigQuery models. Best three months of my career. Then Bluebird called and offered me my old role back.',
     bullets: [
-      'Stood up Airflow and dbt in Docker on a fresh environment.',
-      'Wired Jenkins CI/CD to GitHub webhooks — deploys went from manual to automatic.',
-      'Built the first dbt models against BigQuery.',
+      'Set up Airflow and dbt in Docker from scratch on a fresh server.',
+      'Wired Jenkins to GitHub webhooks so deploys stopped being manual.',
+      'Built the first dbt models and got data flowing into BigQuery.',
     ],
     tags: ['Apache Airflow', 'dbt', 'Docker', 'Jenkins', 'BigQuery'],
   },
@@ -43,10 +43,10 @@ export const TIMELINE = [
     start: '2025-02',
     end: '2025-07',
     summary:
-      'Replaced five source connectors in our Airflow DAGs with one Trino endpoint routing into BigQuery. The DAG logic stayed the same.',
+      '50+ individual database connections in our Airflow DAGs: MySQL, PostgreSQL (mostly), and SQL Server, each wired separately. Replaced the whole mess with one Trino endpoint routing into BigQuery.',
     bullets: [
-      'Replaced MySQL, PostgreSQL, and SQL Server DAG connectors with one Trino connection.',
-      'Routed all queries through Trino into BigQuery without touching the downstream logic.',
+      'Consolidated 50+ source database connections into a single Trino endpoint.',
+      'Routed all queries through Trino into BigQuery. Downstream DAG logic stayed the same.',
     ],
     tags: ['Apache Airflow', 'Trino', 'BigQuery', 'MySQL', 'PostgreSQL', 'SQL Server'],
   },
@@ -60,13 +60,14 @@ export const TIMELINE = [
     start: '2022-08',
     end: '2024-12',
     summary:
-      'Replaced Redshift with a DuckDB instance on EC2, cutting the warehouse bill by 77%. Moved the pipeline scheduler off a Windows PC onto Airflow; uptime went to 99%. Pushed CI/CD adoption with a resistant SRE team.',
+      "Two and a half years at a YC startup. Replaced Redshift with DuckDB on EC2 and cut $1,700+/yr from the warehouse bill. Retired Robointern, a Windows PC running cron jobs, and moved everything onto Airflow. Uptime went to 99%. Pushed CI/CD with the SRE team and ran dbt Core ourselves to avoid paying $1,200/yr for dbt Cloud.",
     bullets: [
-      "Migrated the sister company's warehouse from Redshift to DuckDB on EC2 — saved $1,700+/yr (77% cut).",
-      'Moved pipeline automation off an on-premise Windows PC onto Airflow; uptime went to 99%.',
-      'Pushed Bitbucket + CI/CD adoption across the SRE team.',
+      "Migrated the sister company's warehouse from Redshift to DuckDB on EC2. Saved $1,700+/yr, a 77% cut.",
+      'Replaced Robointern (a Windows PC scheduler) with Airflow. Added email alerts and centralized logging. Uptime went to 99%.',
+      'Pushed Bitbucket and CI/CD adoption with the SRE team.',
       'Self-hosted dbt Core on Redshift instead of paying $1,200/yr for dbt Cloud.',
-      'Built ETL pipelines across CSV, Google Sheets, MongoDB, Redshift, and Oracle NetSuite.',
+      'Wrote Python scripts using AWS Secrets Manager to replace plaintext credentials in configs.',
+      'Built ETL pipelines pulling from CSV, Google Sheets, MongoDB, Redshift, and Oracle NetSuite. Used Lambda for event-driven steps.',
     ],
     tags: ['Python', 'SQL', 'Apache Airflow', 'dbt', 'Redshift', 'DuckDB', 'AWS Lambda', 'S3', 'MongoDB', 'Tableau', 'Bitbucket'],
   },
@@ -79,10 +80,10 @@ export const TIMELINE = [
     start: '2024-04',
     end: '2024-05',
     summary:
-      'Mentored 6 students through an analytics engineering curriculum: pipeline design, dbt, SQL, and GCP hands-on.',
+      'Two months mentoring 6 students through an analytics engineering program: pipeline design, dbt, SQL, Python, and GCP hands-on.',
     bullets: [
-      'Mentored 6 students through an Analytics Engineer curriculum.',
-      'Covered pipeline design, ETL, SQL, Python, and GCP hands-on — code reviews included.',
+      'Taught pipeline design, ETL, SQL, Python, and GCP hands-on.',
+      'Ran code reviews and troubleshooting sessions each week.',
     ],
     tags: ['Python', 'SQL', 'GCP', 'ETL'],
   },
@@ -95,11 +96,11 @@ export const TIMELINE = [
     start: '2021-05',
     end: '2022-05',
     summary:
-      'Built data marts in Spark and Impala for business reporting. Replaced manual SQL runs with Cron and Spark schedules. First job at data scale.',
+      'First proper data engineering job. Learned Spark and Impala at real scale, built data marts for business reporting, and replaced a pile of manual SQL runs with scheduled pipelines.',
     bullets: [
-      'Built data marts in SQL, Scala, and Spark to power faster business reporting.',
-      'Tuned Impala queries that were quietly eating compute time.',
-      'Replaced manual ETL runs with Cron and Spark schedules.',
+      'Built data marts in SQL, Scala, and Spark to feed business reports.',
+      'Tuned Impala queries that had been slow and untouched for a while.',
+      'Set up Cron and Spark schedules to replace manual ETL runs.',
     ],
     tags: ['SQL', 'Scala', 'Apache Spark', 'Apache Impala', 'Cron'],
   },
@@ -110,14 +111,15 @@ export const TIMELINE = [
     org: 'University of Brawijaya',
     location: 'Malang',
     start: '2016-08',
-    end: '2021-04',
+    end: '2021-03',
     summary:
-      'CS degree from Brawijaya. Final thesis: SOM-based classification of 625 citrus samples by variety. Spent more time on data cleaning than the model itself.',
+      'Four years of CS in Malang. Took data systems, AI, statistics, and machine learning. Thesis: forecasting new COVID-19 cases in Indonesia using Extreme Learning Machine.',
     bullets: [
-      'Focused on data systems and algorithms.',
-      'Final thesis: ML-based classification of citrus varieties across 625 samples.',
+      'Courses: Database Systems, Data Mining, AI, Statistics, Neural Networks, Information Retrieval.',
+      'Thesis: ELM-based forecasting of new COVID-19 cases in Indonesia.',
+      'GPA 3.10, graduated with "Very Satisfactory" predicate.',
     ],
-    tags: ['Python', 'Java', 'SQL', 'Algorithms'],
+    tags: ['Python', 'Java', 'SQL', 'Machine Learning', 'Algorithms'],
   },
   {
     id: 'bsip-2019',
@@ -129,10 +131,11 @@ export const TIMELINE = [
     start: '2019-07',
     end: '2019-09',
     summary:
-      'Built a Self-Organizing Map model to cluster 625 citrus samples and score 25 orange varieties for hybrid potential. First time working with a real dataset.',
+      'Internship at a government citrus research center in Batu. Built a SOM clustering model across 625 datasets and a scoring system to rank 25 orange varieties for hybrid selection. First time working with real data.',
     bullets: [
       'Built a Self-Organizing Map model to cluster 625 citrus datasets.',
-      'Scored 25 orange varieties to surface the best hybrid candidates.',
+      'Built a scoring model to rank 25 orange varieties by hybrid potential.',
+      'Presented findings and variety recommendations to management.',
     ],
     tags: ['Python', 'R', 'Machine Learning'],
   },
@@ -233,16 +236,16 @@ Try it. You have nothing to lose except your composure, which you were probably 
 ]
 
 export const STACK = [
-  { group: 'Languages',      items: ['Python', 'SQL', 'Scala', 'R', 'Java'] },
-  { group: 'Orchestration',  items: ['Apache Airflow', 'dbt', 'Cron', 'Jenkins'] },
-  { group: 'Warehouses',     items: ['BigQuery', 'Redshift', 'DuckDB', 'Trino'] },
+  { group: 'Languages', items: ['Python', 'SQL', 'Scala', 'R', 'Java'] },
+  { group: 'Orchestration', items: ['Apache Airflow', 'dbt', 'Cron', 'Jenkins'] },
+  { group: 'Warehouses', items: ['BigQuery', 'Redshift', 'DuckDB', 'Trino'] },
   { group: 'Storage / OLTP', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'S3'] },
-  { group: 'Compute',        items: ['Apache Spark', 'Apache Impala', 'AWS Lambda'] },
-  { group: 'Platform',       items: ['Kubernetes', 'Docker', 'Linux', 'Bitbucket', 'Git'] },
+  { group: 'Compute', items: ['Apache Spark', 'Apache Impala', 'AWS Lambda'] },
+  { group: 'Platform', items: ['Kubernetes', 'Docker', 'Linux', 'Bitbucket', 'Git'] },
 ]
 
 // ── Helpers ────────────────────────────────────────────────
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 export function fmtMonth(s) {
   if (!s) return 'Present'
@@ -264,7 +267,7 @@ export function toDate(s) {
 export function durationMonths(start, end) {
   const s = toDate(start)
   const e = end ? toDate(end) : new Date()
-  return (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth())
+  return (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth()) + 1
 }
 
 export function fmtDuration(start, end) {
@@ -278,6 +281,6 @@ export function fmtDuration(start, end) {
 
 export function postCat(p) {
   if (p.tags.includes('Personal') || p.tags.includes('Retrospective')) return 'Personal'
-  if (['dbt','Airflow','Trino','DuckDB'].some(t => p.tags.includes(t))) return 'Tools'
+  if (['dbt', 'Airflow', 'Trino', 'DuckDB'].some(t => p.tags.includes(t))) return 'Tools'
   return 'Engineering'
 }

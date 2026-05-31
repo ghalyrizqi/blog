@@ -4,7 +4,7 @@
       <div class="sig-left">
         <div class="kicker">↳ Signed,</div>
         <div class="big-g">G</div>
-        <div class="byline">Ghaly Rizqi Mauludin · Data Engineer · Jakarta</div>
+        <div class="byline">Ghaly Rizqi Mauludin</div>
       </div>
       <div class="sig-right">
         <div class="contact-label">↳ Get in touch</div>
@@ -18,7 +18,6 @@
           </li>
         </ul>
         <div class="meta">
-          <span>© 2026 — Vue, Vite, Jakarta.</span>
         </div>
       </div>
     </div>

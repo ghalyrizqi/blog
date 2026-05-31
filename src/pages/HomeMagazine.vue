@@ -10,7 +10,9 @@
         <div class="editors-note">
           <div class="note-kicker">The short version</div>
           <p class="note-body">
-            Data engineer in Jakarta. Four years building pipelines and migrating warehouses, mostly at bad hours.
+            Builds data pipelines on weekdays. Checks if they're still running on weekends. 
+            Trying to write and document my journey as a data engineer. 
+            <!-- Mostly for my own reference, hopefully it's useful for others too. -->
           </p>
         </div>
       </div>
