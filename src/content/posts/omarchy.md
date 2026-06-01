@@ -9,13 +9,13 @@ tags: [Linux, Omarchy]
 
 My introduction to Linux was in college as part of an "Operating System" course, where we learned to use Ubuntu and the command line interface. Fun course. But back then I never really understood the naming. Isn't Windows also an operating system? Why specifically learn only Linux in a class called "Operating System"?
 
-Growing into a data engineer made the answer obvious. Most infrastructure runs on Linux: Docker containers, Kubernetes clusters, cloud VMs, data platforms, backend services. Matching your laptop to production cuts the translation layer. Commands work the same, scripts run without (crazy) modifications. Windows added WSL, which helps, but WSL is Linux running inside Windows. Not the same. Most Indonesian companies still hand out Windows laptops as standard enterprise hardware, and I've never understood that call. Windows is shit, sorry not sorry, Bill.
+Becoming a data engineer made the answer obvious. Most infrastructure runs on Linux: Docker containers, Kubernetes clusters, cloud VMs, data platforms, backend services. Matching your laptop to production cuts the translation layer. Commands work the same, scripts run without (crazy) modifications. Windows added WSL, which helps, but WSL is Linux running inside Windows. Not the same. Most Indonesian companies still hand out Windows laptops as standard enterprise hardware, and I've never understood that call. Windows is shit, sorry not sorry, Bill.
 
-My Toshiba Satellite L645 (I named it Toshiba-san) got me into Linux as a daily driver during college. Seven or eight year-old machine, Windows 11 installed, speed of a snail, fan screaming. Then I found [*Elementary OS*](https://elementary.io/), lighter and prettier, and put it on. Not trying to look like a geek CS student (though I felt like one 😎). Just surviving on that old hardware. About a year and a half later, Toshiba-san wouldn't turn on one day without warning. No recovery, no goodbye, just nothing. I made my comeback to Windows on my girlfriend's (current: wife, shout out [*Intan*](https://intanwc.vercel.app)!) borrowed laptop. RIP *Toshiba-san*. Arigatou gozaimasu.
+My Toshiba Satellite L645 (I named it *Toshiba-san*) got me into Linux as a daily driver during college. Seven or eight-year-old machine, Windows 11 installed, speed of a snail, fan screaming. Then I found [*Elementary OS*](https://elementary.io/), lighter and prettier, and put it on. Not trying to look like a geek CS student (though I felt like one 😎). Just surviving on that old hardware. About a year and a half later, *Toshiba-san* wouldn't turn on one day without warning. No recovery, no goodbye, just nothing. I made my comeback to Windows on my girlfriend's (current: wife, shout out [*Intan*](https://intanwc.vercel.app)!) borrowed laptop. RIP *Toshiba-san*. Arigatou gozaimasu.
 
 Since I received my offer letter from my current company in November last year, I started planning a Linux return. My new teammates all ran Linux, so the direction was clear. One project kept appearing in every review I watched on YouTube: [*Omakub*](https://omakub.org), [*DHH*](https://dhh.dk)'s Ubuntu-based setup that turns a fresh install into a working development environment. Sensible defaults, curated tooling, minimal configuration. Ubuntu familiarity sealed it.
 
-But then the procurement at my company moved at procurement speed. I joined in January. The laptop arrived mid-March. Two and a half months of extra research time, which I used. Somewhere in the Omakub docs I found [*Omarchy*](https://omarchy.org), same philosophy, same creator, but built on Arch Linux instead of Ubuntu. That caught my attention. Arch gives you a rolling release and more flexibility, and my office network blocks `apt`, which would've stopped software updates on Ubuntu anyway. Omarchy solved both. I changed my mind on Omakub; figured I could handle Arch. The laptop arrived. Omarchy went on first.
+But then the procurement at my company moved at procurement speed. I joined in January. The laptop arrived mid-March. Two and a half months of extra research time. I used all of it. Somewhere in the Omakub docs I found [*Omarchy*](https://omarchy.org), same philosophy, same creator, but built on Arch Linux instead of Ubuntu. That caught my attention. Arch gives you a rolling release and more flexibility, and my office network blocks `apt`, which would've stopped software updates on Ubuntu anyway. Omarchy solved both. I changed my mind on Omakub; figured I could handle Arch. The laptop arrived. Omarchy went on first.
 
 ## What Is Omarchy?
 
@@ -35,11 +35,11 @@ Expect adjustment. Traditional window controls, maximize and minimize, don't beh
 
 ### Window Management
 
-Split-screen workflows come built in. Multiple workspaces work like macOS Desktops but feel more deliberate. Windows organize themselves instead of piling up on one screen, so you keep coding, docs, terminals, and Slack separate without thinking about it.
+Multiple workspaces work like macOS Desktops. The workspace indicator sits in the top-left corner, a row of numbered slots. Glance up and you know exactly where you are.
 
-External monitors get their own workspace too. Plug one in with two workspaces open and the monitor picks up workspace 3. Each screen stays independent, which makes the dual-monitor setup feel intentional rather than just mirrored.
+Within a single workspace, windows tile in a bento-like grid. Open a terminal and a browser and they split the screen evenly. Add a third app and they rearrange. You open the apps, Omarchy handles the arrangement. I like to pack one workspace with everything related to a single task — terminal, editor, docs, browser — all tiled and visible at once.
 
-For development work, this is the most noticeable daily improvement.
+External monitors get their own workspace too. Plug one in and it picks up the next workspace after your highest open one. Each screen stays independent, which makes the dual-monitor setup feel intentional rather than just mirrored (i just honestly don't know how to set up between extension or mirrored lol).
 
 ![YouTube, VS Code, and a terminal update running across workspaces](/images/omarchy/workspaces.jpeg)
 
@@ -53,7 +53,7 @@ Far more community themes exist than I expected. Customizing the desktop look ta
 
 ### Hardware That Just Worked
 
-Fingerprint authentication worked on the first try. I'd found my colegue having a problem with fingerprint authentication on  Ubuntu Linux, even we using the same laptop model Lenovo E14. Seeing it work out of the box was a relief.
+Fingerprint authentication worked on the first try. I'd found a colleague had the same issue on Ubuntu, same laptop model, the Lenovo Thinkpad E14. Seeing it work out of the box was a relief.
 
 System monitoring comes built into the desktop too. CPU usage, memory, running processes, one dashboard. Small detail, but it makes the system feel complete. Shout out to BTOP++ for this masterpiece.
 
@@ -67,17 +67,16 @@ Omarchy doesn't pick up my wired headphones. Bluetooth works fine. Still trouble
 
 ### Software Compatibility
 
-Using a less mainstream system has a cost. Some software isn't designed for this environment. DBeaver's update notifications are unreliable everywhere; on Omarchy they're worse. YouTube picture-in-picture gets cropped.
-
+Using a less mainstream system has a cost. Some software isn't designed for this environment. YouTube picture-in-picture gets cropped, and you can't drag a window to adjust its position.
 ![YouTube PiP cropped on Omarchy](/images/omarchy/youtube-pip.jpeg)
 
 ## So, Is It Worth Switching?
 
 Wired headphones don't work, YouTube PiP gets cropped.
 
-I open the ThinkPad, fingerprint unlocks it, and I'm in a workspace where my terminal, editor, and browser each have their own screen. No mouse. No stacked windows. External monitor picks up workspace 3 automatically. `Windows+K` is there when memory fails.
+I open the ThinkPad, fingerprint unlocks it, and I'm in a workspace where my terminal, editor, and browser each have their own screen. No mouse. No stacked windows. The external monitor picks up the next workspace after the last open one automatically. `Windows+K` is there when memory fails.
 
-There's no fancy dock like macOS has. Omarchy isn't trying to be macOS. It's trying to be a enough OS for developers.
+There's no fancy dock like macOS has. Omarchy isn't trying to be macOS. It's trying to be a good enough OS for developers.
 
 For a data engineer who deploys to Linux anyway, the environment fits. Omarchy removes the weekend you'd spend configuring Arch from scratch. I was coding the same day I installed it.
 
