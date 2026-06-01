@@ -9,11 +9,12 @@ export const TIMELINE = [
     end: null,
     current: true,
     summary:
-      'Running a live Airflow v3 migration across 300+ production DAGs on Kubernetes. No maintenance window, so everything had to stay up while we worked.',
+      'Upgraded two Airflow instances from v2 to v3 on Kubernetes. One handles Trino to BigQuery pipelines, the other BigQuery to BigQuery. Both run production and development in separate namespaces: four deployments total, 500+ DAGs, no maintenance window.',
     bullets: [
-      'Upgrading Airflow from v2.10.4 to v3.1.6 on a live Kubernetes cluster.',
-      'Migrating the metadata database without taking the scheduler offline.',
-      'Going through 300+ DAGs and removing deprecated operators one by one.',
+      'Two instances, four namespaces (prd + dev each): Trino→BigQuery and BigQuery→BigQuery.',
+      'Upgraded Airflow from v2.10.4 to v3.1.6 on a live Kubernetes cluster.',
+      'Migrated the metadata database without taking the scheduler offline.',
+      'Went through 500+ DAGs across both instances removing deprecated operators one by one.',
     ],
     tags: ['Apache Airflow', 'Kubernetes', 'Python', 'PostgreSQL'],
   },
@@ -146,7 +147,7 @@ export const BLOG_POSTS = [
     slug: 'airflow-v3-migration',
     title: 'Migrating Airflow v2 → v3 on Kubernetes',
     excerpt:
-      "The metadata migration playbook I wish existed before I started. Notes from upgrading 300+ production DAGs.",
+      "The metadata migration playbook I wish existed before I started. Notes from upgrading 500+ production DAGs across two instances.",
     date: '2026-03-12',
     minutes: 9,
     tags: ['Airflow', 'Kubernetes', 'Migration'],

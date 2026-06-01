@@ -11,11 +11,15 @@ My introduction to Linux was in college as part of an "Operating System" course,
 
 Becoming a data engineer made the answer obvious. Most infrastructure runs on Linux: Docker containers, Kubernetes clusters, cloud VMs, data platforms, backend services. Matching your laptop to production cuts the translation layer. Commands work the same, scripts run without (crazy) modifications. Windows added WSL, which helps, but WSL is Linux running inside Windows. Not the same. Most Indonesian companies still hand out Windows laptops as standard enterprise hardware, and I've never understood that call. Windows is shit, sorry not sorry, Bill.
 
-My Toshiba Satellite L645 (I named it *Toshiba-san*) got me into Linux as a daily driver during college. Seven or eight-year-old machine, Windows 11 installed, speed of a snail, fan screaming. Then I found [*Elementary OS*](https://elementary.io/), lighter and prettier, and put it on. Not trying to look like a geek CS student (though I felt like one 😎). Just surviving on that old hardware. About a year and a half later, *Toshiba-san* wouldn't turn on one day without warning. No recovery, no goodbye, just nothing. I made my comeback to Windows on my girlfriend's (current: wife, shout out [*Intan*](https://intanwc.vercel.app)!) borrowed laptop. RIP *Toshiba-san*. Arigatou gozaimasu.
+My Toshiba Satellite L645 (I named it *Toshiba-san*) got me into Linux as a daily driver during college. Seven or eight-year-old machine, Windows 11 installed, speed of a snail, fan screaming. Then I found [*Elementary OS*](https://elementary.io/), lighter and prettier, and put it on. Not trying to look like a geek CS student (though I felt like one 😎). Just surviving on that old hardware. About a year and a half later, *Toshiba-san* wouldn't turn on one day without warning. No recovery, no goodbye, just nothing. I made my comeback to Windows on my girlfriend's (current: wife, shout out [*Intan*](https://intanwc.vercel.app)!) borrowed laptop. 
+
+RIP *Toshiba-san*. Arigatou gozaimasu.
 
 Since I received my offer letter from my current company in November last year, I started planning a Linux return. My new teammates all ran Linux, so the direction was clear. One project kept appearing in every review I watched on YouTube: [*Omakub*](https://omakub.org), [*DHH*](https://dhh.dk)'s Ubuntu-based setup that turns a fresh install into a working development environment. Sensible defaults, curated tooling, minimal configuration. Ubuntu familiarity sealed it.
 
-But then the procurement at my company moved at procurement speed. I joined in January. The laptop arrived mid-March. Two and a half months of extra research time. I used all of it. Somewhere in the Omakub docs I found [*Omarchy*](https://omarchy.org), same philosophy, same creator, but built on Arch Linux instead of Ubuntu. That caught my attention. Arch gives you a rolling release and more flexibility, and my office network blocks `apt`, which would've stopped software updates on Ubuntu anyway. Omarchy solved both. I changed my mind on Omakub; figured I could handle Arch. The laptop arrived. Omarchy went on first.
+But then the Procurement moved with the URGENCY you'd expect. I joined in January. The laptop arrived mid-March. Two and a half months of procurement. Long enough to migrate two Airflow instances and 500+ production DAGs from v2 to v3 on my personal laptop.
+
+Somewhere in the Omakub docs I found [*Omarchy*](https://omarchy.org), same philosophy, same creator, but built on Arch Linux instead of Ubuntu. That caught my attention. Arch gives you a rolling release and more flexibility, and my office network blocks `apt`, which would've stopped software updates on Ubuntu anyway. Omarchy solved both. I changed my mind on Omakub; figured I could handle Arch. The laptop arrived. Omarchy went on first.
 
 ## What Is Omarchy?
 
@@ -76,7 +80,7 @@ Wired headphones don't work, YouTube PiP gets cropped.
 
 I open the ThinkPad, fingerprint unlocks it, and I'm in a workspace where my terminal, editor, and browser each have their own screen. No mouse. No stacked windows. The external monitor picks up the next workspace after the last open one automatically. `Windows+K` is there when memory fails.
 
-There's no fancy dock like macOS has. Omarchy isn't trying to be macOS. It's trying to be a good enough OS for developers.
+There's no fancy dock like macOS has. Omarchy isn't trying to be macOS. It's trying to be an enough OS for developers.
 
 For a data engineer who deploys to Linux anyway, the environment fits. Omarchy removes the weekend you'd spend configuring Arch from scratch. I was coding the same day I installed it.
 

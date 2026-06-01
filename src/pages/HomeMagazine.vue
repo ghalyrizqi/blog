@@ -10,9 +10,7 @@
         <div class="editors-note">
           <div class="note-kicker">The short version</div>
           <p class="note-body">
-            Builds data pipelines on weekdays. Checks if they're still running on weekends. 
-            Trying to write and document my journey as a data engineer. 
-            <!-- Mostly for my own reference, hopefully it's useful for others too. -->
+            Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded 2 Airflow instances before Procurement completed the ThinkPad handover.
           </p>
         </div>
       </div>
@@ -72,7 +70,7 @@ import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
 useSeoMeta({
   title: null,
-  description: 'Data engineer in Jakarta. Four years building pipelines and migrating warehouses.',
+  description: 'Builds data pipelines on weekdays. Checks if they\'re still running on weekends. Upgraded 2 Airflow instances before procurement completed the ThinkPad handover.',
   url: SITE_URL,
   jsonLd: {
     '@context': 'https://schema.org',
@@ -90,8 +88,8 @@ const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)
 
 const stats = [
   { num: '77%',  label: 'warehouse cost cut',  sub: 'one DuckDB box replaced Redshift' },
-  { num: '300+', label: 'DAGs migrated',        sub: 'Airflow v2 → v3, zero downtime' },
-  { num: '99%',  label: 'pipeline uptime',      sub: 'moved off Windows cron, onto Airflow' },
+  { num: '500+', label: 'DAGs migrated',        sub: 'Airflow v2 → v3, two instances' },
+  { num: '4+',   label: 'years experience',      sub: 'as a Data Engineer' },
 ]
 </script>
 
@@ -326,8 +324,7 @@ h1 {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .name { font-size: 130px; }
   .hello { font-size: 40px; }
-  .at-work { font-size: 52px; }
-.toolkit-grid { grid-template-columns: repeat(2, 1fr); }
+  .toolkit-grid { grid-template-columns: repeat(2, 1fr); }
   .dispatches-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
