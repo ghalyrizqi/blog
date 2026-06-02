@@ -137,5 +137,11 @@ li {
   .inner { grid-template-columns: 1fr; gap: 48px; }
   .big-g { font-size: 100px; }
   .magazine .big-g { font-size: 100px; }
+  li { flex-direction: column; gap: 4px; align-items: flex-start; }
+  .link-value { font-size: 15px; word-break: break-all; }
+}
+
+@media (max-width: 480px) {
+  .link-value { font-size: 13px; }
 }
 </style>
