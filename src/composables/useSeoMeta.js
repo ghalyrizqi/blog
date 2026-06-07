@@ -18,9 +18,11 @@ export function useSeoMeta(getMeta) {
 
     document.title = title
 
-    setMeta('name',     'description',       description)
-    setMeta('name',     'robots',            'index, follow')
+    setMeta('name', 'description', description)
+    setMeta('name', 'robots',     'index, follow')
+    setMeta('name', 'author',     'Ghaly Rizqi Mauludin')
 
+    setMeta('property', 'og:locale',     'en_US')
     setMeta('property', 'og:site_name',  SITE_NAME)
     setMeta('property', 'og:title',      title)
     setMeta('property', 'og:description', description)

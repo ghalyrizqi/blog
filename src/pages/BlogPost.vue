@@ -106,9 +106,13 @@ useSeoMeta(() => ({
     '@type': 'Article',
     headline: post.value.title,
     description: post.value.excerpt,
-    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin' },
+    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
+    publisher: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
     datePublished: post.value.date,
+    dateModified: post.value.date,
     url: `${SITE_URL}/blog/${post.value.slug}`,
+    inLanguage: 'en',
+    keywords: post.value.tags.join(', '),
   } : undefined,
 }))
 </script>

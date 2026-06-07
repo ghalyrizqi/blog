@@ -86,6 +86,19 @@ useSeoMeta({
   title: 'Career Archive',
   description: 'Every job and detour since 2019. Data engineering across Jakarta and Surabaya.',
   url: `${SITE_URL}/timeline`,
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: 'Career Archive — Ghaly Rizqi Mauludin',
+    description: 'Every job and detour since 2019.',
+    url: `${SITE_URL}/timeline`,
+    mainEntity: {
+      '@type': 'Person',
+      name: 'Ghaly Rizqi Mauludin',
+      jobTitle: 'Data Engineer',
+      url: SITE_URL,
+    },
+  },
 })
 
 const HYB_TYPE = {

@@ -85,6 +85,15 @@ useSeoMeta({
   title: 'The Journal',
   description: 'Notes on data engineering, infrastructure, and tools. Written by Ghaly Rizqi Mauludin.',
   url: `${SITE_URL}/blog`,
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'The Journal',
+    description: 'Notes on data engineering, infrastructure, and tools.',
+    url: `${SITE_URL}/blog`,
+    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
+    inLanguage: 'en',
+  },
 })
 
 const BLOG_POSTS = POSTS
