@@ -238,8 +238,8 @@ Try it. You have nothing to lose except your composure, which you were probably 
 
 export const STACK = [
   { group: 'Languages',  items: ['Python', 'SQL', 'Scala', 'R'] },
-  { group: 'Databases',  items: ['BigQuery', 'Redshift', 'DuckDB', 'Trino', 'PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'S3'] },
-  { group: 'Tools',      items: ['Apache Airflow', 'dbt', 'Apache Spark', 'Apache Impala', 'AWS Lambda', 'Jenkins', 'Kubernetes', 'Docker', 'Linux', 'Git'] },
+  { group: 'Databases',  items: ['BigQuery', 'Redshift', 'DuckDB', 'PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'S3'] },
+  { group: 'Tools',      items: ['Apache Airflow', 'dbt', 'Trino', 'Apache Spark', 'Apache Impala', 'AWS Lambda', 'Jenkins', 'Kubernetes', 'Docker', 'Linux', 'Git'] },
 ]
 
 // ── Helpers ────────────────────────────────────────────────
