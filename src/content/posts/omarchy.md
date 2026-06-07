@@ -17,7 +17,7 @@ RIP *Toshiba-san*. Arigatou gozaimasu.
 
 Since I received my offer letter from my current company in November last year, I started planning a Linux return. My new teammates all ran Linux, so the direction was clear. One project kept appearing in every review I watched on YouTube: [*Omakub*](https://omakub.org), [*DHH*](https://dhh.dk)'s Ubuntu-based setup that turns a fresh install into a working development environment. Sensible defaults, curated tooling, minimal configuration. Ubuntu familiarity sealed it.
 
-But then the Procurement moved with the URGENCY you'd expect. I joined in January. The laptop arrived mid-March. Two and a half months of procurement. Long enough to migrate two Airflow instances and 500+ production DAGs from v2 to v3 on my personal laptop.
+But then the IT Support moved with the URGENCY you'd expect. I joined in January. The laptop arrived mid-March. Two and a half months of procurement. Long enough to migrate two Airflow instances and 500+ production DAGs from v2 to v3 on my personal laptop.
 
 Somewhere in the Omakub docs I found [*Omarchy*](https://omarchy.org), same philosophy, same creator, but built on Arch Linux instead of Ubuntu. That caught my attention. Arch gives you a rolling release and more flexibility, and my office network blocks `apt`, which would've stopped software updates on Ubuntu anyway. Omarchy solved both. I changed my mind on Omakub; figured I could handle Arch. The laptop arrived. Omarchy went on first.
 

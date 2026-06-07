@@ -10,7 +10,7 @@
         <div class="editors-note">
           <div class="note-kicker">The short version</div>
           <p class="note-body">
-            Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded 2 Airflow instances before Procurement completed the ThinkPad handover.
+            Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded 2 Airflow instances before the IT Support hand me the ThinkPad.
           </p>
         </div>
       </div>
@@ -70,7 +70,7 @@ import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
 useSeoMeta({
   title: null,
-  description: 'Builds data pipelines on weekdays. Checks if they\'re still running on weekends. Upgraded 2 Airflow instances before procurement completed the ThinkPad handover.',
+  description: 'Builds data pipelines on weekdays. Checks if they\'re still running on weekends. Upgraded 2 Airflow instances before the IT Support hand me the ThinkPad.',
   url: SITE_URL,
   jsonLd: {
     '@context': 'https://schema.org',
