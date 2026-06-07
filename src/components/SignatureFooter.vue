@@ -2,7 +2,7 @@
   <footer :class="['sig-footer', variant]">
     <div class="inner">
       <div class="sig-left">
-        <div class="kicker">↳ Signed,</div>
+        <div class="kicker">↳ Best Regards,</div>
         <div class="big-g">G</div>
         <div class="byline">Ghaly Rizqi Mauludin</div>
       </div>
