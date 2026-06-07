@@ -1,12 +1,17 @@
 <template>
   <nav class="navbar">
-    <router-link to="/" class="brand">G</router-link>
+    <router-link to="/" class="brand" aria-label="Home">
+      G
+      <span class="nav-label">home</span>
+    </router-link>
     <div class="right">
-      <router-link to="/blog" class="nav-link" :class="{ active: current === 'blog' }">
+      <router-link to="/blog" class="nav-link" :class="{ active: current === 'blog' }" aria-label="Blog">
         <span class="display-char">B</span><span class="mono-tail">log</span>
+        <span class="nav-label">blog</span>
       </router-link>
-      <router-link to="/timeline" class="nav-link" :class="{ active: current === 'timeline' }">
+      <router-link to="/timeline" class="nav-link" :class="{ active: current === 'timeline' }" aria-label="Timeline">
         <span class="display-char">T</span><span class="mono-tail">imeline</span>
+        <span class="nav-label">timeline</span>
       </router-link>
       <button
         class="theme-toggle"
@@ -19,6 +24,7 @@
           <span class="toggle-icon moon">☽</span>
           <span class="toggle-icon sun">☀</span>
         </span>
+        <span class="nav-label">theme</span>
       </button>
     </div>
   </nav>
@@ -46,9 +52,18 @@ const { theme, toggle } = useTheme()
   color: var(--fg);
   text-decoration: none;
   transition: color 0.15s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  gap: var(--space-xs);
 }
 .brand:hover,
 .brand:focus-visible { color: var(--accent); }
+.brand:hover .nav-label,
+.brand:focus-visible .nav-label { color: var(--accent); }
 
 .right {
   display: flex;
@@ -57,8 +72,13 @@ const { theme, toggle } = useTheme()
 }
 
 .nav-link {
-  display: inline-flex;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  gap: var(--space-xs);
   text-decoration: none;
   color: var(--fg);
 }
@@ -78,11 +98,22 @@ const { theme, toggle } = useTheme()
   transition: color 0.15s var(--ease-out);
 }
 
+.nav-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-muted);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transition: color 0.15s var(--ease-out);
+}
+
 /* Hover + focus: both chars go accent + underline on tail */
 .nav-link:hover .display-char,
 .nav-link:focus-visible .display-char,
 .nav-link:hover .mono-tail,
-.nav-link:focus-visible .mono-tail {
+.nav-link:focus-visible .mono-tail,
+.nav-link:hover .nav-label,
+.nav-link:focus-visible .nav-label {
   color: var(--accent);
 }
 .nav-link:hover .mono-tail,
@@ -92,7 +123,8 @@ const { theme, toggle } = useTheme()
 }
 
 /* Active: accent color + underline on tail */
-.nav-link.active .display-char {
+.nav-link.active .display-char,
+.nav-link.active .nav-label {
   color: var(--accent);
 }
 .nav-link.active .mono-tail {
@@ -111,11 +143,31 @@ const { theme, toggle } = useTheme()
   .mono-tail {
     display: inline;
   }
+  .nav-label {
+    display: none;
+  }
   .brand {
     font-size: 40px;
+    flex-direction: row;
+    min-height: auto;
+    min-width: auto;
+    gap: 0;
   }
   .display-char {
     font-size: 40px;
+  }
+  .nav-link {
+    flex-direction: row;
+    align-items: baseline;
+    min-height: auto;
+    min-width: auto;
+    gap: 0;
+  }
+  .theme-toggle {
+    flex-direction: row;
+    min-height: auto;
+    min-width: auto;
+    gap: 0;
   }
 }
 
@@ -126,7 +178,12 @@ const { theme, toggle } = useTheme()
   padding: 0;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  gap: var(--space-xs);
 }
 .toggle-track {
   position: relative;
