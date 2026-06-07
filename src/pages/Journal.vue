@@ -3,8 +3,8 @@
     <header class="blog-hero">
       <h1>
         <span class="the">The</span>
-        <span class="journal">journal</span>
-        <span class="period">.</span>
+        <span class="second">second</span>
+        <span class="brain">brain</span>
       </h1>
     </header>
 
@@ -26,7 +26,7 @@
     <section v-if="visible.length > 0" class="lead-section">
       <div class="lead-inner">
         <div class="lead-kicker">Lead piece · {{ fmtMonth(visible[0].date.slice(0,7)) }}</div>
-        <router-link :to="`/blog/${visible[0].slug}`">
+        <router-link :to="`/journal/${visible[0].slug}`">
           <h2 class="lead-title">{{ visible[0].title }}</h2>
         </router-link>
         <div class="lead-body">
@@ -58,7 +58,7 @@
             <span>{{ p.minutes }} min</span>
             <span v-if="p.placeholder" class="draft">Draft</span>
           </div>
-          <router-link :to="`/blog/${p.slug}`">
+          <router-link :to="`/journal/${p.slug}`">
             <h3 class="card-title">{{ p.title }}</h3>
           </router-link>
           <p class="card-excerpt">{{ p.excerpt }}</p>
@@ -82,15 +82,15 @@ import { POSTS } from '../data/posts.js'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
 useSeoMeta({
-  title: 'The Journal',
+  title: 'The Second Brain',
   description: 'Notes on data engineering, infrastructure, and tools. Written by Ghaly Rizqi Mauludin.',
-  url: `${SITE_URL}/blog`,
+  url: `${SITE_URL}/journal`,
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'The Journal',
+    name: 'The Second Brain',
     description: 'Notes on data engineering, infrastructure, and tools.',
-    url: `${SITE_URL}/blog`,
+    url: `${SITE_URL}/journal`,
     author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
     inLanguage: 'en',
   },
@@ -117,14 +117,20 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 10
   display: block;
   letter-spacing: -0.03em;
 }
-.journal {
+.second {
+  font-family: var(--display);
+  font-size: 160px;
+  line-height: 0.85;
+  color: var(--fg-muted);
+  display: block;
+}
+.brain {
   font-family: var(--display);
   font-size: 240px;
   line-height: 0.85;
   color: var(--fg);
   display: block;
 }
-.period { font-family: var(--serif); font-size: 110px; color: var(--fg); letter-spacing: -0.03em; }
 
 .filter-bar {
   padding: 24px clamp(24px, 5vw, 80px);
@@ -268,15 +274,17 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 10
 }
 
 @media (max-width: 1024px) {
-  .journal { font-size: 140px; }
-  .the, .period { font-size: 64px; }
+  .second { font-size: 90px; }
+  .brain { font-size: 140px; }
+  .the { font-size: 64px; }
   .lead-title { font-size: 56px; }
   .lead-body { grid-template-columns: 1fr; gap: 32px; }
   .also-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .journal { font-size: 80px; }
-  .the, .period { font-size: 40px; }
+  .second { font-size: 56px; }
+  .brain { font-size: 80px; }
+  .the { font-size: 40px; }
   .lead-title { font-size: 36px; }
   .also-heading { font-size: 36px; }
   .filter-buttons { gap: 16px; font-size: 16px; }

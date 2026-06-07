@@ -5,9 +5,9 @@
       <span class="nav-label">home</span>
     </router-link>
     <div class="right">
-      <router-link to="/blog" class="nav-link" :class="{ active: current === 'blog' }" aria-label="Blog">
-        <span class="display-char">B</span><span class="mono-tail">log</span>
-        <span class="nav-label">blog</span>
+      <router-link to="/journal" class="nav-link" :class="{ active: current === 'journal' }" aria-label="Journal">
+        <span class="display-char">J</span><span class="mono-tail">ournal</span>
+        <span class="nav-label">journal</span>
       </router-link>
       <router-link to="/timeline" class="nav-link" :class="{ active: current === 'timeline' }" aria-label="Timeline">
         <span class="display-char">T</span><span class="mono-tail">imeline</span>

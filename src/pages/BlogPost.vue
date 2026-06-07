@@ -33,7 +33,7 @@
         <div class="end-tags">
           <span v-for="t in post.tags" :key="t" class="tag">{{ t }}</span>
         </div>
-        <router-link to="/blog" class="more-link">More from the journal →</router-link>
+        <router-link to="/journal" class="more-link">More from the journal →</router-link>
       </div>
     </template>
 
@@ -99,7 +99,7 @@ const renderedContent = computed(() => post.value ? marked(post.value.content) :
 useSeoMeta(() => ({
   title: post.value?.title,
   description: post.value?.excerpt,
-  url: `${SITE_URL}/blog/${post.value?.slug}`,
+  url: `${SITE_URL}/journal/${post.value?.slug}`,
   type: 'article',
   jsonLd: post.value ? {
     '@context': 'https://schema.org',
@@ -110,7 +110,7 @@ useSeoMeta(() => ({
     publisher: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
     datePublished: post.value.date,
     dateModified: post.value.date,
-    url: `${SITE_URL}/blog/${post.value.slug}`,
+    url: `${SITE_URL}/journal/${post.value.slug}`,
     inLanguage: 'en',
     keywords: post.value.tags.join(', '),
   } : undefined,

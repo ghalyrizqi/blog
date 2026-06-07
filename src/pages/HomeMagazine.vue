@@ -40,7 +40,7 @@
     <section class="dispatches-section">
       <div class="dispatches-top">
         <h2 class="dispatches-heading">Latest <em>dispatches</em>.</h2>
-        <router-link to="/blog" class="all-link">All posts →</router-link>
+        <router-link to="/journal" class="all-link">All posts →</router-link>
       </div>
       <div class="dispatches-grid">
         <article v-for="p in recent" :key="p.slug" class="dispatch-card">
@@ -50,7 +50,7 @@
             <span>{{ p.minutes }} min read</span>
             <span v-if="p.placeholder" class="draft">Draft</span>
           </div>
-          <router-link :to="`/blog/${p.slug}`">
+          <router-link :to="`/journal/${p.slug}`">
             <h3 class="card-title">{{ p.title }}</h3>
           </router-link>
           <p class="card-excerpt">{{ p.excerpt }}</p>

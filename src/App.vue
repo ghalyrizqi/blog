@@ -14,7 +14,7 @@ const route = useRoute()
 
 const currentPage = computed(() => {
   const name = route.name
-  if (name === 'blog' || name === 'post') return 'blog'
+  if (name === 'journal' || name === 'post') return 'journal'
   if (name === 'timeline') return 'timeline'
   return 'home'
 })

@@ -33,10 +33,10 @@ const posts = readdirSync(POSTS_DIR)
 
 const urls = [
   { loc: `${SITE_URL}/`,         lastmod: TODAY, changefreq: 'monthly', priority: '1.0' },
-  { loc: `${SITE_URL}/blog`,     lastmod: TODAY, changefreq: 'weekly',  priority: '0.9' },
+  { loc: `${SITE_URL}/journal`,     lastmod: TODAY, changefreq: 'weekly',  priority: '0.9' },
   { loc: `${SITE_URL}/timeline`, lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
   ...posts.map(p => ({
-    loc: `${SITE_URL}/blog/${p.slug}`,
+    loc: `${SITE_URL}/journal/${p.slug}`,
     lastmod: p.date,
     changefreq: 'monthly',
     priority: '0.7',
