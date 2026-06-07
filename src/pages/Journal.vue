@@ -1,11 +1,17 @@
 <template>
   <div class="page">
     <header class="blog-hero">
-      <h1>
-        <span class="the">The</span>
-        <span class="second">second</span>
-        <span class="brain">brain</span>
-      </h1>
+      <div class="hero-grid">
+        <h1>
+          <span class="the">The</span>
+          <span class="second">second</span>
+          <span class="brain">brain</span>
+        </h1>
+        <div class="editors-note">
+          <div class="note-kicker">Editor's note</div>
+          <p class="note-body">Notes on data engineering, infrastructure, and tools. Written when something is worth writing down.</p>
+        </div>
+      </div>
     </header>
 
     <div class="filter-bar">
@@ -108,7 +114,27 @@ const visible = computed(() =>
 .page { background: var(--bg); min-height: 100vh; font-family: var(--sans); }
 
 .blog-hero { padding: 48px clamp(24px, 5vw, 80px) 24px; }
-h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 1080px; margin-left: auto; margin-right: auto; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
+.note-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.note-body { font-family: var(--serif); font-size: 19px; line-height: 1.5; color: var(--fg); }
 .the {
   font-family: var(--serif);
   font-size: 100px;
@@ -275,6 +301,7 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 10
 }
 
 @media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .second { font-size: 130px; }
   .the, .brain { font-size: 64px; }
   .lead-title { font-size: 56px; }

@@ -8,7 +8,7 @@
           <span class="hello">Data Engineer</span>
         </h1>
         <div class="editors-note">
-          <div class="note-kicker">The short version</div>
+          <div class="note-kicker">About</div>
           <p class="note-body">
             Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded 2 Airflow instances before the IT Support hand me the ThinkPad.
           </p>
