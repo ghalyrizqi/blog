@@ -237,12 +237,10 @@ Try it. You have nothing to lose except your composure, which you were probably 
 ]
 
 export const STACK = [
-  { group: 'Languages', items: ['Python', 'SQL', 'Scala', 'R', 'Java'] },
-  { group: 'Orchestration', items: ['Apache Airflow', 'dbt', 'Cron', 'Jenkins'] },
-  { group: 'Warehouses', items: ['BigQuery', 'Redshift', 'DuckDB', 'Trino'] },
-  { group: 'Storage / OLTP', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'S3'] },
-  { group: 'Compute', items: ['Apache Spark', 'Apache Impala', 'AWS Lambda'] },
-  { group: 'Platform', items: ['Kubernetes', 'Docker', 'Linux', 'Bitbucket', 'Git'] },
+  { group: 'Languages',  items: ['Python', 'SQL', 'Scala', 'R'] },
+  { group: 'Pipelines',  items: ['Apache Airflow', 'dbt', 'Apache Spark', 'Apache Impala', 'AWS Lambda', 'Jenkins'] },
+  { group: 'Databases',  items: ['BigQuery', 'Redshift', 'DuckDB', 'Trino', 'PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'S3'] },
+  { group: 'Platform',   items: ['Kubernetes', 'Docker', 'Linux', 'Git'] },
 ]
 
 // ── Helpers ────────────────────────────────────────────────

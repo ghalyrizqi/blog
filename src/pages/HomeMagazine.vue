@@ -221,7 +221,7 @@ h1 {
 }
 .toolkit-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--line-soft);
   border: 1px solid var(--line-soft);
@@ -324,7 +324,6 @@ h1 {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .name { font-size: 130px; }
   .hello { font-size: 40px; }
-  .toolkit-grid { grid-template-columns: repeat(2, 1fr); }
   .dispatches-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
