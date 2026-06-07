@@ -111,7 +111,7 @@ const visible = computed(() =>
 h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 1080px; margin-left: auto; margin-right: auto; }
 .the {
   font-family: var(--serif);
-  font-size: 110px;
+  font-size: 100px;
   font-style: italic;
   color: var(--fg-muted);
   display: block;
@@ -119,16 +119,17 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 10
 }
 .second {
   font-family: var(--display);
-  font-size: 160px;
+  font-size: 220px;
   line-height: 0.85;
-  color: var(--fg-muted);
+  color: var(--fg);
   display: block;
 }
 .brain {
-  font-family: var(--display);
-  font-size: 240px;
-  line-height: 0.85;
+  font-family: var(--serif);
+  font-size: 100px;
+  font-style: italic;
   color: var(--fg);
+  letter-spacing: -0.03em;
   display: block;
 }
 
@@ -274,17 +275,15 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; max-width: 10
 }
 
 @media (max-width: 1024px) {
-  .second { font-size: 90px; }
-  .brain { font-size: 140px; }
-  .the { font-size: 64px; }
+  .second { font-size: 130px; }
+  .the, .brain { font-size: 64px; }
   .lead-title { font-size: 56px; }
   .lead-body { grid-template-columns: 1fr; gap: 32px; }
   .also-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .second { font-size: 56px; }
-  .brain { font-size: 80px; }
-  .the { font-size: 40px; }
+  .second { font-size: 80px; }
+  .the, .brain { font-size: 40px; }
   .lead-title { font-size: 36px; }
   .also-heading { font-size: 36px; }
   .filter-buttons { gap: 16px; font-size: 16px; }
