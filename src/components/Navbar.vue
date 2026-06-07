@@ -35,13 +35,13 @@ const { theme, toggle } = useTheme()
 <style scoped>
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .brand {
   font-family: var(--display);
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1;
   color: var(--fg);
   text-decoration: none;
@@ -52,7 +52,7 @@ const { theme, toggle } = useTheme()
 
 .right {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -65,12 +65,13 @@ const { theme, toggle } = useTheme()
 
 .display-char {
   font-family: var(--display);
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1;
   transition: color 0.15s var(--ease-out);
 }
 
 .mono-tail {
+  display: none;
   font-family: var(--mono);
   font-size: 18px;
   color: var(--fg-muted);
@@ -98,6 +99,24 @@ const { theme, toggle } = useTheme()
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+@media (min-width: 40rem) {
+  .navbar {
+    justify-content: space-between;
+  }
+  .right {
+    gap: 24px;
+  }
+  .mono-tail {
+    display: inline;
+  }
+  .brand {
+    font-size: 40px;
+  }
+  .display-char {
+    font-size: 40px;
+  }
 }
 
 /* Theme toggle */

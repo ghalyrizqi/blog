@@ -122,3 +122,13 @@ a {
   animation: pulse 1.6s ease-in-out infinite;
 }
 
+body {
+  padding-bottom: calc(var(--space-2xl) + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 40rem) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
