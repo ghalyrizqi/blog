@@ -12,6 +12,11 @@
           <p class="note-body">
             Every job and detour since 2019. I've built a lot of pipelines and broken more than I'd admit.
           </p>
+          <a
+            href="/Resume_Ghaly Rizqi Mauludin_June_2026.docx"
+            download
+            class="resume-btn"
+          >↓ Resume</a>
         </div>
       </div>
     </header>
@@ -163,6 +168,20 @@ h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
   border-bottom: 1px solid var(--line);
 }
 .note-body { font-family: var(--serif); font-size: 19px; line-height: 1.5; color: var(--fg); }
+.resume-btn {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  padding: 7px 14px;
+  text-decoration: none;
+  transition: background 0.15s var(--ease-out), color 0.15s var(--ease-out);
+}
+.resume-btn:hover { background: var(--fg); color: var(--bg); }
 
 /* Centerline */
 .centerline { position: relative; padding: 80px clamp(24px, 5vw, 80px) 120px; }
