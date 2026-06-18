@@ -15,8 +15,9 @@ export const TIMELINE = [
       'Upgraded Airflow from v2.10.4 to v3.1.6 on a live Kubernetes cluster.',
       'Migrated the metadata database without taking the scheduler offline.',
       'Went through 500+ DAGs across both instances removing deprecated operators one by one.',
+      'Introduced dbt Core on BigQuery, replacing stored procedures with staging and mart models.',
     ],
-    tags: ['Apache Airflow', 'Kubernetes', 'Python', 'PostgreSQL'],
+    tags: ['Apache Airflow', 'Kubernetes', 'Python', 'PostgreSQL', 'dbt', 'BigQuery'],
   },
   {
     id: 'lautan-2025',
