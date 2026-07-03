@@ -4,19 +4,22 @@
 
     <template v-if="post">
       <div class="post-hero">
-        <div class="post-kicker">
-          <span class="cat-chip">{{ postCat(post) }}</span>
-          <span class="dot-sep">·</span>
-          <span class="date-str">{{ fmtMonth(post.date.slice(0,7)) }}</span>
-          <span class="dot-sep">·</span>
-          <span class="mins-str">{{ post.minutes }} min read</span>
+        <PostPhoto :slug="post.slug" :title="post.title" />
+        <span class="post-sky-sun" />
+        <div class="post-hero-content">
+          <div class="post-kicker">
+            <span class="cat-chip">{{ postCat(post) }}</span>
+            <span class="dot-sep">·</span>
+            <span class="date-str">{{ fmtMonth(post.date.slice(0,7)) }}</span>
+            <span class="dot-sep">·</span>
+            <span class="mins-str">{{ post.minutes }} min read</span>
+          </div>
+          <h1 class="post-title">{{ post.title }}</h1>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          <div class="post-tags">
+            <span v-for="t in post.tags" :key="t" class="tag">{{ t }}</span>
+          </div>
         </div>
-        <h1 class="post-title">{{ post.title }}</h1>
-        <p class="post-excerpt">{{ post.excerpt }}</p>
-        <div class="post-tags">
-          <span v-for="t in post.tags" :key="t" class="tag">{{ t }}</span>
-        </div>
-        <div class="divider" />
       </div>
 
       <article class="post-article">
@@ -56,6 +59,7 @@ import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
 import ReadingProgress from '../components/ReadingProgress.vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
+import PostPhoto from '../components/PostPhoto.vue'
 import { getPost } from '../data/posts.js'
 import { fmtMonth, postCat } from '../data/index.js'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
@@ -96,6 +100,7 @@ marked.use({
 const post = computed(() => getPost(route.params.slug))
 const renderedContent = computed(() => post.value ? marked(post.value.content) : '')
 
+
 useSeoMeta(() => ({
   title: post.value?.title,
   description: post.value?.excerpt,
@@ -126,62 +131,91 @@ useSeoMeta(() => ({
 
 /* ── Hero ── */
 .post-hero {
+  position: relative;
   max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 0;
+  margin: 40px auto 0;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
+
+.post-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='8' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='1.7' diffuseConstant='1.1' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='57'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 360px 360px;
+  mix-blend-mode: soft-light;
+  opacity: 0.68;
+  z-index: 0;
+}
+
+.post-sky-sun {
+  position: absolute;
+  left: 50%;
+  bottom: -90px;
+  width: 360px;
+  height: 360px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.post-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(24px, 4vw, 44px);
+}
+
 .post-kicker {
   display: flex;
   align-items: center;
   gap: 10px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.cat-chip { color: var(--accent); }
-.dot-sep { color: var(--fg-subtle); }
+.cat-chip  { color: var(--accent); font-weight: 500; }
+.dot-sep   { color: var(--fg-subtle); }
 .date-str, .mins-str { color: var(--fg-muted); }
 
 .post-title {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 52px;
+  font-size: clamp(28px, 4vw, 48px);
   line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--fg);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   text-wrap: balance;
 }
 .post-excerpt {
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.5;
-  color: var(--fg-muted);
+  color: var(--fg);
   font-style: italic;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   text-wrap: pretty;
 }
 .post-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 40px;
 }
 .tag {
   font-family: var(--mono);
   font-size: 11px;
-  padding: 4px 10px;
-  border: 1px solid var(--line-soft);
+  padding: 3px 9px;
+  border: 1px solid var(--line);
   color: var(--fg-muted);
   border-radius: 99px;
-}
-.divider {
-  height: 1px;
-  background: var(--line-soft);
-  margin-bottom: 0;
 }
 
 /* ── Article body ── */
@@ -240,18 +274,10 @@ useSeoMeta(() => ({
   color: var(--fg-muted);
 }
 
-@media (max-width: 768px) {
-  .post-title { font-size: 42px; }
-  .post-excerpt { font-size: 20px; }
-}
-
 @media (max-width: 640px) {
-  .top-nav { padding: 20px 24px; }
-  .post-hero { padding: 48px 20px 0; }
+  .post-hero { margin-top: 24px; }
   .post-article { padding: 40px 20px 60px; }
   .post-end { padding: 0 20px 60px; }
-  .post-title { font-size: 36px; }
-  .post-excerpt { font-size: 18px; }
 }
 </style>
 
