@@ -1,81 +1,103 @@
 <template>
   <div class="page">
-    <header class="timeline-hero">
-      <div class="hero-grid">
-        <h1>
-          <span class="the">The</span>
-          <span class="career">career</span>
-          <span class="archive">archive.</span>
-        </h1>
-        <div class="editors-note">
-          <div class="note-label">Editor's note</div>
-          <p class="note-body">
-            Every job and detour since 2019. I've built a lot of pipelines and broken more than I'd admit.
-          </p>
-          <a
-            href="/Resume_Ghaly Rizqi Mauludin_June_2026.docx"
-            download
-            class="resume-btn"
-          >↓ Resume</a>
-        </div>
+
+    <!-- ── Nameplate ── -->
+    <header class="nameplate paper">
+      <div class="np-rule" />
+      <h1 class="np-title">
+        <span class="np-the">The</span>
+        {{ ' ' }}
+        <span class="np-career">Career</span>
+        {{ ' ' }}
+        <span class="np-archive">Archive</span>
+      </h1>
+      <div class="np-rule-thick" />
+      <div class="np-folio">
+        <span>{{ today }}</span>
       </div>
     </header>
 
-    <!-- Centerline body -->
-    <section class="centerline">
-      <div class="center-line" />
-      <div class="entries">
-        <template v-for="it in items" :key="it.key">
-          <div v-if="it.kind === 'year'" class="year-marker">
-            <div class="year-line" />
-            <div class="year-label">{{ it.year }}</div>
-          </div>
-          <div v-else class="entry-row" :class="it.side">
-            <div class="center-node" :style="{ borderColor: HYB_TYPE[it.entry.type].dot }" />
-            <div class="connector" :class="it.side" />
-            <div class="entry-card" :class="it.side">
-              <button class="toggle-btn" :class="it.side" @click="toggle(it.entry.id)">
-                {{ expanded.has(it.entry.id) ? '− Less' : '+ More' }}
-              </button>
-              <div class="card-header" :class="it.side">
-                <span class="type-dot" :style="{ background: HYB_TYPE[it.entry.type].dot }" />
-                <span class="type-label" :style="{ color: HYB_TYPE[it.entry.type].tone }">
-                  {{ HYB_TYPE[it.entry.type].label }}
-                </span>
-                <span class="meta-sep">·</span>
-                <span class="date-range">{{ fmtRange(it.entry.start, it.entry.end) }}</span>
-                <span class="meta-sep">·</span>
-                <span class="duration">{{ fmtDuration(it.entry.start, it.entry.end) }}</span>
-                <span v-if="it.entry.current" class="now-badge" :style="{ color: HYB_TYPE[it.entry.type].tone }">
-                  <span class="pulse now-dot" :style="{ background: HYB_TYPE[it.entry.type].dot }" />
-                  Now
-                </span>
-              </div>
-              <h3 class="entry-role">{{ it.entry.role }}</h3>
-              <div class="entry-org">
-                {{ it.entry.org }}
-                <span v-if="it.entry.orgNote" class="org-note"> · {{ it.entry.orgNote }}</span>
-                · <em>{{ it.entry.location }}</em>
-              </div>
-              <p class="entry-summary">{{ it.entry.summary }}</p>
-              <ul v-if="expanded.has(it.entry.id)" class="bullets">
-                <li v-for="(b, i) in it.entry.bullets" :key="i">
-                  <span class="bullet-arrow" :style="{ color: HYB_TYPE[it.entry.type].tone }">▸</span>
-                  <span>{{ b }}</span>
-                </li>
-              </ul>
-              <div class="entry-tags" :class="it.side">
-                <span v-for="t in it.entry.tags" :key="t" class="tag">{{ t }}</span>
-              </div>
-            </div>
-          </div>
-        </template>
-        <div class="origin">
-          <div class="origin-square" />
-          <div class="origin-label">↓ The beginning</div>
+    <!-- ── Hero sky ── -->
+    <section class="hero paper">
+      <div class="hero-sky">
+        <PostPhoto slug="timeline-hero" title="Sunrise over Jakarta" preset="abstract" />
+        <div class="hero-overlay">
+          <span class="hero-kicker">Sunrise over Jakarta — {{ today }}</span>
+          <p class="hero-lede">
+            Every job, internship, and detour since 2019 — painted as one sky per
+            chapter. Read it like a morning paper, and scroll back into the dark.
+          </p>
         </div>
       </div>
     </section>
+
+    <!-- ── Section head ── -->
+    <div class="section-head paper">
+      <span class="sh-mark" />
+      <span class="sh-text">The Archive — {{ TIMELINE.length }} skies, newest first</span>
+      <span class="sh-mark" />
+    </div>
+
+    <!-- ── Editions ── -->
+    <main class="editions paper">
+      <article
+        v-for="(entry, i) in TIMELINE"
+        :key="entry.id"
+        class="edition"
+        :class="{ 'edition-first': i === 0 }"
+      >
+        <!-- Left: sky plate -->
+        <figure class="sky-figure">
+          <div class="sky-window">
+            <PostPhoto :slug="entry.id" :title="entry.role" />
+            <div class="ed-overlay">
+              <div class="ed-furniture">
+                <span class="ed-cat">
+                  <span class="ed-dot" :style="{ background: TYPE[entry.type].tone }" />
+                  {{ TYPE[entry.type].label }}
+                </span>
+                <span class="ed-sep">·</span>
+                <span>{{ fmtRange(entry.start, entry.end) }}</span>
+                <span class="ed-sep">·</span>
+                <span>{{ fmtDuration(entry.start, entry.end) }}</span>
+                <span v-if="entry.current" class="ed-live">
+                  <span class="ed-livedot pulse" :style="{ background: TYPE[entry.type].tone }" />
+                  On the desk
+                </span>
+              </div>
+
+              <h2 class="ed-headline">{{ entry.role }}</h2>
+              <p class="ed-dek">
+                <span class="ed-org">{{ entry.org }}</span>
+                <span v-if="entry.orgNote" class="ed-note"> — {{ entry.orgNote }}</span>
+                <span class="ed-loc"> · {{ entry.location }}</span>
+              </p>
+            </div>
+          </div>
+        </figure>
+
+        <!-- Right: editorial body -->
+        <div class="ed-body">
+          <p class="ed-lede">{{ entry.summary }}</p>
+
+          <ul v-if="expanded.has(entry.id)" class="ed-bullets">
+            <li v-for="(b, bi) in entry.bullets" :key="bi">
+              <span class="ed-mark" :style="{ color: TYPE[entry.type].tone }">—</span>
+              <span>{{ b }}</span>
+            </li>
+          </ul>
+
+          <button class="ed-toggle" @click="toggle(entry.id)">
+            {{ expanded.has(entry.id) ? 'Close the report' : 'Read the full report' }}
+            <span class="ed-toggle-ic">{{ expanded.has(entry.id) ? '–' : '+' }}</span>
+          </button>
+
+          <div class="ed-tags">
+            <span v-for="t in entry.tags" :key="t" class="ed-tag">{{ t }}</span>
+          </div>
+        </div>
+      </article>
+    </main>
 
     <SignatureFooter variant="editorial" />
   </div>
@@ -84,6 +106,7 @@
 <script setup>
 import { ref } from 'vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
+import PostPhoto from '../components/PostPhoto.vue'
 import { TIMELINE, fmtRange, fmtDuration } from '../data/index.js'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
@@ -106,26 +129,16 @@ useSeoMeta({
   },
 })
 
-const HYB_TYPE = {
-  work:      { label: 'Work',      dot: 'var(--accent)',   tone: 'var(--accent)'   },
-  education: { label: 'Education', dot: 'var(--accent-3)', tone: 'var(--accent-3)' },
-  volunteer: { label: 'Volunteer', dot: 'var(--accent-2)', tone: 'var(--accent-2)' },
+const TYPE = {
+  work:      { label: 'Work',      tone: 'var(--accent)'   },
+  intern:    { label: 'Intern',    tone: 'var(--accent)'   },
+  education: { label: 'Undergraduate', tone: 'var(--accent-3)' },
+  volunteer: { label: 'Volunteer', tone: 'var(--accent-2)' },
 }
 
-// Build items list with year markers
-const items = (() => {
-  const out = []
-  let lastYear = null
-  let entryIdx = 0
-  TIMELINE.forEach(entry => {
-    const y = entry.start.split('-')[0]
-    if (y !== lastYear) { out.push({ kind: 'year', year: y, key: `y-${y}` }); lastYear = y }
-    const side = entryIdx % 2 === 0 ? 'right' : 'left'
-    out.push({ kind: 'entry', entry, key: entry.id, side })
-    entryIdx++
-  })
-  return out
-})()
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+})
 
 const expanded = ref(new Set([TIMELINE[0].id]))
 function toggle(id) {
@@ -136,251 +149,294 @@ function toggle(id) {
 </script>
 
 <style scoped>
-.page { background: var(--bg); min-height: 100vh; font-family: var(--sans); }
-
-.timeline-hero { padding: 48px clamp(24px, 5vw, 80px) 40px; }
-.hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end; max-width: 1080px; margin-left: auto; margin-right: auto; }
-h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
-.the {
-  font-family: var(--serif);
-  font-size: 100px;
-  font-style: italic;
-  color: var(--fg-muted);
-  display: block;
-  letter-spacing: -0.03em;
+/* ── Page tokens (aliased from project vars) ── */
+.page {
+  --ink:       var(--fg);
+  --ink-soft:  var(--fg-muted);
+  --ink-faint: var(--fg-subtle);
+  --rule:      var(--line);
+  --rule-soft: var(--line-soft);
+  background-color: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  transition: color 0.25s;
 }
-.career {
+
+/* ── Container ── */
+.paper {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
+}
+
+/* ── Nameplate ── */
+.nameplate { padding-top: 8px; text-align: center; }
+
+.np-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
+
+.np-rule-thick {
+  height: 0;
+  border-top: 4px double var(--rule);
+  margin-top: 6px;
+}
+
+
+.np-title {
+  font-size: clamp(42px, 8.6vw, 120px);
+  line-height: 1;
+  font-weight: 400;
+  margin: 8px 0 6px;
+  white-space: nowrap;
+}
+
+.np-the {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+}
+
+.np-career {
   font-family: var(--display);
-  font-size: 220px;
-  line-height: 0.85;
-  color: var(--fg);
+  color: var(--ink);
+}
+
+.np-archive {
+  font-family: var(--display);
+  color: var(--ink);
+}
+
+.np-folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+
+/* ── Hero sky ── */
+.hero { margin-top: 40px; }
+
+.hero-sky {
+  position: relative;
+  width: 100%;
+  height: clamp(140px, 16vw, 200px);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-overlay {
+  position: relative;
+  padding: clamp(24px, 4vw, 44px);
+  max-width: 680px;
+}
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
   display: block;
 }
-.archive { font-family: var(--serif); font-size: 100px; font-style: italic; color: var(--fg); letter-spacing: -0.03em; }
-.note-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.note-body { font-family: var(--serif); font-size: 19px; line-height: 1.5; color: var(--fg); }
-.resume-btn {
-  display: inline-block;
-  margin-top: 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg);
-  border: 1px solid var(--line);
-  padding: 7px 14px;
-  text-decoration: none;
-  transition: background 0.15s var(--ease-out), color 0.15s var(--ease-out);
-}
-.resume-btn:hover { background: var(--fg); color: var(--bg); }
 
-/* Centerline */
-.centerline { position: relative; padding: 80px clamp(24px, 5vw, 80px) 120px; }
-.center-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--line-soft);
-  transform: translateX(-0.5px);
-}
-.entries { display: flex; flex-direction: column; gap: 56px; position: relative; max-width: 1080px; margin-left: auto; margin-right: auto; }
-
-.year-marker { position: relative; height: 96px; display: flex; align-items: center; justify-content: center; }
-.year-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--line-soft);
-  transform: translateX(-0.5px);
-}
-.year-label {
-  background: var(--bg);
-  padding: 0 28px;
+.hero-lede {
   font-family: var(--serif);
-  font-size: 80px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--fg-muted);
-  letter-spacing: -0.03em;
-  position: relative;
-  line-height: 0.85;
+  font-size: clamp(19px, 2.3vw, 27px);
+  line-height: 1.42;
+  color: var(--ink);
+  margin-top: 14px;
+  text-wrap: pretty;
 }
 
-.entry-row { position: relative; }
-.center-node {
-  position: absolute;
-  left: 50%;
-  top: 28px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-.connector {
-  position: absolute;
-  top: 34px;
-  width: 42px;
-  height: 1px;
-  border-top: 1px dashed var(--line-soft);
-}
-.connector.right { left: calc(50% + 6px); }
-.connector.left  { right: calc(50% + 6px); }
 
-.entry-card {
-  width: calc(50% - 48px);
-  background: var(--paper);
-  border: 1px solid var(--line-soft);
-  padding: 28px;
-  position: relative;
-}
-.entry-card.right { margin-left: calc(50% + 48px); text-align: left; }
-.entry-card.left  { margin-left: 0; text-align: right; }
-
-.toggle-btn {
-  position: absolute;
-  top: 24px;
-  border: none;
-  background: transparent;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--fg-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: color 0.15s var(--ease-out);
-}
-.toggle-btn:hover,
-.toggle-btn:focus-visible { color: var(--accent); }
-.toggle-btn.right { right: 24px; }
-.toggle-btn.left  { left: 24px; }
-
-.card-header {
+/* ── Section head ── */
+.section-head {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 18px;
+  margin: 64px 0 8px;
+}
+
+.sh-mark { flex: 1; height: 1px; background: var(--rule-soft); }
+
+.sh-text {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
+  color: var(--ink-soft);
+  white-space: nowrap;
 }
-.card-header.left { justify-content: flex-end; }
-.type-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-.type-label { display: inline-flex; align-items: center; gap: 6px; }
-.meta-sep { color: var(--fg-subtle); }
-.date-range, .duration { color: var(--fg-muted); }
-.now-badge { display: inline-flex; align-items: center; gap: 5px; margin-left: 4px; }
-.now-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
 
-.entry-role { font-family: var(--serif); font-weight: 500; font-size: 28px; line-height: 1.15; margin-bottom: 6px; }
-.entry-org { font-size: 15px; color: var(--fg-muted); margin-bottom: 16px; }
-.org-note { color: var(--fg-subtle); }
-.entry-summary { font-family: var(--serif); font-size: 17px; line-height: 1.55; color: var(--fg); text-wrap: pretty; }
+/* ── Crease / newsprint texture (all sky panels) ── */
+.sky-window::before,
+.hero-sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='8' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='1.7' diffuseConstant='1.1' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='57'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 360px 360px;
+  mix-blend-mode: soft-light;
+  opacity: 0.68;
+}
 
-.bullets { list-style: none; margin: 18px 0 0; font-size: 14px; line-height: 1.6; color: var(--fg-muted); text-align: left; }
-.bullets li { display: flex; gap: 10px; margin-bottom: 6px; }
-.bullet-arrow { margin-top: 7px; }
+/* ── Editions ── */
+.editions { display: flex; flex-direction: column; }
 
-.entry-tags {
+.edition {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  padding: 52px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.edition-first { border-top: none; }
+
+/* Sky plate */
+.sky-figure { margin: 0; }
+
+.sky-window {
+  position: relative;
+  height: 190px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.ed-overlay {
+  position: relative;
+  z-index: 1;
+  padding: clamp(14px, 2vw, 20px);
+  color: #fff;
+}
+
+
+/* Editorial body */
+.ed-body { padding-top: 4px; }
+
+.ed-furniture {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ed-cat { display: inline-flex; align-items: center; gap: 7px; font-weight: 500; }
+.ed-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.ed-live { display: inline-flex; align-items: center; gap: 6px; margin-left: 2px; }
+.ed-livedot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+.ed-headline {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+  text-wrap: balance;
+}
+
+.ed-dek {
+  font-family: var(--serif);
+  font-size: 15px;
+}
+.ed-org { font-weight: 600; }
+.ed-note { font-style: italic; }
+.ed-loc { font-style: italic; }
+
+.ed-lede {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.ed-bullets {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  max-width: 60ch;
+}
+
+.ed-bullets li {
+  display: flex;
+  gap: 12px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  padding: 7px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.ed-bullets li:first-child { border-top: none; }
+.ed-mark { flex-shrink: 0; }
+
+.ed-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  background: none;
+  border: none;
+  padding: 0 0 3px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+.ed-toggle:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
+.ed-toggle-ic { font-size: 14px; line-height: 1; }
+
+.ed-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px dashed var(--line-soft);
+  gap: 7px;
+  margin-top: 24px;
 }
-.entry-tags.left { justify-content: flex-end; }
-.tag {
+
+.ed-tag {
   font-family: var(--mono);
   font-size: 11px;
-  padding: 3px 8px;
-  border: 1px solid var(--line-soft);
-  color: var(--fg-muted);
-  border-radius: 2px;
+  letter-spacing: 0.02em;
+  padding: 4px 9px;
+  border: 1px solid var(--rule-soft);
+  color: var(--ink-soft);
 }
 
-.origin { position: relative; text-align: center; padding-top: 24px; }
-.origin-square {
-  position: absolute;
-  left: 50%;
-  top: 24px;
-  width: 10px;
-  height: 10px;
-  transform: translateX(-50%) rotate(45deg);
-  background: var(--fg);
-}
-.origin-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-  margin-top: 28px;
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .edition { grid-template-columns: 1fr; gap: 24px; }
+  .sky-window { height: 170px; }
 }
 
-@media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .career { font-size: 130px; }
-  .the, .archive { font-size: 64px; }
-
-  /* Drop the center-axis decorations — they don't work in single column */
-  .center-line, .center-node, .connector, .year-line { display: none; }
-
-  /* Left-rail: entries left border acts as the timeline spine */
-  .entries {
-    border-left: 1px solid var(--line-soft);
-    padding-left: 32px;
-    gap: 0;
-  }
-
-  .year-marker { height: auto; justify-content: flex-start; padding: 8px 0 20px; }
-  .year-label { padding: 0; }
-
-  .entry-row { padding-bottom: 40px; }
-
-  /* All cards full-width, left-aligned */
-  .entry-card { width: 100% !important; margin-left: 0 !important; text-align: left !important; }
-  .card-header.left { justify-content: flex-start; }
-  .entry-tags.left { justify-content: flex-start; }
-  .bullets { text-align: left; }
-
-  /* Take toggle-btn out of absolute so it doesn't overlap card-header on mobile */
-  .toggle-btn {
-    position: static;
-    display: block;
-    margin-left: auto;
-    padding-bottom: 12px;
-  }
-  .toggle-btn.right,
-  .toggle-btn.left { right: auto; left: auto; }
-
-  .origin { text-align: left; }
-  .origin-square { display: none; }
-  .origin-label { margin-top: 0; }
-}
-
-@media (max-width: 640px) {
-  .career { font-size: 80px; }
-  .the, .archive { font-size: 40px; }
-  .year-label { font-size: 40px; }
-  .entry-role { font-size: 22px; }
-  .entries { padding-left: 20px; }
-  .entry-card { padding: 20px; }
+@media (max-width: 600px) {
+  .np-folio { font-size: 9px; gap: 8px; }
 }
 </style>

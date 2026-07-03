@@ -1,22 +1,34 @@
 <template>
   <div class="page">
-    <header class="blog-hero">
-      <div class="hero-grid">
-        <h1>
-          <span class="the">The</span>
-          <span class="second">second</span>
-          <span class="brain">brain</span>
-        </h1>
-        <div class="editors-note">
-          <div class="note-kicker">Editor's note</div>
-          <p class="note-body">Notes on data engineering, infrastructure, and tools. Written when something is worth writing down.</p>
-        </div>
+
+    <!-- ── Nameplate ── -->
+    <header class="nameplate paper">
+      <div class="np-rule" />
+      <h1 class="np-title">
+        <span class="np-the">The</span>
+        {{ ' ' }}
+        <span class="np-second">Second</span>
+        {{ ' ' }}
+        <span class="np-brain">Brain</span>
+      </h1>
+      <div class="np-rule-thick" />
+      <div class="np-folio">
+        <span>{{ BLOG_POSTS.length }} dispatches</span>
+        <span>{{ today }}</span>
       </div>
     </header>
 
-    <div class="filter-bar">
-      <div class="filter-inner">
-        <span class="filter-kicker">Section</span>
+    <!-- ── Hero sky ── -->
+    <section class="hero paper">
+      <div class="hero-sky">
+        <PostPhoto slug="journal-hero" title="Editor's note" preset="abstract" />
+        <div class="hero-overlay">
+          <span class="hero-kicker">Editor's note</span>
+          <p class="hero-lede">Notes on data engineering, infrastructure, and tools. Written when something is worth writing down.</p>
+        </div>
+      </div>
+      <div class="hero-foot">
+        <span class="contents-label">Section</span>
         <div class="filter-buttons">
           <button
             v-for="f in FILTERS"
@@ -27,54 +39,46 @@
         </div>
         <span class="filter-count">{{ visible.length }} of {{ BLOG_POSTS.length }}</span>
       </div>
+    </section>
+
+    <!-- ── Section head ── -->
+    <div class="section-head paper">
+      <span class="sh-mark" />
+      <span class="sh-text">The Dispatch — {{ visible.length }} pieces, newest first</span>
+      <span class="sh-mark" />
     </div>
 
-    <section v-if="visible.length > 0" class="lead-section">
-      <div class="lead-inner">
-        <div class="lead-kicker">Lead piece · {{ fmtMonth(visible[0].date.slice(0,7)) }}</div>
-        <router-link :to="`/journal/${visible[0].slug}`">
-          <h2 class="lead-title">{{ visible[0].title }}</h2>
-        </router-link>
-        <div class="lead-body">
-          <p class="lead-excerpt">{{ visible[0].excerpt }}</p>
-          <div class="lead-meta">
-            <div class="filed-label">Filed under</div>
-            <div class="filed-cat">{{ postCat(visible[0]) }} · {{ visible[0].minutes }} min read</div>
-            <div class="lead-tags">
-              <span v-for="t in visible[0].tags" :key="t" class="tag">{{ t }}</span>
+    <!-- ── Post editions ── -->
+    <main class="editions paper">
+      <article
+        v-for="(post, i) in visible"
+        :key="post.slug"
+        class="edition"
+        :class="{ 'edition-first': i === 0 }"
+      >
+        <router-link :to="`/journal/${post.slug}`" class="edition-card">
+          <div class="sky-window">
+            <PostPhoto :slug="post.slug" :title="post.title" />
+            <span class="sky-sun" />
+            <div class="ed-body">
+              <div class="ed-furniture">
+                <span class="ed-cat">{{ postCat(post) }}</span>
+                <span class="ed-sep">·</span>
+                <span>{{ fmtMonth(post.date.slice(0, 7)) }}</span>
+                <span class="ed-sep">·</span>
+                <span>{{ post.minutes }} min read</span>
+                <span v-if="post.placeholder" class="ed-draft">Draft</span>
+              </div>
+              <h2 class="ed-headline">{{ post.title }}</h2>
+              <p class="ed-lede">{{ post.excerpt }}</p>
+              <div class="ed-tags">
+                <span v-for="t in post.tags" :key="t" class="ed-tag">{{ t }}</span>
+              </div>
             </div>
-            <div v-if="visible[0].placeholder" class="placeholder-note">● Example layout — swap with real post</div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="also-section">
-      <div class="also-header">
-        <h2 class="also-heading">Also inside.</h2>
-        <div class="also-count">{{ Math.max(visible.length - 1, 0) }} more piece{{ visible.length - 1 !== 1 ? 's' : '' }}</div>
-      </div>
-      <div class="also-grid">
-        <article v-for="p in visible.slice(1)" :key="p.slug" class="also-card">
-          <div class="card-meta">
-            <span>{{ fmtMonth(p.date.slice(0,7)) }}</span>
-            <span>·</span>
-            <span class="cat-accent">{{ postCat(p) }}</span>
-            <span>·</span>
-            <span>{{ p.minutes }} min</span>
-            <span v-if="p.placeholder" class="draft">Draft</span>
-          </div>
-          <router-link :to="`/journal/${p.slug}`">
-            <h3 class="card-title">{{ p.title }}</h3>
-          </router-link>
-          <p class="card-excerpt">{{ p.excerpt }}</p>
-        </article>
-      </div>
-    </section>
-
-    <div class="prefooter">
-      <span>↳ Archive runs {{ BLOG_POSTS.length }} pieces deep</span>
-    </div>
+        </router-link>
+      </article>
+    </main>
 
     <SignatureFooter variant="magazine" />
   </div>
@@ -83,6 +87,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
+import PostPhoto from '../components/PostPhoto.vue'
 import { fmtMonth, postCat } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
@@ -108,211 +113,288 @@ const filter = ref('All')
 const visible = computed(() =>
   filter.value === 'All' ? BLOG_POSTS : BLOG_POSTS.filter(p => postCat(p) === filter.value)
 )
+
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+})
 </script>
 
 <style scoped>
-.page { background: var(--bg); min-height: 100vh; font-family: var(--sans); }
+/* ── Page tokens ── */
+.page {
+  --ink:       var(--fg);
+  --ink-soft:  var(--fg-muted);
+  --ink-faint: var(--fg-subtle);
+  --rule:      var(--line);
+  --rule-soft: var(--line-soft);
+  background-color: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  transition: color 0.25s;
+}
 
-.blog-hero { padding: 48px clamp(24px, 5vw, 80px) 24px; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
-  align-items: end;
-  max-width: 1080px;
+/* ── Container ── */
+.paper {
+  max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
 }
-h1 { font-weight: 400; line-height: 0.85; letter-spacing: -0.02em; }
-.note-kicker {
+
+/* ── Nameplate ── */
+.nameplate { padding-top: 8px; text-align: center; }
+
+.np-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
+
+.np-rule-thick {
+  height: 0;
+  border-top: 4px double var(--rule);
+  margin-top: 6px;
+}
+
+.np-title {
+  font-weight: 400;
+  font-size: clamp(42px, 8.6vw, 120px);
+  line-height: 1;
+  margin: 8px 0 6px;
+  white-space: nowrap;
+}
+
+.np-the   { font-family: var(--serif); font-style: italic; color: var(--ink-soft); letter-spacing: -0.01em; }
+.np-second { font-family: var(--display); color: var(--ink); }
+.np-brain { font-family: var(--display); color: var(--ink); }
+
+.np-folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+
+/* ── Hero sky ── */
+.hero { margin-top: 40px; }
+
+.hero-sky {
+  position: relative;
+  width: 100%;
+  height: clamp(140px, 16vw, 200px);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-overlay {
+  position: relative;
+  padding: clamp(20px, 3vw, 36px);
+  max-width: 640px;
+}
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.note-body { font-family: var(--serif); font-size: 19px; line-height: 1.5; color: var(--fg); }
-.the {
-  font-family: var(--serif);
-  font-size: 100px;
-  font-style: italic;
-  color: var(--fg-muted);
-  display: block;
-  letter-spacing: -0.03em;
-}
-.second {
-  font-family: var(--display);
-  font-size: 220px;
-  line-height: 0.85;
-  color: var(--fg);
-  display: block;
-}
-.brain {
-  font-family: var(--serif);
-  font-size: 100px;
-  font-style: italic;
-  color: var(--fg);
-  letter-spacing: -0.03em;
   display: block;
 }
 
-.filter-bar {
-  padding: 24px clamp(24px, 5vw, 80px);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.hero-lede {
+  font-family: var(--serif);
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.42;
+  color: var(--fg);
+  margin-top: 10px;
+  text-wrap: pretty;
 }
-.filter-inner {
+
+.hero-foot {
   display: flex;
   align-items: center;
-  gap: 24px;
-  max-width: 1080px;
-  margin: 0 auto;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
 }
-.filter-kicker {
+
+.contents-label {
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--fg-muted);
+  color: var(--ink-faint);
+  white-space: nowrap;
 }
-.filter-buttons { display: flex; gap: 24px; font-family: var(--serif); font-size: 19px; }
+
+.filter-buttons { display: flex; gap: 20px; }
+
 .filter-buttons button {
   border: none;
   background: transparent;
-  font-family: inherit;
-  font-size: inherit;
-  color: var(--fg-muted);
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--ink-soft);
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
+  cursor: pointer;
+  transition: color 0.15s var(--ease-out);
 }
+
 .filter-buttons button.active {
-  color: var(--fg);
+  color: var(--ink);
   font-style: italic;
-  border-bottom-color: var(--fg);
+  border-bottom-color: var(--ink);
 }
+
 .filter-count {
   margin-left: auto;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--fg-muted);
+  color: var(--ink-faint);
 }
 
-.lead-section { padding: 64px clamp(24px, 5vw, 80px); border-bottom: 1px solid var(--line); }
-.lead-inner { max-width: 1080px; margin-left: auto; margin-right: auto; }
-.lead-kicker {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-.lead-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 88px;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-  text-wrap: balance;
-  color: var(--fg);
-  display: block;
-  transition: color 0.15s var(--ease-out);
-}
-.lead-title:hover,
-.lead-title:focus-visible { color: var(--accent); }
-.lead-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
-.lead-excerpt {
-  font-family: var(--serif);
-  font-size: 22px;
-  line-height: 1.45;
-  color: var(--fg);
-  text-wrap: pretty;
-  font-style: italic;
-}
-.filed-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-.filed-cat { font-family: var(--serif); font-size: 18px; color: var(--fg); margin-bottom: 14px; }
-.lead-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  padding: 3px 9px;
-  border: 1px solid var(--line-soft);
-  color: var(--fg-muted);
-  border-radius: 99px;
-}
-.placeholder-note { font-family: var(--mono); font-size: 11px; color: var(--accent); }
-
-.also-section { padding: 64px clamp(24px, 5vw, 80px); }
-.also-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; max-width: 1080px; margin-left: auto; margin-right: auto; }
-.also-heading { font-family: var(--serif); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.02em; }
-.also-count { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--fg-muted); }
-.also-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 1080px; margin-left: auto; margin-right: auto; }
-.also-card { border-top: 2px solid var(--fg); padding-top: 16px; }
-.card-meta {
+/* ── Section head ── */
+.section-head {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 18px;
+  margin: 56px 0 8px;
+}
+
+.sh-mark { flex: 1; height: 1px; background: var(--rule-soft); }
+
+.sh-text {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ── Crease / newsprint texture ── */
+.sky-window::before,
+.hero-sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='8' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='1.7' diffuseConstant='1.1' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='57'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 360px 360px;
+  mix-blend-mode: soft-light;
+  opacity: 0.68;
+}
+
+/* ── Editions ── */
+.editions { display: flex; flex-direction: column; }
+
+.edition {
+  padding: 44px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.edition-first { border-top: none; }
+
+.edition-card {
+  display: block;
+  text-decoration: none;
+}
+
+.sky-window {
+  position: relative;
+  min-height: 280px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sky-sun {
+  position: absolute;
+  left: 50%;
+  bottom: calc(28% - 70px);
+  width: 140px;
+  height: 140px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+/* Editorial body overlaid on canvas */
+.ed-body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: clamp(20px, 3vw, 36px);
+}
+
+.ed-furniture {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-muted);
   margin-bottom: 14px;
 }
-.cat-accent { color: var(--accent); }
-.draft { margin-left: auto; color: var(--accent); }
-.card-title {
+
+.ed-cat   { color: var(--accent); font-weight: 500; }
+.ed-sep   { color: var(--fg-subtle); }
+.ed-draft { color: var(--accent); margin-left: auto; }
+
+.ed-headline {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 30px;
+  font-size: clamp(22px, 2.8vw, 34px);
   line-height: 1.1;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-  display: block;
+  letter-spacing: -0.015em;
   color: var(--fg);
+  margin-bottom: 10px;
+  text-wrap: balance;
+  display: block;
   transition: color 0.15s var(--ease-out);
 }
-.card-title:hover,
-.card-title:focus-visible { color: var(--accent); }
-.card-excerpt { font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--fg-muted); text-wrap: pretty; }
 
-.prefooter {
+
+.ed-lede {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+}
+
+.ed-tags {
   display: flex;
-  justify-content: space-between;
-  padding: 24px clamp(24px, 5vw, 80px);
-  border-top: 1px solid var(--line-soft);
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.ed-tag {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--line-soft);
   color: var(--fg-muted);
 }
 
-@media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .second { font-size: 130px; }
-  .the, .brain { font-size: 64px; }
-  .lead-title { font-size: 56px; }
-  .lead-body { grid-template-columns: 1fr; gap: 32px; }
-  .also-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  .second { font-size: 80px; }
-  .the, .brain { font-size: 40px; }
-  .lead-title { font-size: 36px; }
-  .also-heading { font-size: 36px; }
-  .filter-buttons { gap: 16px; font-size: 16px; }
+@media (max-width: 600px) {
+  .np-title { white-space: normal; }
+  .np-folio { font-size: 9px; gap: 8px; }
+  .hero-lede { font-size: 16px; }
+  .sky-window { min-height: 220px; }
 }
 </style>

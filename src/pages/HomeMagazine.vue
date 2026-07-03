@@ -1,59 +1,95 @@
 <template>
   <div class="page">
-    <header class="hero-header">
-      <div class="hero-grid">
-        <h1>
-          <span class="hello">Hello, I'm</span>
-          <span class="name">Ghaly</span>
-          <span class="hello">Data Engineer</span>
-        </h1>
-        <div class="editors-note">
-          <div class="note-kicker">About</div>
-          <p class="note-body">
-            Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded 2 Airflow instances before the IT Support hand me the ThinkPad.
+
+    <!-- ── Nameplate ── -->
+    <header class="nameplate paper">
+      <div class="np-rule" />
+      <div class="np-overline">
+        <span>Jakarta · Indonesia</span>
+      </div>
+
+      <div class="home-hero-grid">
+        <div class="home-name">
+          <span class="hn-hello">Hello, I'm</span>
+          <span class="hn-name">Ghaly</span>
+          <span class="hn-role">— Data Engineer</span>
+        </div>
+        <div class="home-about">
+          <div class="np-kicker">About</div>
+          <p class="home-aboutbody">
+            Builds data pipelines on weekdays. Checks if they're still running on
+            weekends. Upgraded two Airflow instances before IT Support could hand
+            back the ThinkPad.
           </p>
+          <a class="resume-link" href="/GhalyRizqiMauludin-Resume.pdf" download>↓ Résumé</a>
         </div>
       </div>
 
-      <div class="stats-row">
-        <div v-for="s in stats" :key="s.label" class="stat">
-          <div class="stat-num">{{ s.num }}</div>
-          <div class="stat-label">{{ s.label }}</div>
-          <div class="stat-sub">{{ s.sub }}</div>
-        </div>
+      <div class="np-rule-thick" />
+      <div class="np-folio">
+        <span>Vol. VII · No. 23</span>
+        <span>{{ today }}</span>
+        <span>Late Edition</span>
       </div>
     </header>
 
-    <section class="toolkit-section">
-      <div class="toolkit-top">
-        <h2 class="toolkit-heading">The toolkit</h2>
-        <div class="toolkit-meta">{{ totalTools }} tools, {{ STACK.length }} categories.</div>
+    <!-- ── Stats ── -->
+    <section class="home-stats paper">
+      <div v-for="s in stats" :key="s.label" class="stat">
+        <div class="stat-num">{{ s.num }}</div>
+        <div class="stat-label">{{ s.label }}</div>
+        <div class="stat-sub">{{ s.sub }}</div>
+      </div>
+    </section>
+
+    <!-- ── Toolkit ── -->
+    <section class="home-section paper">
+      <div class="section-head">
+        <span class="sh-text">The Toolkit — {{ totalTools }} tools, {{ STACK.length }} categories</span>
+        <span class="sh-mark" />
       </div>
       <div class="toolkit-grid">
         <div v-for="g in STACK" :key="g.group" class="toolkit-card">
+          <div class="tk-stripe">
+            <Dithering
+              color-back="#00000000"
+              color-front="var(--accent)"
+              shape="swirl"
+              type="8x8"
+              :size="2"
+              :speed="1"
+            />
+          </div>
           <div class="toolkit-label">{{ g.group }}</div>
           <div class="toolkit-items">{{ g.items.join(' · ') }}</div>
         </div>
       </div>
     </section>
 
-    <section class="dispatches-section">
-      <div class="dispatches-top">
-        <h2 class="dispatches-heading">Latest <em>dispatches</em>.</h2>
-        <router-link to="/journal" class="all-link">All posts →</router-link>
+    <!-- ── Dispatches ── -->
+    <section class="home-section home-section-last paper">
+      <div class="section-head">
+        <span class="sh-text">Latest Dispatches</span>
+        <span class="sh-mark" />
+        <router-link to="/journal" class="sh-link">All posts →</router-link>
       </div>
-      <div class="dispatches-grid">
+      <div class="dispatch-grid">
         <article v-for="p in recent" :key="p.slug" class="dispatch-card">
-          <div class="card-meta">
-            <span>{{ fmtMonth(p.date.slice(0,7)) }}</span>
-            <span class="sep">·</span>
-            <span>{{ p.minutes }} min read</span>
-            <span v-if="p.placeholder" class="draft">Draft</span>
-          </div>
-          <router-link :to="`/journal/${p.slug}`">
-            <h3 class="card-title">{{ p.title }}</h3>
-          </router-link>
-          <p class="card-excerpt">{{ p.excerpt }}</p>
+          <figure class="sky-figure">
+            <div class="sky-window">
+              <PostPhoto :slug="p.slug" :title="p.title" />
+              <div class="dispatch-overlay">
+                <router-link :to="`/journal/${p.slug}`" class="dispatch-titlelink">
+                  <h3 class="dispatch-title">{{ p.title }}</h3>
+                </router-link>
+                <p class="dispatch-excerpt">{{ p.excerpt }}</p>
+              </div>
+            </div>
+            <figcaption class="sky-caption">
+              <span class="sky-fig">{{ fmtMonth(p.date.slice(0, 7)) }} · {{ p.minutes }} min</span>
+            </figcaption>
+          </figure>
+          <span v-if="p.placeholder" class="draft-tag">● Example</span>
         </article>
       </div>
     </section>
@@ -64,13 +100,15 @@
 
 <script setup>
 import SignatureFooter from '../components/SignatureFooter.vue'
+import PostPhoto from '../components/PostPhoto.vue'
+import Dithering from '../components/Dithering.vue'
 import { STACK, fmtMonth } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
 
 useSeoMeta({
   title: null,
-  description: 'Builds data pipelines on weekdays. Checks if they\'re still running on weekends. Upgraded 2 Airflow instances before the IT Support hand me the ThinkPad.',
+  description: "Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded two Airflow instances before IT Support could hand back the ThinkPad.",
   url: SITE_URL,
   jsonLd: {
     '@context': 'https://schema.org',
@@ -83,258 +121,375 @@ useSeoMeta({
   },
 })
 
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+})
+
 const recent = POSTS.slice(0, 3)
 const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)
 
 const stats = [
-  { num: '77%',  label: 'warehouse cost cut',  sub: 'one DuckDB box replaced Redshift' },
-  { num: '500+', label: 'DAGs migrated',        sub: 'Airflow v2 → v3, two instances' },
-  { num: '4+',   label: 'years experience',      sub: 'as a Data Engineer' },
+  { num: '77%',  label: 'warehouse cost cut', sub: 'one DuckDB box replaced Redshift' },
+  { num: '500+', label: 'DAGs migrated',       sub: 'Airflow v2 → v3, two instances'  },
+  { num: '4+',   label: 'years experience',    sub: 'as a Data Engineer'               },
 ]
 </script>
 
 <style scoped>
-.page { background: var(--bg); min-height: 100vh; font-family: var(--sans); }
+/* ── Page shell ── */
+.page { background: var(--bg); min-height: 100vh; }
 
-/* ── Hero ── */
-.hero-header {
-  padding: 48px clamp(24px, 5vw, 80px) 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
-  align-items: end;
-  margin-bottom: 48px;
-  max-width: 1080px;
+.paper {
+  max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
 }
 
-h1 {
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.hello {
-  font-family: var(--serif);
-  font-size: 56px;
-  font-style: italic;
-  color: var(--fg-muted);
-  display: block;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-.name {
-  font-family: var(--display);
-  font-size: 200px;
-  line-height: 0.88;
-  color: var(--accent);
-  display: block;
+/* ── Nameplate ── */
+.nameplate { padding-top: 8px; }
+
+.np-rule {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 12px;
 }
 
-.note-kicker {
+.np-rule-thick {
+  height: 0;
+  border-top: 4px double var(--line);
+  margin-top: 4px;
+}
+
+.np-overline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.np-folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+
+/* ── Hero grid ── */
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: end;
+  margin: 22px 0 28px;
+}
+
+.home-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.hn-hello {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(28px, 3.4vw, 46px);
+  color: var(--fg-muted);
+  letter-spacing: -0.02em;
+}
+
+.hn-name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(96px, 17vw, 228px);
+  line-height: 0.86;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+
+.hn-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(26px, 3.2vw, 44px);
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.np-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-muted);
   margin-bottom: 14px;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--line);
+  display: inline-block;
 }
-.note-body {
+
+.home-aboutbody {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: clamp(17px, 1.6vw, 21px);
   line-height: 1.55;
   color: var(--fg);
   text-wrap: pretty;
 }
 
-.stats-row {
+.resume-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-top: 18px;
+  display: inline-block;
+  transition: background 0.18s var(--ease-out), color 0.18s var(--ease-out);
+}
+.resume-link:hover { background: var(--fg); color: var(--bg); }
+
+/* ── Sky card thumbnails (dispatch cards) ── */
+.sky-figure { margin: 0; }
+
+.sky-window {
+  position: relative;
+  height: 240px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.dispatch-overlay {
+  position: relative;
+  z-index: 1;
+  padding: clamp(14px, 2vw, 20px);
+}
+
+.sky-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(177deg, transparent 48.6%, rgba(0,0,0,0.05) 49.6%, rgba(255,255,255,0.13) 50.6%, transparent 51.6%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='8' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='1.7' diffuseConstant='1.1' lighting-color='%23ffffff'%3E%3CfeDistantLight azimuth='225' elevation='57'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 360px 360px;
+  mix-blend-mode: soft-light;
+  opacity: 0.68;
+}
+
+.sky-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.sky-fig {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+/* ── Stats ── */
+.home-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line-soft);
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 44px;
 }
+
 .stat {
-  padding: 28px 0;
+  padding: 28px 24px 28px 0;
   border-right: 1px solid var(--line-soft);
 }
 .stat:last-child { border-right: none; }
+
 .stat-num {
   font-family: var(--serif);
-  font-size: 80px;
+  font-weight: 500;
+  font-size: clamp(56px, 8.5vw, 108px);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
+
 .stat-label {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg);
-  margin-top: 10px;
-  margin-bottom: 4px;
-}
-.stat-sub {
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--fg-muted);
-  font-style: italic;
+  margin: 12px 0 4px;
 }
 
-/* ── Toolkit ── */
-.toolkit-section {
-  padding: 48px clamp(24px, 5vw, 80px);
-  border-bottom: 1px solid var(--line);
-}
-.toolkit-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 32px;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.toolkit-heading {
+.stat-sub {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.toolkit-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-style: italic;
+  font-size: 15px;
   color: var(--fg-muted);
 }
+
+/* ── Section head ── */
+.home-section { margin-top: 64px; }
+.home-section-last { padding-bottom: 64px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.sh-mark {
+  flex: 1;
+  height: 1px;
+  background: var(--line-soft);
+}
+
+.sh-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.sh-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fg);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+.sh-link:hover { color: var(--fg-muted); border-color: var(--fg-muted); }
+
+/* ── Toolkit ── */
 .toolkit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line-soft);
   border: 1px solid var(--line-soft);
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
 }
+
 .toolkit-card {
   background: var(--paper);
-  padding: 28px 24px;
+  padding: 24px 22px 26px;
+  position: relative;
 }
+
+.tk-stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 5px;
+  display: block;
+}
+
 .toolkit-label {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin: 6px 0 12px;
 }
+
 .toolkit-items {
   font-family: var(--serif);
   font-size: 18px;
   line-height: 1.6;
   color: var(--fg);
-}
-
-/* ── Dispatches ── */
-.dispatches-section { padding: 64px clamp(24px, 5vw, 80px); }
-.dispatches-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 32px;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.dispatches-heading {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.all-link {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--fg-muted);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 1px;
-  transition: color 0.15s var(--ease-out);
-}
-.all-link:hover,
-.all-link:focus-visible { color: var(--accent); }
-
-.dispatches-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.dispatch-card { border-top: 2px solid var(--fg); padding-top: 20px; }
-.card-meta {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 16px;
-}
-.sep { color: var(--fg-subtle); }
-.draft { margin-left: auto; color: var(--accent); }
-.card-title {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 1.15;
-  margin-bottom: 12px;
-  display: block;
-  color: var(--fg);
-  transition: color 0.15s var(--ease-out);
-}
-.card-title:hover,
-.card-title:focus-visible { color: var(--accent); }
-.card-excerpt {
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--fg-muted);
   text-wrap: pretty;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .name { font-size: 130px; }
-  .hello { font-size: 40px; }
-  .dispatches-grid { grid-template-columns: repeat(2, 1fr); }
+/* ── Dispatches ── */
+.dispatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 36px);
 }
-@media (max-width: 640px) {
-  .name { font-size: 80px; }
-  .hello { font-size: 28px; }
-  .at-work { font-size: 36px; }
-  .stat-num { font-size: 56px; }
-  .stats-row { grid-template-columns: 1fr; }
-  .stat { border-right: none; border-bottom: 1px solid var(--line-soft); }
+
+.dispatch-card { display: flex; flex-direction: column; }
+
+.dispatch-titlelink { text-decoration: none; }
+
+.dispatch-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 8px;
+  transition: color 0.15s var(--ease-out);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.dispatch-titlelink:hover .dispatch-title { color: var(--accent); }
+
+.dispatch-excerpt {
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+  text-wrap: pretty;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.draft-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 980px) {
+  .home-hero-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
+  .toolkit-grid { grid-template-columns: 1fr 1fr; }
+  .dispatch-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .home-stats { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--line-soft); padding-right: 0; }
   .toolkit-grid { grid-template-columns: 1fr; }
-  .dispatches-grid { grid-template-columns: 1fr; }
-  .toolkit-heading, .dispatches-heading { font-size: 40px; }
+  .np-overline, .np-folio { font-size: 9px; gap: 8px; }
 }
 </style>

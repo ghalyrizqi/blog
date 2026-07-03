@@ -11,7 +11,7 @@
     "prebuild": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
+    "@paper-design/shaders": "^0.0.77",
     "highlight.js": "^11.11.1",
     "marked": "^18.0.4",
     "marked-highlight": "^2.2.4",
