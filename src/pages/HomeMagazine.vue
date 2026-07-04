@@ -75,8 +75,8 @@
       </div>
       <div class="dispatch-grid">
         <article v-for="p in recent" :key="p.slug" class="dispatch-card">
-          <figure class="sky-figure">
-            <div class="sky-window">
+          <figure class="photo-figure">
+            <div class="photo-window">
               <PostPhoto :slug="p.slug" :title="p.title" />
               <div class="dispatch-overlay">
                 <router-link :to="`/journal/${p.slug}`" class="dispatch-titlelink">
@@ -85,8 +85,8 @@
                 <p class="dispatch-excerpt">{{ p.excerpt }}</p>
               </div>
             </div>
-            <figcaption class="sky-caption">
-              <span class="sky-fig">{{ fmtMonth(p.date.slice(0, 7)) }} · {{ p.minutes }} min</span>
+            <figcaption class="photo-caption">
+              <span class="photo-meta">{{ fmtMonth(p.date.slice(0, 7)) }} · {{ p.minutes }} min</span>
             </figcaption>
           </figure>
           <span v-if="p.placeholder" class="draft-tag">● Example</span>
@@ -137,7 +137,7 @@ const stats = [
 
 <style scoped>
 /* ── Page shell ── */
-.page { background: var(--bg); min-height: 100vh; }
+.page { min-height: 100vh; }
 
 .paper {
   max-width: 1180px;
@@ -263,16 +263,16 @@ const stats = [
 }
 .resume-link:hover { background: var(--fg); color: var(--bg); }
 
-/* ── Sky card thumbnails (dispatch cards) ── */
-.sky-figure { margin: 0; }
+/* ── Photo card thumbnails (dispatch cards) ── */
+.photo-figure { margin: 0; }
 
-.sky-window {
+.photo-window {
   position: relative;
   height: 240px;
   border: 1px solid var(--line);
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .dispatch-overlay {
@@ -281,7 +281,7 @@ const stats = [
   padding: clamp(14px, 2vw, 20px);
 }
 
-.sky-window::before {
+.photo-window::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -294,7 +294,7 @@ const stats = [
   opacity: 0.68;
 }
 
-.sky-caption {
+.photo-caption {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -302,7 +302,7 @@ const stats = [
   margin-top: 10px;
 }
 
-.sky-fig {
+.photo-meta {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -491,5 +491,9 @@ const stats = [
   .stat { border-right: none; border-bottom: 1px solid var(--line-soft); padding-right: 0; }
   .toolkit-grid { grid-template-columns: 1fr; }
   .np-overline, .np-folio { font-size: 9px; gap: 8px; }
+  .photo-window { height: 170px; }
+  .dispatch-overlay { padding: 12px; }
+  .dispatch-title { font-size: 17px; margin-bottom: 4px; }
+  .dispatch-excerpt { -webkit-line-clamp: 2; }
 }
 </style>

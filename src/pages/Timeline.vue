@@ -17,9 +17,9 @@
       </div>
     </header>
 
-    <!-- ── Hero sky ── -->
+    <!-- ── Hero photo ── -->
     <section class="hero paper">
-      <div class="hero-sky">
+      <div class="hero-photo">
         <PostPhoto slug="timeline-hero" title="Sunrise over Jakarta" preset="abstract" />
         <div class="hero-overlay">
           <span class="hero-kicker">Sunrise over Jakarta — {{ today }}</span>
@@ -46,9 +46,9 @@
         class="edition"
         :class="{ 'edition-first': i === 0 }"
       >
-        <!-- Left: sky plate -->
-        <figure class="sky-figure">
-          <div class="sky-window">
+        <!-- Left: photo plate -->
+        <figure class="photo-figure">
+          <div class="photo-window">
             <PostPhoto :slug="entry.id" :title="entry.role" />
             <div class="ed-overlay">
               <div class="ed-furniture">
@@ -156,7 +156,6 @@ function toggle(id) {
   --ink-faint: var(--fg-subtle);
   --rule:      var(--line);
   --rule-soft: var(--line-soft);
-  background-color: var(--bg);
   color: var(--fg);
   min-height: 100vh;
   transition: color 0.25s;
@@ -222,13 +221,14 @@ function toggle(id) {
   padding-bottom: 4px;
 }
 
-/* ── Hero sky ── */
+/* ── Hero photo ── */
 .hero { margin-top: 40px; }
 
-.hero-sky {
+.hero-photo {
   position: relative;
   width: 100%;
-  height: clamp(140px, 16vw, 200px);
+  height: auto;
+  min-height: clamp(140px, 16vw, 200px);
   border: 1px solid var(--rule);
   overflow: hidden;
   display: flex;
@@ -279,9 +279,9 @@ function toggle(id) {
   white-space: nowrap;
 }
 
-/* ── Crease / newsprint texture (all sky panels) ── */
-.sky-window::before,
-.hero-sky::before {
+/* ── Crease / newsprint texture (all photo panels) ── */
+.photo-window::before,
+.hero-photo::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -307,10 +307,10 @@ function toggle(id) {
 }
 .edition-first { border-top: none; }
 
-/* Sky plate */
-.sky-figure { margin: 0; }
+/* Photo plate */
+.photo-figure { margin: 0; }
 
-.sky-window {
+.photo-window {
   position: relative;
   height: 190px;
   border: 1px solid var(--rule);
@@ -433,10 +433,12 @@ function toggle(id) {
 /* ── Responsive ── */
 @media (max-width: 860px) {
   .edition { grid-template-columns: 1fr; gap: 24px; }
-  .sky-window { height: 170px; }
+  .photo-window { height: 170px; }
 }
 
 @media (max-width: 600px) {
   .np-folio { font-size: 9px; gap: 8px; }
+  .hero-overlay { padding: 20px; }
+  .hero-lede { font-size: 16px; }
 }
 </style>

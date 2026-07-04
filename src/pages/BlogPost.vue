@@ -5,7 +5,6 @@
     <template v-if="post">
       <div class="post-hero">
         <PostPhoto :slug="post.slug" :title="post.title" />
-        <span class="post-sky-sun" />
         <div class="post-hero-content">
           <div class="post-kicker">
             <span class="cat-chip">{{ postCat(post) }}</span>
@@ -124,7 +123,6 @@ useSeoMeta(() => ({
 
 <style scoped>
 .page {
-  background: var(--bg);
   min-height: 100vh;
   font-family: var(--sans);
 }
@@ -150,17 +148,6 @@ useSeoMeta(() => ({
   background-size: 360px 360px;
   mix-blend-mode: soft-light;
   opacity: 0.68;
-  z-index: 0;
-}
-
-.post-sky-sun {
-  position: absolute;
-  left: 50%;
-  bottom: -90px;
-  width: 360px;
-  height: 360px;
-  transform: translateX(-50%);
-  border-radius: 50%;
   z-index: 0;
 }
 

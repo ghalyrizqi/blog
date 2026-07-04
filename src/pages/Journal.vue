@@ -18,9 +18,9 @@
       </div>
     </header>
 
-    <!-- ── Hero sky ── -->
+    <!-- ── Hero photo ── -->
     <section class="hero paper">
-      <div class="hero-sky">
+      <div class="hero-photo">
         <PostPhoto slug="journal-hero" title="Editor's note" preset="abstract" />
         <div class="hero-overlay">
           <span class="hero-kicker">Editor's note</span>
@@ -57,9 +57,8 @@
         :class="{ 'edition-first': i === 0 }"
       >
         <router-link :to="`/journal/${post.slug}`" class="edition-card">
-          <div class="sky-window">
+          <div class="photo-window">
             <PostPhoto :slug="post.slug" :title="post.title" />
-            <span class="sky-sun" />
             <div class="ed-body">
               <div class="ed-furniture">
                 <span class="ed-cat">{{ postCat(post) }}</span>
@@ -127,7 +126,6 @@ const today = new Date().toLocaleDateString('en-US', {
   --ink-faint: var(--fg-subtle);
   --rule:      var(--line);
   --rule-soft: var(--line-soft);
-  background-color: var(--bg);
   color: var(--fg);
   min-height: 100vh;
   transition: color 0.25s;
@@ -179,13 +177,14 @@ const today = new Date().toLocaleDateString('en-US', {
   padding-bottom: 4px;
 }
 
-/* ── Hero sky ── */
+/* ── Hero photo ── */
 .hero { margin-top: 40px; }
 
-.hero-sky {
+.hero-photo {
   position: relative;
   width: 100%;
-  height: clamp(140px, 16vw, 200px);
+  height: auto;
+  min-height: clamp(140px, 16vw, 200px);
   border: 1px solid var(--rule);
   overflow: hidden;
   display: flex;
@@ -281,8 +280,8 @@ const today = new Date().toLocaleDateString('en-US', {
 }
 
 /* ── Crease / newsprint texture ── */
-.sky-window::before,
-.hero-sky::before {
+.photo-window::before,
+.hero-photo::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -310,23 +309,13 @@ const today = new Date().toLocaleDateString('en-US', {
   text-decoration: none;
 }
 
-.sky-window {
+.photo-window {
   position: relative;
-  min-height: 280px;
+  min-height: 200px;
   border: 1px solid var(--rule);
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-}
-
-.sky-sun {
-  position: absolute;
-  left: 50%;
-  bottom: calc(28% - 70px);
-  width: 140px;
-  height: 140px;
-  transform: translateX(-50%);
-  border-radius: 50%;
 }
 
 /* Editorial body overlaid on canvas */
@@ -395,6 +384,7 @@ const today = new Date().toLocaleDateString('en-US', {
   .np-title { white-space: normal; }
   .np-folio { font-size: 9px; gap: 8px; }
   .hero-lede { font-size: 16px; }
-  .sky-window { min-height: 220px; }
+  .photo-window { min-height: 160px; }
+  .hero-overlay { padding: 20px; }
 }
 </style>

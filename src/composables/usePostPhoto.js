@@ -6,8 +6,9 @@ const MAX_BATCH = 30 // Unsplash's cap for the `count` param on /photos/random
 const BACKOFF_KEY = 'unsplash-backoff-until'
 const BACKOFF_MS = 10 * 60 * 1000 // Unsplash's rate limit is shared across the whole key, so once we hit it, don't spend more of its recovery window on requests that will just fail too.
 const REROLL_WINDOW_KEY = 'unsplash-reroll-window'
-const REROLL_MAX = 15 // manual rerolls allowed per window, leaving headroom in the 50/hour quota for organic page loads
+const REROLL_MAX = 15 // manual rerolls allowed per window — most requests are served from the pool for free, so this mainly guards against one visitor rapid-clicking the shared pool empty
 const REROLL_WINDOW_MS = 60 * 60 * 1000
+const POOL_MAX = MAX_BATCH * 3 // reserve cap per theme; a ceiling, not a target — refills happen lazily in single MAX_BATCH-sized requests, so this is rarely fully hit
 
 const QUERIES = {
   dark: 'flowers black background',
@@ -30,6 +31,40 @@ function readCache(slug, themeName) {
 
 function writeCache(slug, themeName, photo) {
   localStorage.setItem(cacheKey(slug, themeName), JSON.stringify(photo))
+}
+
+function poolKey(themeName) {
+  return `photo-pool:${themeName}`
+}
+
+function readPool(themeName) {
+  const raw = localStorage.getItem(poolKey(themeName))
+  if (!raw) return []
+  try {
+    return JSON.parse(raw)
+  } catch {
+    return []
+  }
+}
+
+function writePool(themeName, pool) {
+  localStorage.setItem(poolKey(themeName), JSON.stringify(pool.slice(0, POOL_MAX)))
+}
+
+// A pre-fetched reserve of photos per theme. Popping from it costs zero
+// network calls, so new slugs and rerolls draw from here before ever
+// touching the network — see pushToPool, and the pool check in load().
+function popFromPool(themeName) {
+  const pool = readPool(themeName)
+  if (!pool.length) return null
+  const photo = pool.pop()
+  writePool(themeName, pool)
+  return photo
+}
+
+function pushToPool(themeName, photos) {
+  if (!photos.length) return
+  writePool(themeName, [...readPool(themeName), ...photos])
 }
 
 function pingDownload(downloadLocation) {
@@ -55,9 +90,9 @@ function readRerollWindow() {
   return state
 }
 
-// Manual rerolls are a much easier way to burn the shared quota than organic
-// page loads (nothing stops someone from clicking rapidly), so they get their
-// own budget on top of the general backoff.
+// Manual rerolls are a much easier way to drain the shared pool/quota than
+// organic page loads (nothing stops someone from clicking rapidly), so they
+// get their own budget on top of the general backoff.
 function canReroll() {
   return readRerollWindow().count < REROLL_MAX
 }
@@ -113,8 +148,13 @@ async function flushBatch(themeName) {
   batchQueues.delete(themeName)
   if (!waiters.length) return
   try {
-    const photos = await fetchRandomPhotos(QUERIES[themeName], waiters.length)
-    waiters.forEach((w, i) => w.resolve(photos[i % photos.length]))
+    // Always ask for a full batch regardless of how many are actually
+    // waiting — one HTTP call costs the same whether count is 3 or 30, so
+    // the surplus gets banked into the pool for future loads/rerolls to
+    // draw on for free instead of hitting the network again.
+    const photos = await fetchRandomPhotos(QUERIES[themeName], MAX_BATCH)
+    waiters.forEach((w, i) => w.resolve(photos[i]))
+    pushToPool(themeName, photos.slice(waiters.length))
   } catch (err) {
     if (err instanceof RateLimitError) startBackoff()
     waiters.forEach((w) => w.reject(err))
@@ -136,6 +176,19 @@ export function usePostPhoto(slugSource) {
         error.value = false
         return
       }
+    }
+    // Pool hit costs no network call — check it before the backoff gate, so a
+    // never-seen slug still gets a real photo even mid-backoff, as long as
+    // the pool has stock.
+    const pooled = popFromPool(themeName)
+    if (pooled) {
+      writeCache(slug, themeName, pooled)
+      pingDownload(pooled.downloadLocation)
+      if (theme.value === themeName && currentSlug() === slug) {
+        photo.value = pooled
+        error.value = false
+      }
+      return
     }
     if (isBackingOff()) {
       error.value = true
