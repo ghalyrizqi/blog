@@ -113,7 +113,7 @@ useSeoMeta(() => postMeta(post.value) || { title: 'Post Not Found' })
 /* ── Hero ── */
 .post-hero {
   position: relative;
-  max-width: 760px;
+  max-width: 912px;
   margin: 40px auto 0;
   border: 1px solid var(--line);
   overflow: hidden;
@@ -190,14 +190,14 @@ useSeoMeta(() => postMeta(post.value) || { title: 'Post Not Found' })
 
 /* ── Article body ── */
 .post-article {
-  max-width: 760px;
+  max-width: 912px;
   margin: 0 auto;
   padding: 56px 24px 80px;
 }
 
 /* ── End section ── */
 .post-end {
-  max-width: 760px;
+  max-width: 912px;
   margin: 0 auto;
   padding: 0 24px 80px;
 }
@@ -236,7 +236,7 @@ useSeoMeta(() => postMeta(post.value) || { title: 'Post Not Found' })
 .more-link:hover { color: var(--accent); }
 
 .not-found {
-  max-width: 760px;
+  max-width: 912px;
   margin: 80px auto;
   padding: 0 24px;
   font-family: var(--serif);
