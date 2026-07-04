@@ -1,14 +1,6 @@
 <template>
   <div class="site-background">
-    <PaperTexture
-      :color-back="paperColors.colorBack"
-      :color-front="paperColors.colorFront"
-      :contrast="0.7"
-      :roughness="0.6"
-      :fiber="0.5"
-      :crumples="0.5"
-      :folds="0.7"
-    />
+    <PaperTexture v-bind="paperProps" />
   </div>
   <div class="page-content">
     <div class="global-nav-wrapper">
@@ -40,7 +32,26 @@ const currentPage = computed(() => {
 // re-resolve to concrete values whenever the theme toggles instead.
 const { theme } = useTheme()
 
-function currentPaperColors() {
+// Fixed preset for dark mode.
+const DARK_PAPER_PROPS = {
+  colorBack: '#000000',
+  colorFront: '#232325',
+  contrast: 0.3,
+  roughness: 0.4,
+  fiber: 0.3,
+  fiberSize: 0.2,
+  crumples: 0.3,
+  crumpleSize: 0.35,
+  folds: 0.3,
+  foldCount: 5,
+  drops: 0.12,
+  fade: 1,
+  seed: 5.8,
+  scale: 0.6,
+  fit: 'cover',
+}
+
+function currentLightPaperColors() {
   return {
     colorBack: resolveCssColor('var(--bg)'),
     // --paper is nearly identical to --bg (too subtle for visible grain) and
@@ -51,11 +62,23 @@ function currentPaperColors() {
   }
 }
 
-const paperColors = ref(currentPaperColors())
+const lightPaperColors = ref(currentLightPaperColors())
 
 watch(theme, async () => {
   await nextTick()
-  paperColors.value = currentPaperColors()
+  lightPaperColors.value = currentLightPaperColors()
+})
+
+const paperProps = computed(() => {
+  if (theme.value === 'dark') return DARK_PAPER_PROPS
+  return {
+    ...lightPaperColors.value,
+    contrast: 0.7,
+    roughness: 0.6,
+    fiber: 0.5,
+    crumples: 0.5,
+    folds: 0.7,
+  }
 })
 </script>
 

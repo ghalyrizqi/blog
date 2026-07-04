@@ -323,7 +323,7 @@ function toggle(id) {
   position: relative;
   z-index: 1;
   padding: clamp(14px, 2vw, 20px);
-  color: #fff;
+  color: var(--ink);
 }
 
 
