@@ -22,10 +22,12 @@
       <div class="hero-photo">
         <PostPhoto slug="timeline-hero" title="Sunrise over Jakarta" preset="abstract" />
         <div class="hero-overlay">
-          <span class="hero-kicker">Sunrise over Jakarta — {{ today }}</span>
           <p class="hero-lede">
-            Every job, internship, and detour since 2019 — painted as one sky per
-            chapter. Read it like a morning paper, and scroll back into the dark.
+            Every job, internship, and detour since 2019. I kept Airflow alive,
+            wired up Kafka, rebuilt half the warehouse in dbt, took down
+            development once with an UPDATE missing a WHERE clause, and took
+            down Airflow once by forcing a version update. 
+            I drive for success and learn from mistakes.
           </p>
         </div>
       </div>
@@ -108,26 +110,10 @@ import { ref } from 'vue'
 import SignatureFooter from '../components/SignatureFooter.vue'
 import PostPhoto from '../components/PostPhoto.vue'
 import { TIMELINE, fmtRange, fmtDuration } from '../data/index.js'
-import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+import { useSeoMeta } from '../composables/useSeoMeta.js'
+import { TIMELINE_META } from '../seo/routes.js'
 
-useSeoMeta({
-  title: 'Career Archive',
-  description: 'Every job and detour since 2019. Data engineering across Jakarta and Surabaya.',
-  url: `${SITE_URL}/timeline`,
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    name: 'Career Archive — Ghaly Rizqi Mauludin',
-    description: 'Every job and detour since 2019.',
-    url: `${SITE_URL}/timeline`,
-    mainEntity: {
-      '@type': 'Person',
-      name: 'Ghaly Rizqi Mauludin',
-      jobTitle: 'Data Engineer',
-      url: SITE_URL,
-    },
-  },
-})
+useSeoMeta(TIMELINE_META)
 
 const TYPE = {
   work:      { label: 'Work',      tone: 'var(--accent)'   },
@@ -239,15 +225,6 @@ function toggle(id) {
   position: relative;
   padding: clamp(24px, 4vw, 44px);
   max-width: 680px;
-}
-
-.hero-kicker {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  display: block;
 }
 
 .hero-lede {

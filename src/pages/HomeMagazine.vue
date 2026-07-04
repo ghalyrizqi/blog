@@ -104,22 +104,10 @@ import PostPhoto from '../components/PostPhoto.vue'
 import Dithering from '../components/Dithering.vue'
 import { STACK, fmtMonth } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
-import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+import { useSeoMeta } from '../composables/useSeoMeta.js'
+import { HOME_META } from '../seo/routes.js'
 
-useSeoMeta({
-  title: null,
-  description: "Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded two Airflow instances before IT Support could hand back the ThinkPad.",
-  url: SITE_URL,
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Ghaly Rizqi Mauludin',
-    jobTitle: 'Data Engineer',
-    url: SITE_URL,
-    email: 'ghalyrizqimauludin@gmail.com',
-    sameAs: ['https://linkedin.com/in/ghalyrizqi'],
-  },
-})
+useSeoMeta(HOME_META)
 
 const today = new Date().toLocaleDateString('en-US', {
   weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',

@@ -61,7 +61,8 @@ import SignatureFooter from '../components/SignatureFooter.vue'
 import PostPhoto from '../components/PostPhoto.vue'
 import { getPost } from '../data/posts.js'
 import { fmtMonth, postCat } from '../data/index.js'
-import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+import { useSeoMeta } from '../composables/useSeoMeta.js'
+import { postMeta } from '../seo/routes.js'
 
 const route = useRoute()
 
@@ -100,25 +101,7 @@ const post = computed(() => getPost(route.params.slug))
 const renderedContent = computed(() => post.value ? marked(post.value.content) : '')
 
 
-useSeoMeta(() => ({
-  title: post.value?.title,
-  description: post.value?.excerpt,
-  url: `${SITE_URL}/journal/${post.value?.slug}`,
-  type: 'article',
-  jsonLd: post.value ? {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.value.title,
-    description: post.value.excerpt,
-    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
-    publisher: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
-    datePublished: post.value.date,
-    dateModified: post.value.date,
-    url: `${SITE_URL}/journal/${post.value.slug}`,
-    inLanguage: 'en',
-    keywords: post.value.tags.join(', '),
-  } : undefined,
-}))
+useSeoMeta(() => postMeta(post.value) || { title: 'Post Not Found' })
 </script>
 
 <style scoped>

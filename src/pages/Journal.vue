@@ -89,22 +89,10 @@ import SignatureFooter from '../components/SignatureFooter.vue'
 import PostPhoto from '../components/PostPhoto.vue'
 import { fmtMonth, postCat } from '../data/index.js'
 import { POSTS } from '../data/posts.js'
-import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta.js'
+import { useSeoMeta } from '../composables/useSeoMeta.js'
+import { JOURNAL_META } from '../seo/routes.js'
 
-useSeoMeta({
-  title: 'The Second Brain',
-  description: 'Notes on data engineering, infrastructure, and tools. Written by Ghaly Rizqi Mauludin.',
-  url: `${SITE_URL}/journal`,
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'The Second Brain',
-    description: 'Notes on data engineering, infrastructure, and tools.',
-    url: `${SITE_URL}/journal`,
-    author: { '@type': 'Person', name: 'Ghaly Rizqi Mauludin', url: SITE_URL },
-    inLanguage: 'en',
-  },
-})
+useSeoMeta(JOURNAL_META)
 
 const BLOG_POSTS = POSTS
 const FILTERS = ['All', 'Engineering', 'Personal']

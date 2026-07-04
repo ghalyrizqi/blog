@@ -1,41 +1,38 @@
 import { watchEffect } from 'vue'
+import { SITE_URL, SITE_NAME, resolveMeta } from '../seo/routes.js'
 
-const SITE_NAME = 'Ghaly Rizqi Mauludin'
-export const SITE_URL = 'https://ghaly.vercel.app'
-
-const DEFAULT_DESC = 'Data engineer in Jakarta. Four years building pipelines and migrating warehouses.'
+export { SITE_URL }
 
 export function useSeoMeta(getMeta) {
   watchEffect(() => {
-    const m = typeof getMeta === 'function' ? getMeta() : getMeta
+    const raw = typeof getMeta === 'function' ? getMeta() : getMeta
+    const m = resolveMeta(raw)
     if (!m) return
 
-    const title       = m.title ? `${m.title} — ${SITE_NAME}` : `${SITE_NAME} — Data Engineer`
-    const description = m.description || DEFAULT_DESC
-    const url         = m.url || SITE_URL
-    const image       = m.image || null
-    const type        = m.type || 'website'
+    document.title = m.title
 
-    document.title = title
-
-    setMeta('name', 'description', description)
+    setMeta('name', 'description', m.description)
     setMeta('name', 'robots',     'index, follow')
     setMeta('name', 'author',     'Ghaly Rizqi Mauludin')
 
     setMeta('property', 'og:locale',     'en_US')
     setMeta('property', 'og:site_name',  SITE_NAME)
-    setMeta('property', 'og:title',      title)
-    setMeta('property', 'og:description', description)
-    setMeta('property', 'og:url',        url)
-    setMeta('property', 'og:type',       type)
-    if (image) setMeta('property', 'og:image', image)
+    setMeta('property', 'og:title',      m.title)
+    setMeta('property', 'og:description', m.description)
+    setMeta('property', 'og:url',        m.url)
+    setMeta('property', 'og:type',       m.type)
+    if (m.image) {
+      setMeta('property', 'og:image',        m.image)
+      setMeta('property', 'og:image:width',  '1200')
+      setMeta('property', 'og:image:height', '630')
+    }
 
-    setMeta('name', 'twitter:card',        image ? 'summary_large_image' : 'summary')
-    setMeta('name', 'twitter:title',       title)
-    setMeta('name', 'twitter:description', description)
-    if (image) setMeta('name', 'twitter:image', image)
+    setMeta('name', 'twitter:card',        m.image ? 'summary_large_image' : 'summary')
+    setMeta('name', 'twitter:title',       m.title)
+    setMeta('name', 'twitter:description', m.description)
+    if (m.image) setMeta('name', 'twitter:image', m.image)
 
-    setCanonical(url)
+    setCanonical(m.url)
     if (m.jsonLd) setJsonLd(m.jsonLd)
   })
 }

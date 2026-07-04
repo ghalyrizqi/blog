@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "sitemap": "node scripts/generate-sitemap.js",
-    "prebuild": "node scripts/generate-sitemap.js"
+    "prebuild": "node scripts/generate-sitemap.js",
+    "postbuild": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "@paper-design/shaders": "^0.0.77",
