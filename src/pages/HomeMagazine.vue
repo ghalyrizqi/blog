@@ -19,7 +19,7 @@
           <p class="home-aboutbody">
             Builds data pipelines on weekdays. Checks if they're still running on
             weekends. Upgraded two Airflow instances before IT Support could hand
-            back the ThinkPad.
+            Me the ThinkPad.
           </p>
           <span class="resume-link is-disabled" aria-disabled="true">↓ Résumé</span>
         </div>

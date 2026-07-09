@@ -26,7 +26,7 @@ const PERSON = { '@type': 'Person', name: SITE_NAME, url: SITE_URL }
 
 export const HOME_META = {
   title: null,
-  description: "Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded two Airflow instances before IT Support could hand back the ThinkPad.",
+  description: "Builds data pipelines on weekdays. Checks if they're still running on weekends. Upgraded two Airflow instances before IT Support could hand me the ThinkPad.",
   url: SITE_URL,
   image: OG_IMAGE,
   jsonLd: {
