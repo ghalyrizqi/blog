@@ -21,7 +21,7 @@
             weekends. Upgraded two Airflow instances before IT Support could hand
             back the ThinkPad.
           </p>
-          <a class="resume-link" href="/GhalyRizqiMauludin-Resume.pdf" download>↓ Résumé</a>
+          <span class="resume-link is-disabled" aria-disabled="true">↓ Résumé</span>
         </div>
       </div>
 
@@ -250,6 +250,11 @@ const stats = [
   transition: background 0.18s var(--ease-out), color 0.18s var(--ease-out);
 }
 .resume-link:hover { background: var(--fg); color: var(--bg); }
+.resume-link.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 /* ── Photo card thumbnails (dispatch cards) ── */
 .photo-figure { margin: 0; }
