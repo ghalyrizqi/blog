@@ -353,6 +353,41 @@ useSeoMeta(() => postMeta(post.value) || { title: 'Post Not Found' })
 }
 .prose .pull-quote p { margin: 0; }
 
+/* Stack logo chips */
+.prose .stack-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 2.2em;
+}
+.prose .stack-logo-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fbf8f2;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: transform 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+.prose .stack-logo-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+.prose .stack-logo-chip img {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+.prose .stack-logo-chip span {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
 /* Figures */
 .prose .post-figure {
   margin: 2em -40px;
