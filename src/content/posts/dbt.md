@@ -1,7 +1,7 @@
 ---
 slug: dbt
-title: "dbt in an Afternoon: uv, DuckDB, and Jaffle Shop"
-excerpt: "What dbt actually does, why it's worth learning, and a hands-on walkthrough with uv, DuckDB, and dbt Labs' Jaffle Shop project — dbt build, dbt run, dbt test, dbt docs, and sqlfluff along the way."
+title: "Hands-On dbt: uv, DuckDB, and Jaffle Shop"
+excerpt: "What dbt actually does, why it's worth learning, and a real walkthrough with uv, DuckDB, and dbt Labs' Jaffle Shop project — dbt build, dbt run, dbt test, dbt docs, and sqlfluff along the way."
 date: 2026-07-26
 tags: [dbt, DuckDB, uv]
 ---
