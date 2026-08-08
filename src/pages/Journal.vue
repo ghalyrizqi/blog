@@ -339,18 +339,30 @@ const today = new Date().toLocaleDateString('en-US', {
   letter-spacing: -0.015em;
   color: var(--fg);
   margin-bottom: 10px;
-  text-wrap: balance;
-  display: block;
   transition: color 0.15s var(--ease-out);
+  /* fixed 2-line height so every card matches, regardless of title length */
+  min-height: 2.2em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 
 .ed-lede {
   font-family: var(--serif);
   font-size: 17px;
   line-height: 1.6;
   color: var(--fg-muted);
-  text-wrap: pretty;
+  /* fixed 2-line height so every card matches, regardless of excerpt length */
+  min-height: 3.2em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ed-tags {
