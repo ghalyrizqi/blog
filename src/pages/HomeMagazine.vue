@@ -118,8 +118,8 @@ const totalTools = STACK.reduce((a, g) => a + g.items.length, 0)
 
 const stats = [
   { num: '77%',  label: 'warehouse cost cut', sub: 'one DuckDB box replaced Redshift' },
-  { num: '500+', label: 'DAGs migrated',       sub: 'Airflow v2 → v3, two instances'  },
-  { num: '4+',   label: 'years experience',    sub: 'as a Data Engineer'               },
+  { num: '300+', label: 'DAGs migrated',       sub: 'Airflow v2 → v3, two instances'  },
+  { num: '5',   label: 'years experience',    sub: 'as a Data Engineer'               },
 ]
 </script>
 
