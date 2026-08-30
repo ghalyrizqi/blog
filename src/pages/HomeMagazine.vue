@@ -21,7 +21,7 @@
             weekends. Upgraded two Airflow instances before IT Support could hand
             Me the ThinkPad.
           </p>
-          <a class="resume-link" href="/resume.pdf" download="Ghaly-Rizqi-Mauludin-Resume.pdf">↓ Résumé</a>
+          <a class="resume-link" href="/resume_ghaly.pdf" download="Ghaly-Rizqi-Mauludin-Resume.pdf">↓ Résumé</a>
         </div>
       </div>
 
